@@ -1,12 +1,18 @@
-# BonsaiLAB V27 — Render
+# BonsaiLAB V28 — Render
 
-40 tür, 20 substrat ve üç dane grubu için yıl boyu tek reçete tasarımı. Hesaplar Python sunucusunda yapılır. Mevcut V27 seçim motoru ve kaynak verileri değişmeden kopyalanmıştır. Kaynak tahminleri gerçek ürün partisi veya biyolojik optimum ölçümü değildir.
+40 tür, 20 substrat ve üç dane grubu için yıl boyu tek reçete tasarımı. Hesaplar Python sunucusunda yapılır. V28, veri eksikliği ve kaynak/numune uyumunun seçim puanına etkisini kaldırır; 20 malzemenin 140 sayısal referans alanını açık yöntemlerle tamamlar. Kaynaklı numuneler, aktarım ve tahminler ayrı etiketlenir. Kaynak tahminleri gerçek ürün partisi veya biyolojik optimum ölçümü değildir.
 
 ## Çalıştırma
 
 Python 3.14.2, `pip install -r requirements.txt`. Üretim başlangıcı render.yaml içinde. Yerel kontrol: `python app.py`. `/healthz` sağlık ve veri kimliğini döndürür. `/api/config` tam veri tabanı, `/api/calculate` JSON hesap isteğidir.
 
 Render kurulumu açıkça `free` planını kullanır. Ücretsiz plan kullanılmadığında uykuya geçebilir; ilk ziyaret yeniden başlatmayı bekler. Kalıcı disk veya veri tabanı gerekmez. Seçimler tarayıcıda tutulur; hesap girdisi yalnız sonuç üretmek için sunucuya gönderilir.
+
+## V28 seçim ve sayısal tamamlama
+
+Kaynak sınıfı, numune örtüşmesi veya eksik ölçüm seçim puanını ve koşulluluk sırasını değiştirmez. Temin güçlüğü ana öneride ceza değildir; yalnız kolay temin alternatifinde stok filtresidir. Gerçek stok dane uygunluğu, malzeme oran sınırları, su/hava eşikleri ve türün pH tercih bandı korunur.
+
+Kaynak eğrisi olmayan malzemelerde CC ve AWC ile üstel tutma eğrisi tahmin edilir. Kaynak kap bilinmiyorsa referans 12 cm varsayılır; bu bir ölçüm değildir. İnterpolasyon yalnız uygun ölçüm noktaları arasında yapılır. Her malzemenin tamamlanmış alanları ve kaynakları data_completion içinde bulunur.
 
 ## Kaynak yönetimi ve yük sınırı
 

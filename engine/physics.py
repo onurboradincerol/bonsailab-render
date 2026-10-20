@@ -42,11 +42,11 @@ def material_state(m,height):
     pure=SCIENCE['pure_curves'].get(m['name'])
     if pure:
         return dict(pure_state(m['name'],height))
-    profile=m.get('reference_used')
+    profile=m.get('reference_used') or m.get('physical_reference')
     if profile and m.get('awc') is not None and 0<cc<tp:
         pwp=max(0,cc-m['awc']);ref_height=profile['reference_height_cm'];lam=fitted_lambda(tp,cc,pwp,ref_height)
         current=pwp+(tp-pwp)*(-math.expm1(-height/lam))*lam/height
-        return {'cc':current,'tp':tp,'reference_cc':cc,'height_delta':current-cc,'basis':'CALIBRATED_SHAPE_ASSUMPTION','source':profile.get('source','SCH26'),'curve':{'kind':'fitted_exponential','lambda_cm':lam,'pwp':pwp,'reference_height_cm':ref_height}}
+        return {'cc':current,'tp':tp,'reference_cc':cc,'height_delta':current-cc,'basis':'ESTIMATED_REFERENCE_CURVE' if profile.get('method')=='REFERENCE_CC_AWC_EXPONENTIAL' else 'CALIBRATED_SHAPE_ASSUMPTION','source':profile.get('source','EST28'),'curve':{'kind':'fitted_exponential','lambda_cm':lam,'pwp':pwp,'reference_height_cm':ref_height},'pwp':pwp}
     return {'cc':cc,'tp':tp,'reference_cc':cc,'height_delta':0.,'basis':'LEGACY_ASSUMPTION','source':None,'curve':None}
 
 def bracket(axis,x):

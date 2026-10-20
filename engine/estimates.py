@@ -8,7 +8,7 @@ import copy,itertools,math
 def bounded(x,lo,hi):return max(lo,min(hi,x))
 
 def complete_material(material,policy):
-    m=copy.deepcopy(material);imputed=[];transferred=[];aux=policy.get('source_auxiliary',{}).get(m['name'],{})
+    m=copy.deepcopy(material);imputed=list(m.get('data_completion',{}).get('estimated_fields',[]));transferred=[];aux=policy.get('source_auxiliary',{}).get(m['name'],{})
     for key,default in (('ph',6.5),('cec',15. if m['kind']=='Mineral granül' else 100.),('density',policy['density_g_ml'].get(m['name'],.6 if m['kind']=='Mineral granül' else .2))):
         if m.get(key) is None:
             m[key]=aux['density'] if key=='density' and 'density' in aux else default
@@ -17,13 +17,14 @@ def complete_material(material,policy):
         cc=m['tp']*m['cc']/max(1e-12,m['cc']+m['afp'])
         m['awc']=max(0,cc-aux['pwp']) if 'pwp' in aux else cc*policy['awc_fraction_of_cc'].get(m['name'],.45);imputed.append('awc')
     for key in imputed:
+        if material.get(key) is not None:continue
         m['provenance'][key]={'class':'ASSUMPTION','sources':['EST23'],'note':'V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir.'}
     for key in transferred:m['provenance'][key]={'class':'MEASURED_OR_MEAN','sources':[aux['source']],'note':'Aynı yayın numunesinden malzeme ailesine aktarım; satın alınan stok ölçümü değildir.'}
     if 'pwp' in aux and 'awc' in imputed:m['provenance']['awc']={'class':'ASSUMPTION','sources':[aux['source'],'V24_RULES'],'note':'CC eksi yayındaki ölçülmüş kullanılamayan su; karışıma aktarım tahminidir.'}
     if not m.get('cec_density_compatible',True):
         m['provenance']['cec']['note']='Aktif model: farklı fraksiyonlardan CEC, korunmuş bileşen kuru kütleleriyle yaklaşık aktarılır; fraksiyon uyumu ve CEC belirsizliği ayrıca korunur.'
         if m.get('chemical_reference'):m['chemical_reference']['note']='CEC ve yoğunluk farklı numune/fraksiyonlara aittir; aktif model bunları tahmini aktarım olarak kullanır, aynı numunede doğrulanmış ölçüm saymaz.'
-    m['numeric_estimation']={'reference_transferred_fields':transferred,'imputed_fields':imputed,'source':'EST23','relative_buffer':policy['relative_buffer_per_volume'].get(m['name'],1.)}
+    m['numeric_estimation']={'reference_transferred_fields':transferred,'imputed_fields':list(dict.fromkeys(imputed)),'source':policy.get('source','EST28'),'relative_buffer':policy['relative_buffer_per_volume'].get(m['name'],1.),'penalized_in_selection':False}
     return m
 
 def ratio_range(values_low,values_high,weights_low,weights_high):

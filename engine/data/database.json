@@ -1,5 +1,5 @@
 {
-  "version": "27",
+  "version": "28",
   "updated": "2026-10-20",
   "materials": [
     {
@@ -10,7 +10,7 @@
       "cc": 39,
       "afp": 26,
       "tp": 65,
-      "awc": null,
+      "awc": 13.6,
       "grade": "Alan bazlı",
       "density": 0.47725,
       "kind": "Mineral granül",
@@ -58,9 +58,13 @@
           "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
         },
         "awc": {
-          "class": "MISSING",
-          "sources": [],
-          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+          "class": "ASSUMPTION",
+          "sources": [
+            "AKA94",
+            "EST28"
+          ],
+          "note": "1994 araştırma özetindeki ortalama 0.136 hacim kesri 13.6% olarak alındı. Emiş aralığı/kap ve ürün farkları nedeniyle bu modele aktarımı tahmindir; stok ölçümü değildir.",
+          "method": "LITERATURE_TRANSFER_ESTIMATE"
         },
         "density": {
           "class": "MEASURED_OR_MEAN",
@@ -85,7 +89,32 @@
         "note": "Dört iri fraksiyon örneğinin pH/CEC/yoğunluk ortalaması; belirli bir ticari ürün ölçümü değil."
       },
       "default_grain_group": "fine",
-      "grain_applicable": true
+      "grain_applicable": true,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [
+          "awc"
+        ],
+        "estimated_fields": [
+          "cc",
+          "afp",
+          "tp",
+          "awc"
+        ],
+        "review_sources": [
+          "JPN82",
+          "AKA94"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      },
+      "physical_reference": {
+        "reference_height_cm": 12,
+        "height_basis": "MODEL_ASSUMPTION",
+        "source": "EST28",
+        "method": "REFERENCE_CC_AWC_EXPONENTIAL",
+        "note": "Referans CC ve AWC ile üstel su tutma şekli kalibre edilir. Kaynak kap yüksekliği bilinmediğinde 12 cm varsayılır. Dane boyutuna özel ölçüm yoksa boyut tepkisi uydurulmaz."
+      }
     },
     {
       "id": "M02",
@@ -95,7 +124,7 @@
       "cc": 47.55,
       "afp": 36.45,
       "tp": 84,
-      "awc": null,
+      "awc": 26.1525,
       "grade": "Alan bazlı",
       "density": 0.234,
       "kind": "Mineral granül",
@@ -144,9 +173,12 @@
           "note": "V13 sayısı korunmuştur. Sayıya bağlı bağımsız makale/tablo ve karşılaştırılabilir numune koşulu kaydı eksik; doğrulanmış literatür sentezi olarak kullanılamaz."
         },
         "awc": {
-          "class": "MISSING",
-          "sources": [],
-          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+          "class": "ASSUMPTION",
+          "sources": [
+            "EST28"
+          ],
+          "note": "Eksik alan sayısal tahminle tamamlandı; malzeme ailesi önkabulü, ürün ölçümü değildir. Referans CC × 0.55 kullanılabilir payı; kalan su yüksek emiş suyu önkabulüdür.",
+          "method": "MATERIAL_FAMILY_PRIOR"
         },
         "density": {
           "class": "MEASURED_OR_MEAN",
@@ -177,7 +209,34 @@
         "note": "CEC ile yoğunluk fraksiyonları eşleşmiyor; kütlesel CEC hesabında kullanılmaz. Nominal değerler tarihsel referans olarak korunur."
       },
       "default_grain_group": "medium",
-      "grain_applicable": true
+      "grain_applicable": true,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [
+          "awc"
+        ],
+        "estimated_fields": [
+          "ph",
+          "cc",
+          "afp",
+          "tp",
+          "awc"
+        ],
+        "review_sources": [
+          "JPN82",
+          "KAN94",
+          "AZALEA"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      },
+      "physical_reference": {
+        "reference_height_cm": 12,
+        "height_basis": "MODEL_ASSUMPTION",
+        "source": "EST28",
+        "method": "REFERENCE_CC_AWC_EXPONENTIAL",
+        "note": "Referans CC ve AWC ile üstel su tutma şekli kalibre edilir. Kaynak kap yüksekliği bilinmediğinde 12 cm varsayılır. Dane boyutuna özel ölçüm yoksa boyut tepkisi uydurulmaz."
+      }
     },
     {
       "id": "M03",
@@ -187,7 +246,7 @@
       "cc": 23.3333,
       "afp": 26.6667,
       "tp": 50,
-      "awc": null,
+      "awc": 9.333319999999999,
       "grade": "Alan bazlı",
       "density": 0.625,
       "kind": "Mineral granül",
@@ -235,9 +294,12 @@
           "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
         },
         "awc": {
-          "class": "MISSING",
-          "sources": [],
-          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+          "class": "ASSUMPTION",
+          "sources": [
+            "EST28"
+          ],
+          "note": "Eksik alan sayısal tahminle tamamlandı; malzeme ailesi önkabulü, ürün ölçümü değildir. Referans CC × 0.4 kullanılabilir payı; kalan su yüksek emiş suyu önkabulüdür.",
+          "method": "MATERIAL_FAMILY_PRIOR"
         },
         "density": {
           "class": "MEASURED_OR_MEAN",
@@ -268,7 +330,31 @@
         "note": "CEC ile yoğunluk fraksiyonları eşleşmiyor; kütlesel CEC hesabında kullanılmaz. Nominal değerler tarihsel referans olarak korunur."
       },
       "default_grain_group": "medium",
-      "grain_applicable": true
+      "grain_applicable": true,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [
+          "awc"
+        ],
+        "estimated_fields": [
+          "cc",
+          "afp",
+          "tp",
+          "awc"
+        ],
+        "review_sources": [
+          "JPN82"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      },
+      "physical_reference": {
+        "reference_height_cm": 12,
+        "height_basis": "MODEL_ASSUMPTION",
+        "source": "EST28",
+        "method": "REFERENCE_CC_AWC_EXPONENTIAL",
+        "note": "Referans CC ve AWC ile üstel su tutma şekli kalibre edilir. Kaynak kap yüksekliği bilinmediğinde 12 cm varsayılır. Dane boyutuna özel ölçüm yoksa boyut tepkisi uydurulmaz."
+      }
     },
     {
       "id": "M04",
@@ -396,7 +482,19 @@
       },
       "legacy_ph": 7,
       "default_grain_group": "medium",
-      "grain_applicable": true
+      "grain_applicable": true,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [],
+        "estimated_fields": [
+          "cec"
+        ],
+        "review_sources": [
+          "SCH26"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      }
     },
     {
       "id": "M05",
@@ -494,7 +592,19 @@
       },
       "legacy_ph": 7.2,
       "default_grain_group": "medium",
-      "grain_applicable": true
+      "grain_applicable": true,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [],
+        "estimated_fields": [
+          "cec"
+        ],
+        "review_sources": [
+          "SCH26"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      }
     },
     {
       "id": "M06",
@@ -592,7 +702,19 @@
       },
       "legacy_ph": 7.2,
       "default_grain_group": "medium",
-      "grain_applicable": true
+      "grain_applicable": true,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [],
+        "estimated_fields": [
+          "cec"
+        ],
+        "review_sources": [
+          "SCH26"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      }
     },
     {
       "id": "M07",
@@ -602,9 +724,9 @@
       "cc": 64,
       "afp": 16,
       "tp": 80,
-      "awc": null,
+      "awc": 35.2,
       "grade": "Alan bazlı",
-      "density": null,
+      "density": 0.35,
       "kind": "Organik/lifli",
       "min_mm": null,
       "max_mm": null,
@@ -650,14 +772,20 @@
           "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
         },
         "awc": {
-          "class": "MISSING",
-          "sources": [],
-          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+          "class": "ASSUMPTION",
+          "sources": [
+            "EST28"
+          ],
+          "note": "Eksik alan sayısal tahminle tamamlandı; malzeme ailesi önkabulü, ürün ölçümü değildir. Referans CC × 0.55 kullanılabilir payı; kalan su yüksek emiş suyu önkabulüdür.",
+          "method": "MATERIAL_FAMILY_PRIOR"
         },
         "density": {
-          "class": "MISSING",
-          "sources": [],
-          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+          "class": "ASSUMPTION",
+          "sources": [
+            "EST28"
+          ],
+          "note": "Eksik alan sayısal tahminle tamamlandı; malzeme ailesi önkabulü, ürün ölçümü değildir.",
+          "method": "MATERIAL_FAMILY_PRIOR"
         }
       },
       "legacy_max_share": 15,
@@ -669,7 +797,36 @@
         "awc_verified": false
       },
       "default_grain_group": "fine",
-      "grain_applicable": false
+      "grain_applicable": false,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [
+          "awc",
+          "density"
+        ],
+        "estimated_fields": [
+          "ph",
+          "cec",
+          "cc",
+          "afp",
+          "tp",
+          "awc",
+          "density"
+        ],
+        "review_sources": [
+          "CAR15",
+          "IOWA"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      },
+      "physical_reference": {
+        "reference_height_cm": 12,
+        "height_basis": "MODEL_ASSUMPTION",
+        "source": "EST28",
+        "method": "REFERENCE_CC_AWC_EXPONENTIAL",
+        "note": "Referans CC ve AWC ile üstel su tutma şekli kalibre edilir. Kaynak kap yüksekliği bilinmediğinde 12 cm varsayılır. Dane boyutuna özel ölçüm yoksa boyut tepkisi uydurulmaz."
+      }
     },
     {
       "id": "M08",
@@ -679,9 +836,9 @@
       "cc": 74.375,
       "afp": 10.625,
       "tp": 85,
-      "awc": null,
+      "awc": 37.1875,
       "grade": "Alan bazlı",
-      "density": null,
+      "density": 0.45,
       "kind": "Organik/lifli",
       "min_mm": null,
       "max_mm": null,
@@ -727,14 +884,20 @@
           "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
         },
         "awc": {
-          "class": "MISSING",
-          "sources": [],
-          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+          "class": "ASSUMPTION",
+          "sources": [
+            "EST28"
+          ],
+          "note": "Eksik alan sayısal tahminle tamamlandı; malzeme ailesi önkabulü, ürün ölçümü değildir. Referans CC × 0.5 kullanılabilir payı; kalan su yüksek emiş suyu önkabulüdür.",
+          "method": "MATERIAL_FAMILY_PRIOR"
         },
         "density": {
-          "class": "MISSING",
-          "sources": [],
-          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+          "class": "ASSUMPTION",
+          "sources": [
+            "EST28"
+          ],
+          "note": "Eksik alan sayısal tahminle tamamlandı; malzeme ailesi önkabulü, ürün ölçümü değildir.",
+          "method": "MATERIAL_FAMILY_PRIOR"
         }
       },
       "legacy_max_share": 10,
@@ -746,7 +909,36 @@
         "awc_verified": false
       },
       "default_grain_group": "fine",
-      "grain_applicable": false
+      "grain_applicable": false,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [
+          "awc",
+          "density"
+        ],
+        "estimated_fields": [
+          "ph",
+          "cec",
+          "cc",
+          "afp",
+          "tp",
+          "awc",
+          "density"
+        ],
+        "review_sources": [
+          "CAR15",
+          "IOWA"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      },
+      "physical_reference": {
+        "reference_height_cm": 12,
+        "height_basis": "MODEL_ASSUMPTION",
+        "source": "EST28",
+        "method": "REFERENCE_CC_AWC_EXPONENTIAL",
+        "note": "Referans CC ve AWC ile üstel su tutma şekli kalibre edilir. Kaynak kap yüksekliği bilinmediğinde 12 cm varsayılır. Dane boyutuna özel ölçüm yoksa boyut tepkisi uydurulmaz."
+      }
     },
     {
       "id": "M09",
@@ -756,9 +948,9 @@
       "cc": 75.5556,
       "afp": 9.4444,
       "tp": 85,
-      "awc": null,
+      "awc": 30.22224,
       "grade": "Alan bazlı",
-      "density": null,
+      "density": 0.65,
       "kind": "Katkı",
       "min_mm": null,
       "max_mm": null,
@@ -804,14 +996,20 @@
           "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
         },
         "awc": {
-          "class": "MISSING",
-          "sources": [],
-          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+          "class": "ASSUMPTION",
+          "sources": [
+            "EST28"
+          ],
+          "note": "Eksik alan sayısal tahminle tamamlandı; malzeme ailesi önkabulü, ürün ölçümü değildir. Referans CC × 0.4 kullanılabilir payı; kalan su yüksek emiş suyu önkabulüdür.",
+          "method": "MATERIAL_FAMILY_PRIOR"
         },
         "density": {
-          "class": "MISSING",
-          "sources": [],
-          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+          "class": "ASSUMPTION",
+          "sources": [
+            "EST28"
+          ],
+          "note": "Eksik alan sayısal tahminle tamamlandı; malzeme ailesi önkabulü, ürün ölçümü değildir.",
+          "method": "MATERIAL_FAMILY_PRIOR"
         }
       },
       "legacy_max_share": 0,
@@ -823,19 +1021,47 @@
         "awc_verified": false
       },
       "default_grain_group": "fine",
-      "grain_applicable": false
+      "grain_applicable": false,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [
+          "awc",
+          "density"
+        ],
+        "estimated_fields": [
+          "ph",
+          "cec",
+          "cc",
+          "afp",
+          "tp",
+          "awc",
+          "density"
+        ],
+        "review_sources": [
+          "EST28"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      },
+      "physical_reference": {
+        "reference_height_cm": 12,
+        "height_basis": "MODEL_ASSUMPTION",
+        "source": "EST28",
+        "method": "REFERENCE_CC_AWC_EXPONENTIAL",
+        "note": "Referans CC ve AWC ile üstel su tutma şekli kalibre edilir. Kaynak kap yüksekliği bilinmediğinde 12 cm varsayılır. Dane boyutuna özel ölçüm yoksa boyut tepkisi uydurulmaz."
+      }
     },
     {
       "id": "M10",
       "name": "Torf",
       "ph": 4.5,
       "cec": 200,
-      "cc": 60.6,
-      "afp": 16.5,
-      "tp": 77.1,
-      "awc": null,
+      "cc": 78.29942177765915,
+      "afp": 3.7005782223408517,
+      "tp": 82.0,
+      "awc": 65.20942177765914,
       "grade": "Alan bazlı",
-      "density": null,
+      "density": 0.081,
       "kind": "Organik/lifli",
       "min_mm": null,
       "max_mm": null,
@@ -862,33 +1088,47 @@
         "cc": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "LONDRA18",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Yayındaki su tutma eğrisinin 12 cm model kabına aktarımı; aynı satın alınan ürünün ölçümü değildir. AWC=CC−yüksek emişte tutulan su; birimler hacim yüzdesidir.",
+          "method": "SOURCE_CURVE_TRANSFER"
         },
         "afp": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "LONDRA18",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Yayındaki su tutma eğrisinin 12 cm model kabına aktarımı; aynı satın alınan ürünün ölçümü değildir. AWC=CC−yüksek emişte tutulan su; birimler hacim yüzdesidir.",
+          "method": "SOURCE_CURVE_TRANSFER"
         },
         "tp": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "LONDRA18",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Yayındaki su tutma eğrisinin 12 cm model kabına aktarımı; aynı satın alınan ürünün ölçümü değildir. AWC=CC−yüksek emişte tutulan su; birimler hacim yüzdesidir.",
+          "method": "SOURCE_CURVE_TRANSFER"
         },
         "awc": {
-          "class": "MISSING",
-          "sources": [],
-          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+          "class": "ASSUMPTION",
+          "sources": [
+            "LONDRA18",
+            "EST28"
+          ],
+          "note": "Yayındaki su tutma eğrisinin 12 cm model kabına aktarımı; aynı satın alınan ürünün ölçümü değildir. AWC=CC−yüksek emişte tutulan su; birimler hacim yüzdesidir.",
+          "method": "SOURCE_CURVE_TRANSFER"
         },
         "density": {
-          "class": "MISSING",
-          "sources": [],
-          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+          "class": "ASSUMPTION",
+          "sources": [
+            "LONDRA18",
+            "EST28"
+          ],
+          "note": "Yayındaki su tutma eğrisinin 12 cm model kabına aktarımı; aynı satın alınan ürünün ölçümü değildir. AWC=CC−yüksek emişte tutulan su; birimler hacim yüzdesidir.",
+          "method": "SOURCE_CURVE_TRANSFER"
         }
       },
       "legacy_max_share": 35,
@@ -900,19 +1140,39 @@
         "awc_verified": false
       },
       "default_grain_group": "fine",
-      "grain_applicable": false
+      "grain_applicable": false,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [
+          "awc",
+          "density"
+        ],
+        "estimated_fields": [
+          "cc",
+          "afp",
+          "tp",
+          "awc",
+          "density"
+        ],
+        "review_sources": [
+          "LONDRA18",
+          "CAR15"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      }
     },
     {
       "id": "M11",
       "name": "Kum",
       "ph": 7.5,
       "cec": 1,
-      "cc": 10,
-      "afp": 20,
-      "tp": 30,
-      "awc": null,
+      "cc": 9.53,
+      "afp": 27.04,
+      "tp": 36.57,
+      "awc": 2.3825,
       "grade": "Alan bazlı",
-      "density": 1.16,
+      "density": 1.34,
       "kind": "Mineral granül",
       "min_mm": 0.5,
       "max_mm": 2,
@@ -939,35 +1199,46 @@
         "cc": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "PH_BUFFER21",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Xu ve ark. 2021 Tablo 1 saf kum numunesinden malzeme ailesine yaklaşık aktarım. Stok dane fraksiyonu/kap eşleşmesi doğrulanmadı. Kaynaktaki pH tüm kumlara genellenmedi.",
+          "method": "MATERIAL_FAMILY_TRANSFER"
         },
         "afp": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "PH_BUFFER21",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Xu ve ark. 2021 Tablo 1 saf kum numunesinden malzeme ailesine yaklaşık aktarım. Stok dane fraksiyonu/kap eşleşmesi doğrulanmadı. Kaynaktaki pH tüm kumlara genellenmedi.",
+          "method": "MATERIAL_FAMILY_TRANSFER"
         },
         "tp": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "PH_BUFFER21",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Xu ve ark. 2021 Tablo 1 saf kum numunesinden malzeme ailesine yaklaşık aktarım. Stok dane fraksiyonu/kap eşleşmesi doğrulanmadı. Kaynaktaki pH tüm kumlara genellenmedi.",
+          "method": "MATERIAL_FAMILY_TRANSFER"
         },
         "awc": {
-          "class": "MISSING",
-          "sources": [],
-          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+          "class": "ASSUMPTION",
+          "sources": [
+            "EST28"
+          ],
+          "note": "Eksik alan sayısal tahminle tamamlandı; malzeme ailesi önkabulü, ürün ölçümü değildir. Referans CC × 0.25 kullanılabilir payı; kalan su yüksek emiş suyu önkabulüdür.",
+          "method": "MATERIAL_FAMILY_PRIOR"
         },
         "density": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "PH_BUFFER21",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Xu ve ark. 2021 Tablo 1 saf kum numunesinden malzeme ailesine yaklaşık aktarım. Stok dane fraksiyonu/kap eşleşmesi doğrulanmadı. Kaynaktaki pH tüm kumlara genellenmedi.",
+          "method": "MATERIAL_FAMILY_TRANSFER"
         }
       },
       "legacy_max_share": 100,
@@ -979,7 +1250,34 @@
         "awc_verified": false
       },
       "default_grain_group": "fine",
-      "grain_applicable": true
+      "grain_applicable": true,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [
+          "awc"
+        ],
+        "estimated_fields": [
+          "ph",
+          "cec",
+          "cc",
+          "afp",
+          "tp",
+          "awc",
+          "density"
+        ],
+        "review_sources": [
+          "PH_BUFFER21"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      },
+      "physical_reference": {
+        "reference_height_cm": 12,
+        "height_basis": "MODEL_ASSUMPTION",
+        "source": "EST28",
+        "method": "REFERENCE_CC_AWC_EXPONENTIAL",
+        "note": "Referans CC ve AWC ile üstel su tutma şekli kalibre edilir. Kaynak kap yüksekliği bilinmediğinde 12 cm varsayılır. Dane boyutuna özel ölçüm yoksa boyut tepkisi uydurulmaz."
+      }
     },
     {
       "id": "M12",
@@ -1077,7 +1375,20 @@
       },
       "legacy_ph": 7,
       "default_grain_group": "medium",
-      "grain_applicable": true
+      "grain_applicable": true,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [],
+        "estimated_fields": [
+          "cec"
+        ],
+        "review_sources": [
+          "SCH26",
+          "LONDRA18"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      }
     },
     {
       "id": "M13",
@@ -1175,19 +1486,31 @@
       },
       "legacy_ph": 6.1,
       "default_grain_group": "medium",
-      "grain_applicable": true
+      "grain_applicable": true,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [],
+        "estimated_fields": [
+          "cec"
+        ],
+        "review_sources": [
+          "SCH26"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      }
     },
     {
       "id": "M14",
       "name": "Sfagnum moss",
       "ph": 4,
       "cec": 100,
-      "cc": 85,
-      "afp": 10,
-      "tp": 95,
-      "awc": null,
+      "cc": 74.8,
+      "afp": 12.6,
+      "tp": 87.4,
+      "awc": 48.62000000000001,
       "grade": "Alan bazlı",
-      "density": null,
+      "density": 0.08,
       "kind": "Organik/lifli",
       "min_mm": null,
       "max_mm": null,
@@ -1214,33 +1537,50 @@
         "cc": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "NER21",
+            "SPH25",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Nerlich & Dannehl Tablo 1 numunesinden aktarım. CC≈TP−AV; yoğunluk, lif ve sıkışma ürünle değişir. 12 cm kap normalizasyonu tahmindir. EAW 21% değeri yüksek emişe kadar AWC yerine kullanılmadı.",
+          "method": "MATERIAL_FAMILY_TRANSFER"
         },
         "afp": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "NER21",
+            "SPH25",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Nerlich & Dannehl Tablo 1 numunesinden aktarım. CC≈TP−AV; yoğunluk, lif ve sıkışma ürünle değişir. 12 cm kap normalizasyonu tahmindir. EAW 21% değeri yüksek emişe kadar AWC yerine kullanılmadı.",
+          "method": "MATERIAL_FAMILY_TRANSFER"
         },
         "tp": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "NER21",
+            "SPH25",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Nerlich & Dannehl Tablo 1 numunesinden aktarım. CC≈TP−AV; yoğunluk, lif ve sıkışma ürünle değişir. 12 cm kap normalizasyonu tahmindir. EAW 21% değeri yüksek emişe kadar AWC yerine kullanılmadı.",
+          "method": "MATERIAL_FAMILY_TRANSFER"
         },
         "awc": {
-          "class": "MISSING",
-          "sources": [],
-          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+          "class": "ASSUMPTION",
+          "sources": [
+            "EST28"
+          ],
+          "note": "Eksik alan sayısal tahminle tamamlandı; malzeme ailesi önkabulü, ürün ölçümü değildir. Referans CC × 0.65 kullanılabilir payı; kalan su yüksek emiş suyu önkabulüdür.",
+          "method": "MATERIAL_FAMILY_PRIOR"
         },
         "density": {
-          "class": "MISSING",
-          "sources": [],
-          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+          "class": "ASSUMPTION",
+          "sources": [
+            "NER21",
+            "SPH25",
+            "EST28"
+          ],
+          "note": "Nerlich & Dannehl Tablo 1 numunesinden aktarım. CC≈TP−AV; yoğunluk, lif ve sıkışma ürünle değişir. 12 cm kap normalizasyonu tahmindir. EAW 21% değeri yüksek emişe kadar AWC yerine kullanılmadı.",
+          "method": "MATERIAL_FAMILY_TRANSFER"
         }
       },
       "legacy_max_share": 20,
@@ -1252,19 +1592,48 @@
         "awc_verified": false
       },
       "default_grain_group": "fine",
-      "grain_applicable": false
+      "grain_applicable": false,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [
+          "awc",
+          "density"
+        ],
+        "estimated_fields": [
+          "ph",
+          "cec",
+          "cc",
+          "afp",
+          "tp",
+          "awc",
+          "density"
+        ],
+        "review_sources": [
+          "NER21",
+          "SPH25"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      },
+      "physical_reference": {
+        "reference_height_cm": 12,
+        "height_basis": "MODEL_ASSUMPTION",
+        "source": "EST28",
+        "method": "REFERENCE_CC_AWC_EXPONENTIAL",
+        "note": "Referans CC ve AWC ile üstel su tutma şekli kalibre edilir. Kaynak kap yüksekliği bilinmediğinde 12 cm varsayılır. Dane boyutuna özel ölçüm yoksa boyut tepkisi uydurulmaz."
+      }
     },
     {
       "id": "M15",
       "name": "Kokopit",
       "ph": 5.8,
       "cec": 65,
-      "cc": 78.45,
-      "afp": 11.25,
-      "tp": 89.7,
-      "awc": null,
+      "cc": 79.3056671432339,
+      "afp": 12.194332856766096,
+      "tp": 91.5,
+      "awc": 66.3056671432339,
       "grade": "Alan bazlı",
-      "density": null,
+      "density": 0.089,
       "kind": "Organik/lifli",
       "min_mm": null,
       "max_mm": null,
@@ -1291,33 +1660,47 @@
         "cc": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "LONDRA18",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Yayındaki su tutma eğrisinin 12 cm model kabına aktarımı; aynı satın alınan ürünün ölçümü değildir. AWC=CC−yüksek emişte tutulan su; birimler hacim yüzdesidir.",
+          "method": "SOURCE_CURVE_TRANSFER"
         },
         "afp": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "LONDRA18",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Yayındaki su tutma eğrisinin 12 cm model kabına aktarımı; aynı satın alınan ürünün ölçümü değildir. AWC=CC−yüksek emişte tutulan su; birimler hacim yüzdesidir.",
+          "method": "SOURCE_CURVE_TRANSFER"
         },
         "tp": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "LONDRA18",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Yayındaki su tutma eğrisinin 12 cm model kabına aktarımı; aynı satın alınan ürünün ölçümü değildir. AWC=CC−yüksek emişte tutulan su; birimler hacim yüzdesidir.",
+          "method": "SOURCE_CURVE_TRANSFER"
         },
         "awc": {
-          "class": "MISSING",
-          "sources": [],
-          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+          "class": "ASSUMPTION",
+          "sources": [
+            "LONDRA18",
+            "EST28"
+          ],
+          "note": "Yayındaki su tutma eğrisinin 12 cm model kabına aktarımı; aynı satın alınan ürünün ölçümü değildir. AWC=CC−yüksek emişte tutulan su; birimler hacim yüzdesidir.",
+          "method": "SOURCE_CURVE_TRANSFER"
         },
         "density": {
-          "class": "MISSING",
-          "sources": [],
-          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+          "class": "ASSUMPTION",
+          "sources": [
+            "LONDRA18",
+            "EST28"
+          ],
+          "note": "Yayındaki su tutma eğrisinin 12 cm model kabına aktarımı; aynı satın alınan ürünün ölçümü değildir. AWC=CC−yüksek emişte tutulan su; birimler hacim yüzdesidir.",
+          "method": "SOURCE_CURVE_TRANSFER"
         }
       },
       "legacy_max_share": 25,
@@ -1329,19 +1712,39 @@
         "awc_verified": false
       },
       "default_grain_group": "fine",
-      "grain_applicable": false
+      "grain_applicable": false,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [
+          "awc",
+          "density"
+        ],
+        "estimated_fields": [
+          "cc",
+          "afp",
+          "tp",
+          "awc",
+          "density"
+        ],
+        "review_sources": [
+          "LONDRA18",
+          "RHIE17"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      }
     },
     {
       "id": "M16",
       "name": "Ağaç kabuğu",
       "ph": 5.5,
       "cec": 50,
-      "cc": 51.3,
-      "afp": 26.5,
-      "tp": 77.8,
-      "awc": null,
+      "cc": 63.997822769933734,
+      "afp": 19.002177230066266,
+      "tp": 83.0,
+      "awc": 40.997822769933734,
       "grade": "Alan bazlı",
-      "density": null,
+      "density": 0.16,
       "kind": "Organik parçacık",
       "min_mm": null,
       "max_mm": null,
@@ -1368,33 +1771,47 @@
         "cc": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "GABRIEL09",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Yayındaki su tutma eğrisinin 12 cm model kabına aktarımı; aynı satın alınan ürünün ölçümü değildir. AWC=CC−yüksek emişte tutulan su; birimler hacim yüzdesidir.",
+          "method": "SOURCE_CURVE_TRANSFER"
         },
         "afp": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "GABRIEL09",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Yayındaki su tutma eğrisinin 12 cm model kabına aktarımı; aynı satın alınan ürünün ölçümü değildir. AWC=CC−yüksek emişte tutulan su; birimler hacim yüzdesidir.",
+          "method": "SOURCE_CURVE_TRANSFER"
         },
         "tp": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "GABRIEL09",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Yayındaki su tutma eğrisinin 12 cm model kabına aktarımı; aynı satın alınan ürünün ölçümü değildir. AWC=CC−yüksek emişte tutulan su; birimler hacim yüzdesidir.",
+          "method": "SOURCE_CURVE_TRANSFER"
         },
         "awc": {
-          "class": "MISSING",
-          "sources": [],
-          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+          "class": "ASSUMPTION",
+          "sources": [
+            "GABRIEL09",
+            "EST28"
+          ],
+          "note": "Yayındaki su tutma eğrisinin 12 cm model kabına aktarımı; aynı satın alınan ürünün ölçümü değildir. AWC=CC−yüksek emişte tutulan su; birimler hacim yüzdesidir.",
+          "method": "SOURCE_CURVE_TRANSFER"
         },
         "density": {
-          "class": "MISSING",
-          "sources": [],
-          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+          "class": "ASSUMPTION",
+          "sources": [
+            "GABRIEL09",
+            "EST28"
+          ],
+          "note": "Yayındaki su tutma eğrisinin 12 cm model kabına aktarımı; aynı satın alınan ürünün ölçümü değildir. AWC=CC−yüksek emişte tutulan su; birimler hacim yüzdesidir.",
+          "method": "SOURCE_CURVE_TRANSFER"
         }
       },
       "legacy_max_share": 25,
@@ -1406,7 +1823,28 @@
         "awc_verified": false
       },
       "default_grain_group": "fine",
-      "grain_applicable": true
+      "grain_applicable": true,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [
+          "awc",
+          "density"
+        ],
+        "estimated_fields": [
+          "cec",
+          "cc",
+          "afp",
+          "tp",
+          "awc",
+          "density"
+        ],
+        "review_sources": [
+          "GABRIEL09",
+          "BARK_PSD"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      }
     },
     {
       "id": "M17",
@@ -1416,9 +1854,9 @@
       "cc": 43.75,
       "afp": 26.25,
       "tp": 70,
-      "awc": null,
+      "awc": 19.6875,
       "grade": "Alan bazlı",
-      "density": null,
+      "density": 0.65,
       "kind": "Mineral granül",
       "min_mm": 2,
       "max_mm": 8,
@@ -1464,14 +1902,20 @@
           "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
         },
         "awc": {
-          "class": "MISSING",
-          "sources": [],
-          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+          "class": "ASSUMPTION",
+          "sources": [
+            "EST28"
+          ],
+          "note": "Eksik alan sayısal tahminle tamamlandı; malzeme ailesi önkabulü, ürün ölçümü değildir. Referans CC × 0.45 kullanılabilir payı; kalan su yüksek emiş suyu önkabulüdür.",
+          "method": "MATERIAL_FAMILY_PRIOR"
         },
         "density": {
-          "class": "MISSING",
-          "sources": [],
-          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+          "class": "ASSUMPTION",
+          "sources": [
+            "EST28"
+          ],
+          "note": "Eksik alan sayısal tahminle tamamlandı; malzeme ailesi önkabulü, ürün ölçümü değildir.",
+          "method": "MATERIAL_FAMILY_PRIOR"
         }
       },
       "legacy_max_share": 100,
@@ -1483,7 +1927,35 @@
         "awc_verified": false
       },
       "default_grain_group": "fine",
-      "grain_applicable": true
+      "grain_applicable": true,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [
+          "awc",
+          "density"
+        ],
+        "estimated_fields": [
+          "ph",
+          "cec",
+          "cc",
+          "afp",
+          "tp",
+          "awc",
+          "density"
+        ],
+        "review_sources": [
+          "EST28"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      },
+      "physical_reference": {
+        "reference_height_cm": 12,
+        "height_basis": "MODEL_ASSUMPTION",
+        "source": "EST28",
+        "method": "REFERENCE_CC_AWC_EXPONENTIAL",
+        "note": "Referans CC ve AWC ile üstel su tutma şekli kalibre edilir. Kaynak kap yüksekliği bilinmediğinde 12 cm varsayılır. Dane boyutuna özel ölçüm yoksa boyut tepkisi uydurulmaz."
+      }
     },
     {
       "id": "M18",
@@ -1493,7 +1965,7 @@
       "cc": 58.825,
       "afp": 22.625,
       "tp": 81.45,
-      "awc": null,
+      "awc": 29.4125,
       "grade": "Alan bazlı",
       "density": 0.41,
       "kind": "Mineral granül",
@@ -1541,9 +2013,12 @@
           "note": "Diatomit 2–4 ve 4–8 mm numune ölçümü; CC/AFP bu kaynaktan değil."
         },
         "awc": {
-          "class": "MISSING",
-          "sources": [],
-          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+          "class": "ASSUMPTION",
+          "sources": [
+            "EST28"
+          ],
+          "note": "Eksik alan sayısal tahminle tamamlandı; malzeme ailesi önkabulü, ürün ölçümü değildir. Referans CC × 0.5 kullanılabilir payı; kalan su yüksek emiş suyu önkabulüdür.",
+          "method": "MATERIAL_FAMILY_PRIOR"
         },
         "density": {
           "class": "SAMPLE_MEASURED",
@@ -1562,17 +2037,40 @@
         "awc_verified": false
       },
       "default_grain_group": "fine",
-      "grain_applicable": true
+      "grain_applicable": true,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [
+          "awc"
+        ],
+        "estimated_fields": [
+          "cc",
+          "afp",
+          "awc"
+        ],
+        "review_sources": [
+          "DIAT11"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      },
+      "physical_reference": {
+        "reference_height_cm": 12,
+        "height_basis": "MODEL_ASSUMPTION",
+        "source": "EST28",
+        "method": "REFERENCE_CC_AWC_EXPONENTIAL",
+        "note": "Referans CC ve AWC ile üstel su tutma şekli kalibre edilir. Kaynak kap yüksekliği bilinmediğinde 12 cm varsayılır. Dane boyutuna özel ölçüm yoksa boyut tepkisi uydurulmaz."
+      }
     },
     {
       "id": "M19",
       "name": "Turface",
       "ph": 6.5,
       "cec": 30,
-      "cc": 46.25,
-      "afp": 27.75,
+      "cc": 39.0,
+      "afp": 35.0,
       "tp": 74,
-      "awc": null,
+      "awc": 21.450000000000003,
       "grade": "Alan bazlı",
       "density": 0.593,
       "kind": "Mineral granül",
@@ -1601,16 +2099,20 @@
         "cc": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "TURF",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Üretici föyündeki %39 kapiler / %35 kapiler olmayan gözenek payından referans tahmini. Bunlar aynı yükseklikte ölçülmüş saksı CC/AFP değildir.",
+          "method": "PORE_PARTITION_TRANSFER"
         },
         "afp": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "TURF",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Üretici föyündeki %39 kapiler / %35 kapiler olmayan gözenek payından referans tahmini. Bunlar aynı yükseklikte ölçülmüş saksı CC/AFP değildir.",
+          "method": "PORE_PARTITION_TRANSFER"
         },
         "tp": {
           "class": "TECHNICAL_DATASHEET",
@@ -1620,9 +2122,12 @@
           "note": "Üreticinin ürün teknik föyü; CC/AFP sütunları üretici föyünden doğrudan alınmadı."
         },
         "awc": {
-          "class": "MISSING",
-          "sources": [],
-          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+          "class": "ASSUMPTION",
+          "sources": [
+            "EST28"
+          ],
+          "note": "Eksik alan sayısal tahminle tamamlandı; malzeme ailesi önkabulü, ürün ölçümü değildir. Referans CC × 0.55 kullanılabilir payı; kalan su yüksek emiş suyu önkabulüdür.",
+          "method": "MATERIAL_FAMILY_PRIOR"
         },
         "density": {
           "class": "TECHNICAL_DATASHEET",
@@ -1641,7 +2146,30 @@
         "awc_verified": false
       },
       "default_grain_group": "fine",
-      "grain_applicable": true
+      "grain_applicable": true,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [
+          "awc"
+        ],
+        "estimated_fields": [
+          "cc",
+          "afp",
+          "awc"
+        ],
+        "review_sources": [
+          "TURF"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      },
+      "physical_reference": {
+        "reference_height_cm": 12,
+        "height_basis": "MODEL_ASSUMPTION",
+        "source": "EST28",
+        "method": "REFERENCE_CC_AWC_EXPONENTIAL",
+        "note": "Referans CC ve AWC ile üstel su tutma şekli kalibre edilir. Kaynak kap yüksekliği bilinmediğinde 12 cm varsayılır. Dane boyutuna özel ölçüm yoksa boyut tepkisi uydurulmaz."
+      }
     },
     {
       "id": "M20",
@@ -1739,7 +2267,19 @@
       },
       "legacy_ph": 7.43,
       "default_grain_group": "medium",
-      "grain_applicable": true
+      "grain_applicable": true,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [],
+        "estimated_fields": [
+          "cec"
+        ],
+        "review_sources": [
+          "SCH26"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      }
     }
   ],
   "species": [
@@ -2680,6 +3220,48 @@
       "type": "İç model kaydı",
       "url": null,
       "note": "Sıcak, geçiş ve serin dönem bantları birlikte kullanılır. CC üst hedefinin ve AFP üst hedefinin ayrı ayrı mevsimsel maksimumları optimizasyona girer; ortalama mevsim kullanılmaz. Her reçetede üç mevsim hedef kontrolü gösterilir. Işık/rüzgâr/sulama/saksı katsayıları tasarım önkabulleridir; deneysel bonsai oran katsayısı değildir. Yönün genel dayanağı: https://www.extension.umd.edu/resource/growing-vegetables-containers-and-salad-tables ; bu kaynak sayısal katsayıları doğrulamaz."
+    },
+    {
+      "id": "EST28",
+      "title": "BonsaiLAB V28 — kaynaklardan aktarım ve açık sayısal tamamlama",
+      "url": null,
+      "type": "MODEL",
+      "note": "Eksik sayılar model tahminidir; kanıt/numune uyumu seçim puanına katılmaz. Yükseklik için referans CC/AWC ile kalibre edilmiş üstel eğri; referans kap bilinmiyorsa 12 cm önkabulü."
+    },
+    {
+      "id": "AKA94",
+      "title": "Yabashi, Amemiya & Koh (1994) — Akadama aggregate water holding and permeability",
+      "url": "https://cir.nii.ac.jp/crid/1050001338633058432",
+      "type": "RESEARCH",
+      "note": "Araştırma özeti: ortalama kullanılabilir su hacim kesri 0.136; 2–5, 5–10, 10–20 mm sınıfları. Kap/su potansiyeli eşitliği doğrulanmadığından 12 cm modele aktarımı tahmindir."
+    },
+    {
+      "id": "KAN94",
+      "title": "Tomita, Nakano & Suzuki (1994) — Kanumatsuchi physical variation",
+      "url": "https://doi.org/10.34467/jssoilphysics.69.0_11",
+      "type": "RESEARCH",
+      "note": "Doğal tabaka örneklerinin tane içi/dışı su ve gözenek özellikleri. Doğal tabaka yüzdeleri bonsai saksısı CC/AFP olarak alınmadı."
+    },
+    {
+      "id": "NER21",
+      "title": "Nerlich & Dannehl (2021) — physical properties of Sphagnum growing media",
+      "url": "https://doi.org/10.3389/fpls.2020.601455",
+      "type": "RESEARCH",
+      "note": "Tablo 1: Sphagnum yığın yoğunluğu 0.08 g/cm³, TP 87.4%, AV 12.6%, EAW 21%. EAW ile modelin yüksek emişe kadar AWC değeri eşitlenmedi."
+    },
+    {
+      "id": "SPH25",
+      "title": "University of Helsinki — Sphagnum moss water retention and plant performance",
+      "url": "https://researchportal.helsinki.fi/en/publications/sphagnum-moss-in-growing-media-water-retention-and-plant-performa/",
+      "type": "RESEARCH",
+      "note": "İşlenmiş sfagnum için yoğunluk 40–80 kg/m³ modelleri; sıkışma ve lif yapısına duyarlılık. Farklı ürünler için tek bir eğri kabul edilmez."
+    },
+    {
+      "id": "V28_RULES",
+      "title": "BonsaiLAB V28 — veri eksikliği cezası olmadan seçim ve 20 malzemede tam sayısal referans",
+      "url": null,
+      "type": "MODEL",
+      "note": "Veri düzeyi yalnız açıklama ve belirsizlik içindir. Seçim fiziksel eşikler, tür pH bandı, gerçek dane uygunluğu ve yetiştirme hedefleriyle yapılır. Kolay temin yalnız alternatif stok filtresidir."
     }
   ],
   "climates": [
@@ -2947,7 +3529,15 @@
       "note": "Bu dört malzemeyi dışlar; diğerleri yalnız kullanıcı stokta Var işaretlediyse kullanılır. Ülke kökeni veya anlık piyasa stok araştırması değildir."
     },
     "chemistry_policy": "Sayısal pH tahmini tercih bandına göre reçete seçiminde kullanılır. Uygun aday yoksa en yakın tahmin verilir; bu deneysel kimyasal doğrulama değildir.",
-    "source_note": "V26: V25 pH önceliği korunur; fiziksel aday kümesi boşsa ihlal önceliği açıkça belirtilir. Su/kütle/hacim bazı ayrıştırılır."
+    "source_note": "V26: V25 pH önceliği korunur; fiziksel aday kümesi boşsa ihlal önceliği açıkça belirtilir. Su/kütle/hacim bazı ayrıştırılır.",
+    "selection_policy": {
+      "missing_data_penalty": 0,
+      "source_class_penalty": 0,
+      "sample_grain_overlap_penalty": 0,
+      "technical_availability_penalty": 0,
+      "source_confidence_changes_rank": false,
+      "note": "Veri düzeyi yalnız açıklama ve belirsizlik içindir. Seçim fiziksel eşikler, tür pH bandı, gerçek dane uygunluğu ve yetiştirme hedefleriyle yapılır. Kolay temin yalnız alternatif stok filtresidir."
+    }
   },
   "source_workbook": {
     "filename": "Bonsai_Substrat_Hesaplayici_V13_40Tur_AkilliSecim (1).xlsx",
@@ -2957,7 +3547,7 @@
     "analysis_file": "EXCEL_KARSILASTIRMA.json"
   },
   "mixture_science": {
-    "version": 3,
+    "version": "28",
     "reference_height_cm": 12,
     "integration": "Mean theta(z), z=0..H; constant-section drained container, hydrostatic equilibrium; Simpson quadrature.",
     "pure_curves": {
@@ -3271,8 +3861,8 @@
     }
   },
   "numeric_estimation": {
-    "version": 1,
-    "source": "EST23",
+    "version": 2,
+    "source": "EST28",
     "density_g_ml": {
       "Saksı toprağı": 0.35,
       "Humus": 0.45,
@@ -3361,7 +3951,7 @@
       "cc": 39,
       "afp": 26,
       "tp": 65,
-      "awc": 23.4,
+      "awc": 13.6,
       "grade": "Alan bazlı",
       "density": 0.47725,
       "kind": "Mineral granül",
@@ -3411,9 +4001,11 @@
         "awc": {
           "class": "ASSUMPTION",
           "sources": [
-            "EST23"
+            "AKA94",
+            "EST28"
           ],
-          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+          "note": "1994 araştırma özetindeki ortalama 0.136 hacim kesri 13.6% olarak alındı. Emiş aralığı/kap ve ürün farkları nedeniyle bu modele aktarımı tahmindir; stok ölçümü değildir.",
+          "method": "LITERATURE_TRANSFER_ESTIMATE"
         },
         "density": {
           "class": "MEASURED_OR_MEAN",
@@ -3439,13 +4031,42 @@
       },
       "default_grain_group": "fine",
       "grain_applicable": true,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [
+          "awc"
+        ],
+        "estimated_fields": [
+          "cc",
+          "afp",
+          "tp",
+          "awc"
+        ],
+        "review_sources": [
+          "JPN82",
+          "AKA94"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      },
+      "physical_reference": {
+        "reference_height_cm": 12,
+        "height_basis": "MODEL_ASSUMPTION",
+        "source": "EST28",
+        "method": "REFERENCE_CC_AWC_EXPONENTIAL",
+        "note": "Referans CC ve AWC ile üstel su tutma şekli kalibre edilir. Kaynak kap yüksekliği bilinmediğinde 12 cm varsayılır. Dane boyutuna özel ölçüm yoksa boyut tepkisi uydurulmaz."
+      },
       "numeric_estimation": {
         "reference_transferred_fields": [],
         "imputed_fields": [
+          "cc",
+          "afp",
+          "tp",
           "awc"
         ],
-        "source": "EST23",
-        "relative_buffer": 2.0
+        "source": "EST28",
+        "relative_buffer": 2.0,
+        "penalized_in_selection": false
       }
     },
     {
@@ -3507,9 +4128,10 @@
         "awc": {
           "class": "ASSUMPTION",
           "sources": [
-            "EST23"
+            "EST28"
           ],
-          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+          "note": "Eksik alan sayısal tahminle tamamlandı; malzeme ailesi önkabulü, ürün ölçümü değildir. Referans CC × 0.55 kullanılabilir payı; kalan su yüksek emiş suyu önkabulüdür.",
+          "method": "MATERIAL_FAMILY_PRIOR"
         },
         "density": {
           "class": "MEASURED_OR_MEAN",
@@ -3541,13 +4163,45 @@
       },
       "default_grain_group": "medium",
       "grain_applicable": true,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [
+          "awc"
+        ],
+        "estimated_fields": [
+          "ph",
+          "cc",
+          "afp",
+          "tp",
+          "awc"
+        ],
+        "review_sources": [
+          "JPN82",
+          "KAN94",
+          "AZALEA"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      },
+      "physical_reference": {
+        "reference_height_cm": 12,
+        "height_basis": "MODEL_ASSUMPTION",
+        "source": "EST28",
+        "method": "REFERENCE_CC_AWC_EXPONENTIAL",
+        "note": "Referans CC ve AWC ile üstel su tutma şekli kalibre edilir. Kaynak kap yüksekliği bilinmediğinde 12 cm varsayılır. Dane boyutuna özel ölçüm yoksa boyut tepkisi uydurulmaz."
+      },
       "numeric_estimation": {
         "reference_transferred_fields": [],
         "imputed_fields": [
+          "ph",
+          "cc",
+          "afp",
+          "tp",
           "awc"
         ],
-        "source": "EST23",
-        "relative_buffer": 2.0
+        "source": "EST28",
+        "relative_buffer": 2.0,
+        "penalized_in_selection": false
       }
     },
     {
@@ -3608,9 +4262,10 @@
         "awc": {
           "class": "ASSUMPTION",
           "sources": [
-            "EST23"
+            "EST28"
           ],
-          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+          "note": "Eksik alan sayısal tahminle tamamlandı; malzeme ailesi önkabulü, ürün ölçümü değildir. Referans CC × 0.4 kullanılabilir payı; kalan su yüksek emiş suyu önkabulüdür.",
+          "method": "MATERIAL_FAMILY_PRIOR"
         },
         "density": {
           "class": "MEASURED_OR_MEAN",
@@ -3642,13 +4297,41 @@
       },
       "default_grain_group": "medium",
       "grain_applicable": true,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [
+          "awc"
+        ],
+        "estimated_fields": [
+          "cc",
+          "afp",
+          "tp",
+          "awc"
+        ],
+        "review_sources": [
+          "JPN82"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      },
+      "physical_reference": {
+        "reference_height_cm": 12,
+        "height_basis": "MODEL_ASSUMPTION",
+        "source": "EST28",
+        "method": "REFERENCE_CC_AWC_EXPONENTIAL",
+        "note": "Referans CC ve AWC ile üstel su tutma şekli kalibre edilir. Kaynak kap yüksekliği bilinmediğinde 12 cm varsayılır. Dane boyutuna özel ölçüm yoksa boyut tepkisi uydurulmaz."
+      },
       "numeric_estimation": {
         "reference_transferred_fields": [],
         "imputed_fields": [
+          "cc",
+          "afp",
+          "tp",
           "awc"
         ],
-        "source": "EST23",
-        "relative_buffer": 1.0
+        "source": "EST28",
+        "relative_buffer": 1.0,
+        "penalized_in_selection": false
       }
     },
     {
@@ -3778,11 +4461,26 @@
       "legacy_ph": 7,
       "default_grain_group": "medium",
       "grain_applicable": true,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [],
+        "estimated_fields": [
+          "cec"
+        ],
+        "review_sources": [
+          "SCH26"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      },
       "numeric_estimation": {
         "reference_transferred_fields": [],
-        "imputed_fields": [],
-        "source": "EST23",
-        "relative_buffer": 0.3
+        "imputed_fields": [
+          "cec"
+        ],
+        "source": "EST28",
+        "relative_buffer": 0.3,
+        "penalized_in_selection": false
       }
     },
     {
@@ -3882,11 +4580,26 @@
       "legacy_ph": 7.2,
       "default_grain_group": "medium",
       "grain_applicable": true,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [],
+        "estimated_fields": [
+          "cec"
+        ],
+        "review_sources": [
+          "SCH26"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      },
       "numeric_estimation": {
         "reference_transferred_fields": [],
-        "imputed_fields": [],
-        "source": "EST23",
-        "relative_buffer": 0.3
+        "imputed_fields": [
+          "cec"
+        ],
+        "source": "EST28",
+        "relative_buffer": 0.3,
+        "penalized_in_selection": false
       }
     },
     {
@@ -3986,11 +4699,26 @@
       "legacy_ph": 7.2,
       "default_grain_group": "medium",
       "grain_applicable": true,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [],
+        "estimated_fields": [
+          "cec"
+        ],
+        "review_sources": [
+          "SCH26"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      },
       "numeric_estimation": {
         "reference_transferred_fields": [],
-        "imputed_fields": [],
-        "source": "EST23",
-        "relative_buffer": 0.35
+        "imputed_fields": [
+          "cec"
+        ],
+        "source": "EST28",
+        "relative_buffer": 0.35,
+        "penalized_in_selection": false
       }
     },
     {
@@ -4051,16 +4779,18 @@
         "awc": {
           "class": "ASSUMPTION",
           "sources": [
-            "EST23"
+            "EST28"
           ],
-          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+          "note": "Eksik alan sayısal tahminle tamamlandı; malzeme ailesi önkabulü, ürün ölçümü değildir. Referans CC × 0.55 kullanılabilir payı; kalan su yüksek emiş suyu önkabulüdür.",
+          "method": "MATERIAL_FAMILY_PRIOR"
         },
         "density": {
           "class": "ASSUMPTION",
           "sources": [
-            "EST23"
+            "EST28"
           ],
-          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+          "note": "Eksik alan sayısal tahminle tamamlandı; malzeme ailesi önkabulü, ürün ölçümü değildir.",
+          "method": "MATERIAL_FAMILY_PRIOR"
         }
       },
       "legacy_max_share": 15,
@@ -4073,14 +4803,49 @@
       },
       "default_grain_group": "fine",
       "grain_applicable": false,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [
+          "awc",
+          "density"
+        ],
+        "estimated_fields": [
+          "ph",
+          "cec",
+          "cc",
+          "afp",
+          "tp",
+          "awc",
+          "density"
+        ],
+        "review_sources": [
+          "CAR15",
+          "IOWA"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      },
+      "physical_reference": {
+        "reference_height_cm": 12,
+        "height_basis": "MODEL_ASSUMPTION",
+        "source": "EST28",
+        "method": "REFERENCE_CC_AWC_EXPONENTIAL",
+        "note": "Referans CC ve AWC ile üstel su tutma şekli kalibre edilir. Kaynak kap yüksekliği bilinmediğinde 12 cm varsayılır. Dane boyutuna özel ölçüm yoksa boyut tepkisi uydurulmaz."
+      },
       "numeric_estimation": {
         "reference_transferred_fields": [],
         "imputed_fields": [
-          "density",
-          "awc"
+          "ph",
+          "cec",
+          "cc",
+          "afp",
+          "tp",
+          "awc",
+          "density"
         ],
-        "source": "EST23",
-        "relative_buffer": 3.0
+        "source": "EST28",
+        "relative_buffer": 3.0,
+        "penalized_in_selection": false
       }
     },
     {
@@ -4141,16 +4906,18 @@
         "awc": {
           "class": "ASSUMPTION",
           "sources": [
-            "EST23"
+            "EST28"
           ],
-          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+          "note": "Eksik alan sayısal tahminle tamamlandı; malzeme ailesi önkabulü, ürün ölçümü değildir. Referans CC × 0.5 kullanılabilir payı; kalan su yüksek emiş suyu önkabulüdür.",
+          "method": "MATERIAL_FAMILY_PRIOR"
         },
         "density": {
           "class": "ASSUMPTION",
           "sources": [
-            "EST23"
+            "EST28"
           ],
-          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+          "note": "Eksik alan sayısal tahminle tamamlandı; malzeme ailesi önkabulü, ürün ölçümü değildir.",
+          "method": "MATERIAL_FAMILY_PRIOR"
         }
       },
       "legacy_max_share": 10,
@@ -4163,14 +4930,49 @@
       },
       "default_grain_group": "fine",
       "grain_applicable": false,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [
+          "awc",
+          "density"
+        ],
+        "estimated_fields": [
+          "ph",
+          "cec",
+          "cc",
+          "afp",
+          "tp",
+          "awc",
+          "density"
+        ],
+        "review_sources": [
+          "CAR15",
+          "IOWA"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      },
+      "physical_reference": {
+        "reference_height_cm": 12,
+        "height_basis": "MODEL_ASSUMPTION",
+        "source": "EST28",
+        "method": "REFERENCE_CC_AWC_EXPONENTIAL",
+        "note": "Referans CC ve AWC ile üstel su tutma şekli kalibre edilir. Kaynak kap yüksekliği bilinmediğinde 12 cm varsayılır. Dane boyutuna özel ölçüm yoksa boyut tepkisi uydurulmaz."
+      },
       "numeric_estimation": {
         "reference_transferred_fields": [],
         "imputed_fields": [
-          "density",
-          "awc"
+          "ph",
+          "cec",
+          "cc",
+          "afp",
+          "tp",
+          "awc",
+          "density"
         ],
-        "source": "EST23",
-        "relative_buffer": 6.0
+        "source": "EST28",
+        "relative_buffer": 6.0,
+        "penalized_in_selection": false
       }
     },
     {
@@ -4231,16 +5033,18 @@
         "awc": {
           "class": "ASSUMPTION",
           "sources": [
-            "EST23"
+            "EST28"
           ],
-          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+          "note": "Eksik alan sayısal tahminle tamamlandı; malzeme ailesi önkabulü, ürün ölçümü değildir. Referans CC × 0.4 kullanılabilir payı; kalan su yüksek emiş suyu önkabulüdür.",
+          "method": "MATERIAL_FAMILY_PRIOR"
         },
         "density": {
           "class": "ASSUMPTION",
           "sources": [
-            "EST23"
+            "EST28"
           ],
-          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+          "note": "Eksik alan sayısal tahminle tamamlandı; malzeme ailesi önkabulü, ürün ölçümü değildir.",
+          "method": "MATERIAL_FAMILY_PRIOR"
         }
       },
       "legacy_max_share": 0,
@@ -4253,14 +5057,48 @@
       },
       "default_grain_group": "fine",
       "grain_applicable": false,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [
+          "awc",
+          "density"
+        ],
+        "estimated_fields": [
+          "ph",
+          "cec",
+          "cc",
+          "afp",
+          "tp",
+          "awc",
+          "density"
+        ],
+        "review_sources": [
+          "EST28"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      },
+      "physical_reference": {
+        "reference_height_cm": 12,
+        "height_basis": "MODEL_ASSUMPTION",
+        "source": "EST28",
+        "method": "REFERENCE_CC_AWC_EXPONENTIAL",
+        "note": "Referans CC ve AWC ile üstel su tutma şekli kalibre edilir. Kaynak kap yüksekliği bilinmediğinde 12 cm varsayılır. Dane boyutuna özel ölçüm yoksa boyut tepkisi uydurulmaz."
+      },
       "numeric_estimation": {
         "reference_transferred_fields": [],
         "imputed_fields": [
-          "density",
-          "awc"
+          "ph",
+          "cec",
+          "cc",
+          "afp",
+          "tp",
+          "awc",
+          "density"
         ],
-        "source": "EST23",
-        "relative_buffer": 8.0
+        "source": "EST28",
+        "relative_buffer": 8.0,
+        "penalized_in_selection": false
       }
     },
     {
@@ -4268,10 +5106,10 @@
       "name": "Torf",
       "ph": 4.5,
       "cec": 200,
-      "cc": 60.6,
-      "afp": 16.5,
-      "tp": 77.1,
-      "awc": 47.51000000000001,
+      "cc": 78.29942177765915,
+      "afp": 3.7005782223408517,
+      "tp": 82.0,
+      "awc": 65.20942177765914,
       "grade": "Alan bazlı",
       "density": 0.081,
       "kind": "Organik/lifli",
@@ -4300,23 +5138,29 @@
         "cc": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "LONDRA18",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Yayındaki su tutma eğrisinin 12 cm model kabına aktarımı; aynı satın alınan ürünün ölçümü değildir. AWC=CC−yüksek emişte tutulan su; birimler hacim yüzdesidir.",
+          "method": "SOURCE_CURVE_TRANSFER"
         },
         "afp": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "LONDRA18",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Yayındaki su tutma eğrisinin 12 cm model kabına aktarımı; aynı satın alınan ürünün ölçümü değildir. AWC=CC−yüksek emişte tutulan su; birimler hacim yüzdesidir.",
+          "method": "SOURCE_CURVE_TRANSFER"
         },
         "tp": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "LONDRA18",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Yayındaki su tutma eğrisinin 12 cm model kabına aktarımı; aynı satın alınan ürünün ölçümü değildir. AWC=CC−yüksek emişte tutulan su; birimler hacim yüzdesidir.",
+          "method": "SOURCE_CURVE_TRANSFER"
         },
         "awc": {
           "class": "ASSUMPTION",
@@ -4327,11 +5171,13 @@
           "note": "CC eksi yayındaki ölçülmüş kullanılamayan su; karışıma aktarım tahminidir."
         },
         "density": {
-          "class": "MEASURED_OR_MEAN",
+          "class": "ASSUMPTION",
           "sources": [
-            "LONDRA18"
+            "LONDRA18",
+            "EST28"
           ],
-          "note": "Aynı yayın numunesinden malzeme ailesine aktarım; satın alınan stok ölçümü değildir."
+          "note": "Yayındaki su tutma eğrisinin 12 cm model kabına aktarımı; aynı satın alınan ürünün ölçümü değildir. AWC=CC−yüksek emişte tutulan su; birimler hacim yüzdesidir.",
+          "method": "SOURCE_CURVE_TRANSFER"
         }
       },
       "legacy_max_share": 35,
@@ -4344,15 +5190,38 @@
       },
       "default_grain_group": "fine",
       "grain_applicable": false,
-      "numeric_estimation": {
-        "reference_transferred_fields": [
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [
+          "awc",
           "density"
         ],
-        "imputed_fields": [
-          "awc"
+        "estimated_fields": [
+          "cc",
+          "afp",
+          "tp",
+          "awc",
+          "density"
         ],
-        "source": "EST23",
-        "relative_buffer": 4.0
+        "review_sources": [
+          "LONDRA18",
+          "CAR15"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      },
+      "numeric_estimation": {
+        "reference_transferred_fields": [],
+        "imputed_fields": [
+          "cc",
+          "afp",
+          "tp",
+          "awc",
+          "density"
+        ],
+        "source": "EST28",
+        "relative_buffer": 4.0,
+        "penalized_in_selection": false
       }
     },
     {
@@ -4360,12 +5229,12 @@
       "name": "Kum",
       "ph": 7.5,
       "cec": 1,
-      "cc": 10,
-      "afp": 20,
-      "tp": 30,
-      "awc": 2.5,
+      "cc": 9.53,
+      "afp": 27.04,
+      "tp": 36.57,
+      "awc": 2.3825,
       "grade": "Alan bazlı",
-      "density": 1.16,
+      "density": 1.34,
       "kind": "Mineral granül",
       "min_mm": 0.5,
       "max_mm": 2,
@@ -4392,37 +5261,46 @@
         "cc": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "PH_BUFFER21",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Xu ve ark. 2021 Tablo 1 saf kum numunesinden malzeme ailesine yaklaşık aktarım. Stok dane fraksiyonu/kap eşleşmesi doğrulanmadı. Kaynaktaki pH tüm kumlara genellenmedi.",
+          "method": "MATERIAL_FAMILY_TRANSFER"
         },
         "afp": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "PH_BUFFER21",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Xu ve ark. 2021 Tablo 1 saf kum numunesinden malzeme ailesine yaklaşık aktarım. Stok dane fraksiyonu/kap eşleşmesi doğrulanmadı. Kaynaktaki pH tüm kumlara genellenmedi.",
+          "method": "MATERIAL_FAMILY_TRANSFER"
         },
         "tp": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "PH_BUFFER21",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Xu ve ark. 2021 Tablo 1 saf kum numunesinden malzeme ailesine yaklaşık aktarım. Stok dane fraksiyonu/kap eşleşmesi doğrulanmadı. Kaynaktaki pH tüm kumlara genellenmedi.",
+          "method": "MATERIAL_FAMILY_TRANSFER"
         },
         "awc": {
           "class": "ASSUMPTION",
           "sources": [
-            "EST23"
+            "EST28"
           ],
-          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+          "note": "Eksik alan sayısal tahminle tamamlandı; malzeme ailesi önkabulü, ürün ölçümü değildir. Referans CC × 0.25 kullanılabilir payı; kalan su yüksek emiş suyu önkabulüdür.",
+          "method": "MATERIAL_FAMILY_PRIOR"
         },
         "density": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "PH_BUFFER21",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Xu ve ark. 2021 Tablo 1 saf kum numunesinden malzeme ailesine yaklaşık aktarım. Stok dane fraksiyonu/kap eşleşmesi doğrulanmadı. Kaynaktaki pH tüm kumlara genellenmedi.",
+          "method": "MATERIAL_FAMILY_TRANSFER"
         }
       },
       "legacy_max_share": 100,
@@ -4435,13 +5313,47 @@
       },
       "default_grain_group": "fine",
       "grain_applicable": true,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [
+          "awc"
+        ],
+        "estimated_fields": [
+          "ph",
+          "cec",
+          "cc",
+          "afp",
+          "tp",
+          "awc",
+          "density"
+        ],
+        "review_sources": [
+          "PH_BUFFER21"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      },
+      "physical_reference": {
+        "reference_height_cm": 12,
+        "height_basis": "MODEL_ASSUMPTION",
+        "source": "EST28",
+        "method": "REFERENCE_CC_AWC_EXPONENTIAL",
+        "note": "Referans CC ve AWC ile üstel su tutma şekli kalibre edilir. Kaynak kap yüksekliği bilinmediğinde 12 cm varsayılır. Dane boyutuna özel ölçüm yoksa boyut tepkisi uydurulmaz."
+      },
       "numeric_estimation": {
         "reference_transferred_fields": [],
         "imputed_fields": [
-          "awc"
+          "ph",
+          "cec",
+          "cc",
+          "afp",
+          "tp",
+          "awc",
+          "density"
         ],
-        "source": "EST23",
-        "relative_buffer": 0.15
+        "source": "EST28",
+        "relative_buffer": 0.15,
+        "penalized_in_selection": false
       }
     },
     {
@@ -4541,11 +5453,27 @@
       "legacy_ph": 7,
       "default_grain_group": "medium",
       "grain_applicable": true,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [],
+        "estimated_fields": [
+          "cec"
+        ],
+        "review_sources": [
+          "SCH26",
+          "LONDRA18"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      },
       "numeric_estimation": {
         "reference_transferred_fields": [],
-        "imputed_fields": [],
-        "source": "EST23",
-        "relative_buffer": 0.1
+        "imputed_fields": [
+          "cec"
+        ],
+        "source": "EST28",
+        "relative_buffer": 0.1,
+        "penalized_in_selection": false
       }
     },
     {
@@ -4645,11 +5573,26 @@
       "legacy_ph": 6.1,
       "default_grain_group": "medium",
       "grain_applicable": true,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [],
+        "estimated_fields": [
+          "cec"
+        ],
+        "review_sources": [
+          "SCH26"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      },
       "numeric_estimation": {
         "reference_transferred_fields": [],
-        "imputed_fields": [],
-        "source": "EST23",
-        "relative_buffer": 3.0
+        "imputed_fields": [
+          "cec"
+        ],
+        "source": "EST28",
+        "relative_buffer": 3.0,
+        "penalized_in_selection": false
       }
     },
     {
@@ -4657,12 +5600,12 @@
       "name": "Sfagnum moss",
       "ph": 4,
       "cec": 100,
-      "cc": 85,
-      "afp": 10,
-      "tp": 95,
-      "awc": 55.25,
+      "cc": 74.8,
+      "afp": 12.6,
+      "tp": 87.4,
+      "awc": 48.62000000000001,
       "grade": "Alan bazlı",
-      "density": 0.05,
+      "density": 0.08,
       "kind": "Organik/lifli",
       "min_mm": null,
       "max_mm": null,
@@ -4689,37 +5632,50 @@
         "cc": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "NER21",
+            "SPH25",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Nerlich & Dannehl Tablo 1 numunesinden aktarım. CC≈TP−AV; yoğunluk, lif ve sıkışma ürünle değişir. 12 cm kap normalizasyonu tahmindir. EAW 21% değeri yüksek emişe kadar AWC yerine kullanılmadı.",
+          "method": "MATERIAL_FAMILY_TRANSFER"
         },
         "afp": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "NER21",
+            "SPH25",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Nerlich & Dannehl Tablo 1 numunesinden aktarım. CC≈TP−AV; yoğunluk, lif ve sıkışma ürünle değişir. 12 cm kap normalizasyonu tahmindir. EAW 21% değeri yüksek emişe kadar AWC yerine kullanılmadı.",
+          "method": "MATERIAL_FAMILY_TRANSFER"
         },
         "tp": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "NER21",
+            "SPH25",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Nerlich & Dannehl Tablo 1 numunesinden aktarım. CC≈TP−AV; yoğunluk, lif ve sıkışma ürünle değişir. 12 cm kap normalizasyonu tahmindir. EAW 21% değeri yüksek emişe kadar AWC yerine kullanılmadı.",
+          "method": "MATERIAL_FAMILY_TRANSFER"
         },
         "awc": {
           "class": "ASSUMPTION",
           "sources": [
-            "EST23"
+            "EST28"
           ],
-          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+          "note": "Eksik alan sayısal tahminle tamamlandı; malzeme ailesi önkabulü, ürün ölçümü değildir. Referans CC × 0.65 kullanılabilir payı; kalan su yüksek emiş suyu önkabulüdür.",
+          "method": "MATERIAL_FAMILY_PRIOR"
         },
         "density": {
           "class": "ASSUMPTION",
           "sources": [
-            "EST23"
+            "NER21",
+            "SPH25",
+            "EST28"
           ],
-          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+          "note": "Nerlich & Dannehl Tablo 1 numunesinden aktarım. CC≈TP−AV; yoğunluk, lif ve sıkışma ürünle değişir. 12 cm kap normalizasyonu tahmindir. EAW 21% değeri yüksek emişe kadar AWC yerine kullanılmadı.",
+          "method": "MATERIAL_FAMILY_TRANSFER"
         }
       },
       "legacy_max_share": 20,
@@ -4732,14 +5688,49 @@
       },
       "default_grain_group": "fine",
       "grain_applicable": false,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [
+          "awc",
+          "density"
+        ],
+        "estimated_fields": [
+          "ph",
+          "cec",
+          "cc",
+          "afp",
+          "tp",
+          "awc",
+          "density"
+        ],
+        "review_sources": [
+          "NER21",
+          "SPH25"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      },
+      "physical_reference": {
+        "reference_height_cm": 12,
+        "height_basis": "MODEL_ASSUMPTION",
+        "source": "EST28",
+        "method": "REFERENCE_CC_AWC_EXPONENTIAL",
+        "note": "Referans CC ve AWC ile üstel su tutma şekli kalibre edilir. Kaynak kap yüksekliği bilinmediğinde 12 cm varsayılır. Dane boyutuna özel ölçüm yoksa boyut tepkisi uydurulmaz."
+      },
       "numeric_estimation": {
         "reference_transferred_fields": [],
         "imputed_fields": [
-          "density",
-          "awc"
+          "ph",
+          "cec",
+          "cc",
+          "afp",
+          "tp",
+          "awc",
+          "density"
         ],
-        "source": "EST23",
-        "relative_buffer": 3.0
+        "source": "EST28",
+        "relative_buffer": 3.0,
+        "penalized_in_selection": false
       }
     },
     {
@@ -4747,10 +5738,10 @@
       "name": "Kokopit",
       "ph": 5.8,
       "cec": 65,
-      "cc": 78.45,
-      "afp": 11.25,
-      "tp": 89.7,
-      "awc": 65.45,
+      "cc": 79.3056671432339,
+      "afp": 12.194332856766096,
+      "tp": 91.5,
+      "awc": 66.3056671432339,
       "grade": "Alan bazlı",
       "density": 0.089,
       "kind": "Organik/lifli",
@@ -4779,23 +5770,29 @@
         "cc": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "LONDRA18",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Yayındaki su tutma eğrisinin 12 cm model kabına aktarımı; aynı satın alınan ürünün ölçümü değildir. AWC=CC−yüksek emişte tutulan su; birimler hacim yüzdesidir.",
+          "method": "SOURCE_CURVE_TRANSFER"
         },
         "afp": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "LONDRA18",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Yayındaki su tutma eğrisinin 12 cm model kabına aktarımı; aynı satın alınan ürünün ölçümü değildir. AWC=CC−yüksek emişte tutulan su; birimler hacim yüzdesidir.",
+          "method": "SOURCE_CURVE_TRANSFER"
         },
         "tp": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "LONDRA18",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Yayındaki su tutma eğrisinin 12 cm model kabına aktarımı; aynı satın alınan ürünün ölçümü değildir. AWC=CC−yüksek emişte tutulan su; birimler hacim yüzdesidir.",
+          "method": "SOURCE_CURVE_TRANSFER"
         },
         "awc": {
           "class": "ASSUMPTION",
@@ -4806,11 +5803,13 @@
           "note": "CC eksi yayındaki ölçülmüş kullanılamayan su; karışıma aktarım tahminidir."
         },
         "density": {
-          "class": "MEASURED_OR_MEAN",
+          "class": "ASSUMPTION",
           "sources": [
-            "LONDRA18"
+            "LONDRA18",
+            "EST28"
           ],
-          "note": "Aynı yayın numunesinden malzeme ailesine aktarım; satın alınan stok ölçümü değildir."
+          "note": "Yayındaki su tutma eğrisinin 12 cm model kabına aktarımı; aynı satın alınan ürünün ölçümü değildir. AWC=CC−yüksek emişte tutulan su; birimler hacim yüzdesidir.",
+          "method": "SOURCE_CURVE_TRANSFER"
         }
       },
       "legacy_max_share": 25,
@@ -4823,15 +5822,38 @@
       },
       "default_grain_group": "fine",
       "grain_applicable": false,
-      "numeric_estimation": {
-        "reference_transferred_fields": [
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [
+          "awc",
           "density"
         ],
-        "imputed_fields": [
-          "awc"
+        "estimated_fields": [
+          "cc",
+          "afp",
+          "tp",
+          "awc",
+          "density"
         ],
-        "source": "EST23",
-        "relative_buffer": 2.0
+        "review_sources": [
+          "LONDRA18",
+          "RHIE17"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      },
+      "numeric_estimation": {
+        "reference_transferred_fields": [],
+        "imputed_fields": [
+          "cc",
+          "afp",
+          "tp",
+          "awc",
+          "density"
+        ],
+        "source": "EST28",
+        "relative_buffer": 2.0,
+        "penalized_in_selection": false
       }
     },
     {
@@ -4839,10 +5861,10 @@
       "name": "Ağaç kabuğu",
       "ph": 5.5,
       "cec": 50,
-      "cc": 51.3,
-      "afp": 26.5,
-      "tp": 77.8,
-      "awc": 28.299999999999997,
+      "cc": 63.997822769933734,
+      "afp": 19.002177230066266,
+      "tp": 83.0,
+      "awc": 40.997822769933734,
       "grade": "Alan bazlı",
       "density": 0.16,
       "kind": "Organik parçacık",
@@ -4871,23 +5893,29 @@
         "cc": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "GABRIEL09",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Yayındaki su tutma eğrisinin 12 cm model kabına aktarımı; aynı satın alınan ürünün ölçümü değildir. AWC=CC−yüksek emişte tutulan su; birimler hacim yüzdesidir.",
+          "method": "SOURCE_CURVE_TRANSFER"
         },
         "afp": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "GABRIEL09",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Yayındaki su tutma eğrisinin 12 cm model kabına aktarımı; aynı satın alınan ürünün ölçümü değildir. AWC=CC−yüksek emişte tutulan su; birimler hacim yüzdesidir.",
+          "method": "SOURCE_CURVE_TRANSFER"
         },
         "tp": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "GABRIEL09",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Yayındaki su tutma eğrisinin 12 cm model kabına aktarımı; aynı satın alınan ürünün ölçümü değildir. AWC=CC−yüksek emişte tutulan su; birimler hacim yüzdesidir.",
+          "method": "SOURCE_CURVE_TRANSFER"
         },
         "awc": {
           "class": "ASSUMPTION",
@@ -4898,11 +5926,13 @@
           "note": "CC eksi yayındaki ölçülmüş kullanılamayan su; karışıma aktarım tahminidir."
         },
         "density": {
-          "class": "MEASURED_OR_MEAN",
+          "class": "ASSUMPTION",
           "sources": [
-            "GABRIEL09"
+            "GABRIEL09",
+            "EST28"
           ],
-          "note": "Aynı yayın numunesinden malzeme ailesine aktarım; satın alınan stok ölçümü değildir."
+          "note": "Yayındaki su tutma eğrisinin 12 cm model kabına aktarımı; aynı satın alınan ürünün ölçümü değildir. AWC=CC−yüksek emişte tutulan su; birimler hacim yüzdesidir.",
+          "method": "SOURCE_CURVE_TRANSFER"
         }
       },
       "legacy_max_share": 25,
@@ -4915,15 +5945,40 @@
       },
       "default_grain_group": "fine",
       "grain_applicable": true,
-      "numeric_estimation": {
-        "reference_transferred_fields": [
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [
+          "awc",
           "density"
         ],
-        "imputed_fields": [
-          "awc"
+        "estimated_fields": [
+          "cec",
+          "cc",
+          "afp",
+          "tp",
+          "awc",
+          "density"
         ],
-        "source": "EST23",
-        "relative_buffer": 2.0
+        "review_sources": [
+          "GABRIEL09",
+          "BARK_PSD"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      },
+      "numeric_estimation": {
+        "reference_transferred_fields": [],
+        "imputed_fields": [
+          "cec",
+          "cc",
+          "afp",
+          "tp",
+          "awc",
+          "density"
+        ],
+        "source": "EST28",
+        "relative_buffer": 2.0,
+        "penalized_in_selection": false
       }
     },
     {
@@ -4984,16 +6039,18 @@
         "awc": {
           "class": "ASSUMPTION",
           "sources": [
-            "EST23"
+            "EST28"
           ],
-          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+          "note": "Eksik alan sayısal tahminle tamamlandı; malzeme ailesi önkabulü, ürün ölçümü değildir. Referans CC × 0.45 kullanılabilir payı; kalan su yüksek emiş suyu önkabulüdür.",
+          "method": "MATERIAL_FAMILY_PRIOR"
         },
         "density": {
           "class": "ASSUMPTION",
           "sources": [
-            "EST23"
+            "EST28"
           ],
-          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+          "note": "Eksik alan sayısal tahminle tamamlandı; malzeme ailesi önkabulü, ürün ölçümü değildir.",
+          "method": "MATERIAL_FAMILY_PRIOR"
         }
       },
       "legacy_max_share": 100,
@@ -5006,14 +6063,48 @@
       },
       "default_grain_group": "fine",
       "grain_applicable": true,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [
+          "awc",
+          "density"
+        ],
+        "estimated_fields": [
+          "ph",
+          "cec",
+          "cc",
+          "afp",
+          "tp",
+          "awc",
+          "density"
+        ],
+        "review_sources": [
+          "EST28"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      },
+      "physical_reference": {
+        "reference_height_cm": 12,
+        "height_basis": "MODEL_ASSUMPTION",
+        "source": "EST28",
+        "method": "REFERENCE_CC_AWC_EXPONENTIAL",
+        "note": "Referans CC ve AWC ile üstel su tutma şekli kalibre edilir. Kaynak kap yüksekliği bilinmediğinde 12 cm varsayılır. Dane boyutuna özel ölçüm yoksa boyut tepkisi uydurulmaz."
+      },
       "numeric_estimation": {
         "reference_transferred_fields": [],
         "imputed_fields": [
-          "density",
-          "awc"
+          "ph",
+          "cec",
+          "cc",
+          "afp",
+          "tp",
+          "awc",
+          "density"
         ],
-        "source": "EST23",
-        "relative_buffer": 1.0
+        "source": "EST28",
+        "relative_buffer": 1.0,
+        "penalized_in_selection": false
       }
     },
     {
@@ -5074,9 +6165,10 @@
         "awc": {
           "class": "ASSUMPTION",
           "sources": [
-            "EST23"
+            "EST28"
           ],
-          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+          "note": "Eksik alan sayısal tahminle tamamlandı; malzeme ailesi önkabulü, ürün ölçümü değildir. Referans CC × 0.5 kullanılabilir payı; kalan su yüksek emiş suyu önkabulüdür.",
+          "method": "MATERIAL_FAMILY_PRIOR"
         },
         "density": {
           "class": "SAMPLE_MEASURED",
@@ -5096,13 +6188,39 @@
       },
       "default_grain_group": "fine",
       "grain_applicable": true,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [
+          "awc"
+        ],
+        "estimated_fields": [
+          "cc",
+          "afp",
+          "awc"
+        ],
+        "review_sources": [
+          "DIAT11"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      },
+      "physical_reference": {
+        "reference_height_cm": 12,
+        "height_basis": "MODEL_ASSUMPTION",
+        "source": "EST28",
+        "method": "REFERENCE_CC_AWC_EXPONENTIAL",
+        "note": "Referans CC ve AWC ile üstel su tutma şekli kalibre edilir. Kaynak kap yüksekliği bilinmediğinde 12 cm varsayılır. Dane boyutuna özel ölçüm yoksa boyut tepkisi uydurulmaz."
+      },
       "numeric_estimation": {
         "reference_transferred_fields": [],
         "imputed_fields": [
+          "cc",
+          "afp",
           "awc"
         ],
-        "source": "EST23",
-        "relative_buffer": 1.0
+        "source": "EST28",
+        "relative_buffer": 1.0,
+        "penalized_in_selection": false
       }
     },
     {
@@ -5110,10 +6228,10 @@
       "name": "Turface",
       "ph": 6.5,
       "cec": 30,
-      "cc": 46.25,
-      "afp": 27.75,
+      "cc": 39.0,
+      "afp": 35.0,
       "tp": 74,
-      "awc": 25.437500000000004,
+      "awc": 21.450000000000003,
       "grade": "Alan bazlı",
       "density": 0.593,
       "kind": "Mineral granül",
@@ -5142,16 +6260,20 @@
         "cc": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "TURF",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Üretici föyündeki %39 kapiler / %35 kapiler olmayan gözenek payından referans tahmini. Bunlar aynı yükseklikte ölçülmüş saksı CC/AFP değildir.",
+          "method": "PORE_PARTITION_TRANSFER"
         },
         "afp": {
           "class": "ASSUMPTION",
           "sources": [
-            "V13"
+            "TURF",
+            "EST28"
           ],
-          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+          "note": "Üretici föyündeki %39 kapiler / %35 kapiler olmayan gözenek payından referans tahmini. Bunlar aynı yükseklikte ölçülmüş saksı CC/AFP değildir.",
+          "method": "PORE_PARTITION_TRANSFER"
         },
         "tp": {
           "class": "TECHNICAL_DATASHEET",
@@ -5163,9 +6285,10 @@
         "awc": {
           "class": "ASSUMPTION",
           "sources": [
-            "EST23"
+            "EST28"
           ],
-          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+          "note": "Eksik alan sayısal tahminle tamamlandı; malzeme ailesi önkabulü, ürün ölçümü değildir. Referans CC × 0.55 kullanılabilir payı; kalan su yüksek emiş suyu önkabulüdür.",
+          "method": "MATERIAL_FAMILY_PRIOR"
         },
         "density": {
           "class": "TECHNICAL_DATASHEET",
@@ -5185,13 +6308,39 @@
       },
       "default_grain_group": "fine",
       "grain_applicable": true,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [
+          "awc"
+        ],
+        "estimated_fields": [
+          "cc",
+          "afp",
+          "awc"
+        ],
+        "review_sources": [
+          "TURF"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      },
+      "physical_reference": {
+        "reference_height_cm": 12,
+        "height_basis": "MODEL_ASSUMPTION",
+        "source": "EST28",
+        "method": "REFERENCE_CC_AWC_EXPONENTIAL",
+        "note": "Referans CC ve AWC ile üstel su tutma şekli kalibre edilir. Kaynak kap yüksekliği bilinmediğinde 12 cm varsayılır. Dane boyutuna özel ölçüm yoksa boyut tepkisi uydurulmaz."
+      },
       "numeric_estimation": {
         "reference_transferred_fields": [],
         "imputed_fields": [
+          "cc",
+          "afp",
           "awc"
         ],
-        "source": "EST23",
-        "relative_buffer": 2.0
+        "source": "EST28",
+        "relative_buffer": 2.0,
+        "penalized_in_selection": false
       }
     },
     {
@@ -5291,11 +6440,26 @@
       "legacy_ph": 7.43,
       "default_grain_group": "medium",
       "grain_applicable": true,
+      "data_completion": {
+        "reviewed": "2026-10-20",
+        "missing_before": [],
+        "estimated_fields": [
+          "cec"
+        ],
+        "review_sources": [
+          "SCH26"
+        ],
+        "method": "Ölçülmüş referanslar korunur; mevcut eğriden hesap, uygun dane aralığında interpolasyon, malzeme ailesine aktarım veya son olarak açık önkabul.",
+        "penalized_in_selection": false
+      },
       "numeric_estimation": {
         "reference_transferred_fields": [],
-        "imputed_fields": [],
-        "source": "EST23",
-        "relative_buffer": 4.0
+        "imputed_fields": [
+          "cec"
+        ],
+        "source": "EST28",
+        "relative_buffer": 4.0,
+        "penalized_in_selection": false
       }
     }
   ],
@@ -5327,5 +6491,445 @@
     "source_ids": [
       "YEAR27"
     ]
+  },
+  "data_completion_audit": {
+    "version": 28,
+    "material_count": 20,
+    "numeric_fields_per_material": 7,
+    "missing_before": 22,
+    "missing_after": 0,
+    "changes": [
+      {
+        "material": "Akadama",
+        "field": "awc",
+        "before": null,
+        "after": 13.6,
+        "method": "LITERATURE_TRANSFER_ESTIMATE",
+        "sources": [
+          "AKA94",
+          "EST28"
+        ]
+      },
+      {
+        "material": "Kanuma",
+        "field": "awc",
+        "before": null,
+        "after": 26.1525,
+        "method": "MATERIAL_FAMILY_PRIOR",
+        "sources": [
+          "EST28"
+        ]
+      },
+      {
+        "material": "Kiryu",
+        "field": "awc",
+        "before": null,
+        "after": 9.333319999999999,
+        "method": "MATERIAL_FAMILY_PRIOR",
+        "sources": [
+          "EST28"
+        ]
+      },
+      {
+        "material": "Saksı toprağı",
+        "field": "awc",
+        "before": null,
+        "after": 35.2,
+        "method": "MATERIAL_FAMILY_PRIOR",
+        "sources": [
+          "EST28"
+        ]
+      },
+      {
+        "material": "Saksı toprağı",
+        "field": "density",
+        "before": null,
+        "after": 0.35,
+        "method": "MATERIAL_FAMILY_PRIOR",
+        "sources": [
+          "EST28"
+        ]
+      },
+      {
+        "material": "Humus",
+        "field": "awc",
+        "before": null,
+        "after": 37.1875,
+        "method": "MATERIAL_FAMILY_PRIOR",
+        "sources": [
+          "EST28"
+        ]
+      },
+      {
+        "material": "Humus",
+        "field": "density",
+        "before": null,
+        "after": 0.45,
+        "method": "MATERIAL_FAMILY_PRIOR",
+        "sources": [
+          "EST28"
+        ]
+      },
+      {
+        "material": "Leonardit",
+        "field": "awc",
+        "before": null,
+        "after": 30.22224,
+        "method": "MATERIAL_FAMILY_PRIOR",
+        "sources": [
+          "EST28"
+        ]
+      },
+      {
+        "material": "Leonardit",
+        "field": "density",
+        "before": null,
+        "after": 0.65,
+        "method": "MATERIAL_FAMILY_PRIOR",
+        "sources": [
+          "EST28"
+        ]
+      },
+      {
+        "material": "Torf",
+        "field": "cc",
+        "before": 60.6,
+        "after": 78.29942177765915,
+        "method": "SOURCE_CURVE_TRANSFER",
+        "sources": [
+          "LONDRA18",
+          "EST28"
+        ]
+      },
+      {
+        "material": "Torf",
+        "field": "afp",
+        "before": 16.5,
+        "after": 3.7005782223408517,
+        "method": "SOURCE_CURVE_TRANSFER",
+        "sources": [
+          "LONDRA18",
+          "EST28"
+        ]
+      },
+      {
+        "material": "Torf",
+        "field": "tp",
+        "before": 77.1,
+        "after": 82.0,
+        "method": "SOURCE_CURVE_TRANSFER",
+        "sources": [
+          "LONDRA18",
+          "EST28"
+        ]
+      },
+      {
+        "material": "Torf",
+        "field": "awc",
+        "before": null,
+        "after": 65.20942177765914,
+        "method": "SOURCE_CURVE_TRANSFER",
+        "sources": [
+          "LONDRA18",
+          "EST28"
+        ]
+      },
+      {
+        "material": "Torf",
+        "field": "density",
+        "before": null,
+        "after": 0.081,
+        "method": "SOURCE_CURVE_TRANSFER",
+        "sources": [
+          "LONDRA18",
+          "EST28"
+        ]
+      },
+      {
+        "material": "Kum",
+        "field": "cc",
+        "before": 10,
+        "after": 9.53,
+        "method": "MATERIAL_FAMILY_TRANSFER",
+        "sources": [
+          "PH_BUFFER21",
+          "EST28"
+        ]
+      },
+      {
+        "material": "Kum",
+        "field": "afp",
+        "before": 20,
+        "after": 27.04,
+        "method": "MATERIAL_FAMILY_TRANSFER",
+        "sources": [
+          "PH_BUFFER21",
+          "EST28"
+        ]
+      },
+      {
+        "material": "Kum",
+        "field": "tp",
+        "before": 30,
+        "after": 36.57,
+        "method": "MATERIAL_FAMILY_TRANSFER",
+        "sources": [
+          "PH_BUFFER21",
+          "EST28"
+        ]
+      },
+      {
+        "material": "Kum",
+        "field": "density",
+        "before": 1.16,
+        "after": 1.34,
+        "method": "MATERIAL_FAMILY_TRANSFER",
+        "sources": [
+          "PH_BUFFER21",
+          "EST28"
+        ]
+      },
+      {
+        "material": "Kum",
+        "field": "awc",
+        "before": null,
+        "after": 2.3825,
+        "method": "MATERIAL_FAMILY_PRIOR",
+        "sources": [
+          "EST28"
+        ]
+      },
+      {
+        "material": "Sfagnum moss",
+        "field": "cc",
+        "before": 85,
+        "after": 74.8,
+        "method": "MATERIAL_FAMILY_TRANSFER",
+        "sources": [
+          "NER21",
+          "SPH25",
+          "EST28"
+        ]
+      },
+      {
+        "material": "Sfagnum moss",
+        "field": "afp",
+        "before": 10,
+        "after": 12.6,
+        "method": "MATERIAL_FAMILY_TRANSFER",
+        "sources": [
+          "NER21",
+          "SPH25",
+          "EST28"
+        ]
+      },
+      {
+        "material": "Sfagnum moss",
+        "field": "tp",
+        "before": 95,
+        "after": 87.4,
+        "method": "MATERIAL_FAMILY_TRANSFER",
+        "sources": [
+          "NER21",
+          "SPH25",
+          "EST28"
+        ]
+      },
+      {
+        "material": "Sfagnum moss",
+        "field": "density",
+        "before": null,
+        "after": 0.08,
+        "method": "MATERIAL_FAMILY_TRANSFER",
+        "sources": [
+          "NER21",
+          "SPH25",
+          "EST28"
+        ]
+      },
+      {
+        "material": "Sfagnum moss",
+        "field": "awc",
+        "before": null,
+        "after": 48.62000000000001,
+        "method": "MATERIAL_FAMILY_PRIOR",
+        "sources": [
+          "EST28"
+        ]
+      },
+      {
+        "material": "Kokopit",
+        "field": "cc",
+        "before": 78.45,
+        "after": 79.3056671432339,
+        "method": "SOURCE_CURVE_TRANSFER",
+        "sources": [
+          "LONDRA18",
+          "EST28"
+        ]
+      },
+      {
+        "material": "Kokopit",
+        "field": "afp",
+        "before": 11.25,
+        "after": 12.194332856766096,
+        "method": "SOURCE_CURVE_TRANSFER",
+        "sources": [
+          "LONDRA18",
+          "EST28"
+        ]
+      },
+      {
+        "material": "Kokopit",
+        "field": "tp",
+        "before": 89.7,
+        "after": 91.5,
+        "method": "SOURCE_CURVE_TRANSFER",
+        "sources": [
+          "LONDRA18",
+          "EST28"
+        ]
+      },
+      {
+        "material": "Kokopit",
+        "field": "awc",
+        "before": null,
+        "after": 66.3056671432339,
+        "method": "SOURCE_CURVE_TRANSFER",
+        "sources": [
+          "LONDRA18",
+          "EST28"
+        ]
+      },
+      {
+        "material": "Kokopit",
+        "field": "density",
+        "before": null,
+        "after": 0.089,
+        "method": "SOURCE_CURVE_TRANSFER",
+        "sources": [
+          "LONDRA18",
+          "EST28"
+        ]
+      },
+      {
+        "material": "Ağaç kabuğu",
+        "field": "cc",
+        "before": 51.3,
+        "after": 63.997822769933734,
+        "method": "SOURCE_CURVE_TRANSFER",
+        "sources": [
+          "GABRIEL09",
+          "EST28"
+        ]
+      },
+      {
+        "material": "Ağaç kabuğu",
+        "field": "afp",
+        "before": 26.5,
+        "after": 19.002177230066266,
+        "method": "SOURCE_CURVE_TRANSFER",
+        "sources": [
+          "GABRIEL09",
+          "EST28"
+        ]
+      },
+      {
+        "material": "Ağaç kabuğu",
+        "field": "tp",
+        "before": 77.8,
+        "after": 83.0,
+        "method": "SOURCE_CURVE_TRANSFER",
+        "sources": [
+          "GABRIEL09",
+          "EST28"
+        ]
+      },
+      {
+        "material": "Ağaç kabuğu",
+        "field": "awc",
+        "before": null,
+        "after": 40.997822769933734,
+        "method": "SOURCE_CURVE_TRANSFER",
+        "sources": [
+          "GABRIEL09",
+          "EST28"
+        ]
+      },
+      {
+        "material": "Ağaç kabuğu",
+        "field": "density",
+        "before": null,
+        "after": 0.16,
+        "method": "SOURCE_CURVE_TRANSFER",
+        "sources": [
+          "GABRIEL09",
+          "EST28"
+        ]
+      },
+      {
+        "material": "Volkanik Tüf",
+        "field": "awc",
+        "before": null,
+        "after": 19.6875,
+        "method": "MATERIAL_FAMILY_PRIOR",
+        "sources": [
+          "EST28"
+        ]
+      },
+      {
+        "material": "Volkanik Tüf",
+        "field": "density",
+        "before": null,
+        "after": 0.65,
+        "method": "MATERIAL_FAMILY_PRIOR",
+        "sources": [
+          "EST28"
+        ]
+      },
+      {
+        "material": "Diatomit",
+        "field": "awc",
+        "before": null,
+        "after": 29.4125,
+        "method": "MATERIAL_FAMILY_PRIOR",
+        "sources": [
+          "EST28"
+        ]
+      },
+      {
+        "material": "Turface",
+        "field": "cc",
+        "before": 46.25,
+        "after": 39,
+        "method": "PORE_PARTITION_TRANSFER",
+        "sources": [
+          "TURF",
+          "EST28"
+        ]
+      },
+      {
+        "material": "Turface",
+        "field": "afp",
+        "before": 27.75,
+        "after": 35,
+        "method": "PORE_PARTITION_TRANSFER",
+        "sources": [
+          "TURF",
+          "EST28"
+        ]
+      },
+      {
+        "material": "Turface",
+        "field": "awc",
+        "before": null,
+        "after": 21.450000000000003,
+        "method": "MATERIAL_FAMILY_PRIOR",
+        "sources": [
+          "EST28"
+        ]
+      }
+    ],
+    "note": "140 referans sayısı tamdır; tahminler deney ölçümü olarak etiketlenmez. Fiziksel büyüklükler su/hava/katı kapanışına göre denetlenir."
   }
 }

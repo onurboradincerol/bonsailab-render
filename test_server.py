@@ -1,4 +1,4 @@
-import copy,hashlib,json,sys,unittest
+import copy,hashlib,json,math,sys,unittest
 from pathlib import Path
 from unittest.mock import patch
 import app as server
@@ -26,15 +26,27 @@ class ServerTests(unittest.TestCase):
         self.assertEqual(self.client.get('/engine/core.py').status_code,404)
         self.assertEqual(self.client.get('/runtime/pyodide.asm.wasm').status_code,404)
 
-    def test_replays_40_species_and_80_variants_without_formula_changes(self):
+    def test_40_species_and_80_variants_preserve_physical_and_stock_rules(self):
         cases=json.loads((ROOT/'tests/cases.json').read_text(encoding='utf-8'))
         self.assertEqual(len(cases),40)
         for case in cases:
             response=self.client.post('/api/calculate',json=case['request'])
             self.assertEqual(response.status_code,200)
-            for key,value in case['expected_sha256'].items():
-                actual=hashlib.sha256(json.dumps(response.json[key],ensure_ascii=False,sort_keys=True,allow_nan=False).encode()).hexdigest()
-                self.assertEqual(actual,value)
+            result=response.json
+            self.assertEqual(result['species']['id'],case['request']['species_id'])
+            available={x['name'] for x in case['request']['inventory'] if x['available']}
+            for mode in ('technical','economical'):
+                variant=result[mode]
+                if not variant['estimate']:continue
+                self.assertEqual(sum(x['share'] for x in variant['selected']),100)
+                self.assertTrue(all(x['name'] in available and 0<x['share']<=result['limits'][x['name']] for x in variant['selected']))
+                e=variant['estimate'];self.assertAlmostEqual(e['cc']+e['afp'],e['tp'])
+                for key in ('cc','afp','tp','awc','cec','density'):self.assertTrue(math.isfinite(e[key]))
+                self.assertTrue(0<=e['awc']<=e['cc']<=e['tp']<=100)
+                self.assertGreater(e['density'],0)
+                if variant['ph_selection']['ph_feasible_candidates']:
+                    self.assertTrue(e['chemistry']['point_in_species_band'])
+                if mode=='economical':self.assertFalse(any(x['name'] in {'Akadama','Kanuma','Kiryu','Turface'} for x in variant['selected']))
 
     def test_same_input_is_cached_without_changing_output(self):
         first=self.client.post('/api/calculate',json=sample());second=self.client.post('/api/calculate',json=sample())
