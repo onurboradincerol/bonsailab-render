@@ -1,5 +1,5 @@
 'use strict';
-let DB=null,last=null,requestId=0,timer=null,controller=null,restoreNotes=[];
+let DB=null,last=null,requestId=0,calculating=false,controller=null,restoreNotes=[];
 const $=id=>document.getElementById(id);
 const h=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const num=(v,d=1)=>v==null?'—':Number(v).toLocaleString('tr-TR',{maximumFractionDigits:d});
@@ -12,15 +12,15 @@ function refs(p){return [...new Set((p?.sources||[]).flatMap(id=>String(id).spli
 function readInv(){return DB.materials.map(m=>({name:m.name,available:$('c_'+m.id).checked,grain_group:m.grain_applicable?$('gr_'+m.id).value:null}));}
 function payload(){return {species_id:$('species').value,phase:$('phase').value,pot:$('pot').value,height:$('height').value,volume:$('volume').value,climate:$('climate').value,season:'year_round',location:$('location').value,light:$('light').value,wind:$('wind').value,watering:$('watering').value,inventory:readInv()};}
 function save(){try{localStorage.setItem('bonsailab_v26_1',JSON.stringify(payload()));}catch{$('storageNote').textContent='Tercihler kaydedilemiyor; hesaplama kullanılabilir.';}}
-function invalidate(){requestId++;controller?.abort();last=null;$('exportBtn').disabled=true;$('resultBlock').classList.add('hidden');$('calcStatus').textContent='Girdiler değişti';$('calcStatus').className='status';$('errorMsg').classList.add('hidden');}
-function schedule(){invalidate();clearTimeout(timer);timer=setTimeout(runCalc,500);}
+function invalidate(){requestId++;controller?.abort();controller=null;calculating=false;$('calcBtn').disabled=false;last=null;$('pressureLabel').textContent='Hesaplama bekleniyor';$('exportBtn').disabled=true;$('resultBlock').classList.add('hidden');$('calcStatus').textContent='Girdiler değişti · Karışımı hesapla düğmesine bas.';$('calcStatus').className='status';$('errorMsg').classList.add('hidden');}
+function inputsChanged(){invalidate();save();}
 function updateRow(m){const enabled=$('c_'+m.id).checked;$('r_'+m.id).classList.toggle('enabled',enabled);$('r_'+m.id).querySelectorAll('select').forEach(e=>e.disabled=!enabled);}
 function count(){$('inventoryCount').textContent=DB.materials.filter(m=>$('c_'+m.id).checked).length+' seçili';}
 function updateSpecies(){const sp=DB.species.find(s=>s.id===$('species').value);if(sp)$('speciesNote').innerHTML=`<b>${h(sp.latin)}</b> · ${h(sp.group)} · ${h(sp.care_note)}<br><small>Sayısal hedefler tasarım kabulüdür; tür için deneysel optimum değildir.</small>`;}
 function climateNote(){$('climateNote').textContent=DB.climates.find(c=>c.id===$('climate').value)?.description||'';}
 function makeInventory(){
  $('inventoryGrid').innerHTML=DB.materials.map(m=>`<div class="inv-row" id="r_${m.id}"><label class="inv-ident"><input type="checkbox" id="c_${m.id}"><span class="inv-name">${h(m.name)}<small>${h(m.kind)} · alan bazlı kaynak${['Akadama','Kanuma','Kiryu'].includes(m.name)?' · Japon granülü':''}${m.name==='Leonardit'?' · otomatik seçime kapalı':''}</small></span></label>${m.grain_applicable?`<select id="gr_${m.id}" aria-label="${h(m.name)} dane grubu">${DB.grain_groups.map(g=>`<option value="${g.id}">${h(g.name)}</option>`).join('')}</select>`:'<span class="nonnumeric">Lifli / organik</span>'}</div>`).join('');
- for(const m of DB.materials){$('c_'+m.id).addEventListener('change',()=>{updateRow(m);count();schedule();});$('gr_'+m.id)?.addEventListener('change',schedule);}
+ for(const m of DB.materials){$('c_'+m.id).addEventListener('change',()=>{updateRow(m);count();inputsChanged();});$('gr_'+m.id)?.addEventListener('change',inputsChanged);}
 }
 function restore(){
  restoreNotes=[];
@@ -43,9 +43,10 @@ function restore(){
  $('migrationNote').textContent=restoreNotes.join(' ');count();updateSpecies();climateNote();
 }
 async function runCalc(){
- if(!DB)return;clearTimeout(timer);controller?.abort();controller=new AbortController();const active=controller,id=++requestId;last=null;$('exportBtn').disabled=true;$('resultBlock').classList.add('hidden');$('errorMsg').classList.add('hidden');$('calcStatus').className='status';$('calcStatus').textContent='Tüm adaylar hesaplanıyor…';save();
- try{const response=await fetch('/api/calculate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload()),signal:active.signal});const data=await response.json();if(id!==requestId)return;if(response.status===429){$('calcStatus').textContent='Önceki hesap bitince yeniden denenecek…';timer=setTimeout(runCalc,1500);return;}if(!response.ok)throw Error(data.error||'Hesaplama başarısız');last=data;render(data);$('resultBlock').classList.remove('hidden');$('exportBtn').disabled=false;$('calcStatus').textContent=data.technical.status==='ok'?'Model kısıtları sağlandı':data.technical.status==='conditional'?'Kontrol gerektiren tasarım':'Stok / tasarım kontrolü gerekli';$('calcStatus').className='status '+(data.technical.status==='ok'?'good':'');}
+ if(!DB||calculating)return;calculating=true;$('calcBtn').disabled=true;controller?.abort();controller=new AbortController();const active=controller,id=++requestId;last=null;$('exportBtn').disabled=true;$('resultBlock').classList.add('hidden');$('errorMsg').classList.add('hidden');$('calcStatus').className='status';$('calcStatus').textContent='Tüm adaylar hesaplanıyor…';save();
+ try{const response=await fetch('/api/calculate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload()),signal:active.signal});const data=await response.json();if(id!==requestId)return;if(response.status===429)throw Error('Sunucu önceki hesabı tamamlıyor. Biraz bekleyip Karışımı hesapla düğmesine tekrar bas.');if(!response.ok)throw Error(data.error||'Hesaplama başarısız');last=data;render(data);$('resultBlock').classList.remove('hidden');$('exportBtn').disabled=false;$('calcStatus').textContent=data.technical.status==='ok'?'Model kısıtları sağlandı':data.technical.status==='conditional'?'Kontrol gerektiren tasarım':'Stok / tasarım kontrolü gerekli';$('calcStatus').className='status '+(data.technical.status==='ok'?'good':'');}
  catch(error){if(error.name==='AbortError'||id!==requestId)return;last=null;$('resultBlock').classList.add('hidden');$('calcStatus').textContent='Girdi kontrolü';$('calcStatus').className='status bad';$('errorMsg').textContent=error.message;$('errorMsg').classList.remove('hidden');}
+ finally{if(id===requestId){calculating=false;controller=null;$('calcBtn').disabled=false;}}
 }
 function renderVariant(v,title,caption){
  if(!v)return '';if(!v.estimate)return `<article class="variant-card unavailable"><h3>${h(title)}</h3><p>${h(v.acceptance_label)}</p>${v.warnings.map(x=>`<div class="variant-caution">${h(x)}</div>`).join('')}</article>`;
@@ -96,8 +97,8 @@ function exportReport(){if(!last)return;const blob=new Blob([JSON.stringify(buil
 async function init(){
  try{const response=await fetch('/api/config');if(!response.ok)throw Error('Veriler açılamadı');DB=await response.json();
  $('species').innerHTML=DB.species.map(s=>`<option value="${s.id}">${h(s.name)}</option>`).join('');$('climate').innerHTML=DB.climates.map(c=>`<option value="${c.id}">${h(c.name)}</option>`).join('');$('sourceMaterial').innerHTML=DB.materials.map(m=>`<option value="${m.id}">${h(m.name)}</option>`).join('');$('sourceSpecies').innerHTML=DB.species.map(s=>`<option value="${s.id}">${h(s.name)}</option>`).join('');makeInventory();restore();renderSourceDetail();renderLibrary();
- document.querySelectorAll('.nav').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));for(const id of inputIds){const e=$(id);e.addEventListener(e.type==='number'?'input':'change',()=>{if(id==='species')updateSpecies();if(id==='climate')climateNote();schedule();});}
- $('calcBtn').addEventListener('click',runCalc);$('exportBtn').addEventListener('click',exportReport);$('sourceMaterial').addEventListener('change',renderSourceDetail);$('sourceSpecies').addEventListener('change',renderSourceDetail);$('clearInventory').addEventListener('click',()=>{for(const m of DB.materials){$('c_'+m.id).checked=false;updateRow(m);}count();schedule();});$('resetBtn').addEventListener('click',()=>{if(confirm('V26 seçimlerini varsayılana döndürelim mi?')){try{localStorage.setItem('bonsailab_v26_1','null');}catch{}location.reload();}});runCalc();
+ document.querySelectorAll('.nav').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));for(const id of inputIds){const e=$(id);e.addEventListener(e.type==='number'?'input':'change',()=>{if(id==='species')updateSpecies();if(id==='climate')climateNote();inputsChanged();});}
+ $('calcBtn').addEventListener('click',runCalc);$('exportBtn').addEventListener('click',exportReport);$('sourceMaterial').addEventListener('change',renderSourceDetail);$('sourceSpecies').addEventListener('change',renderSourceDetail);$('clearInventory').addEventListener('click',()=>{for(const m of DB.materials){$('c_'+m.id).checked=false;updateRow(m);}count();inputsChanged();});$('resetBtn').addEventListener('click',()=>{if(confirm('V26 seçimlerini varsayılana döndürelim mi?')){try{localStorage.setItem('bonsailab_v26_1','null');}catch{}location.reload();}});invalidate();$('calcStatus').textContent='Hazır · Karışımı hesapla düğmesine bas.';
  }catch(error){$('errorMsg').textContent='Uygulama başlatılamadı: '+error.message;$('errorMsg').classList.remove('hidden');}
 }
 init();
