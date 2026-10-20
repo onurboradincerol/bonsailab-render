@@ -1,0 +1,5331 @@
+{
+  "version": "27",
+  "updated": "2026-10-20",
+  "materials": [
+    {
+      "id": "M01",
+      "name": "Akadama",
+      "ph": 5.95,
+      "cec": 26.62,
+      "cc": 39,
+      "afp": 26,
+      "tp": 65,
+      "awc": null,
+      "grade": "Alan bazlı",
+      "density": 0.47725,
+      "kind": "Mineral granül",
+      "min_mm": 2,
+      "max_mm": 6,
+      "note": "Japon granülü; fizik değerleri sınırlı",
+      "original_url": "https://www.jstage.jst.go.jp/article/dojo/53/1/53_KJ00001687356/_pdf",
+      "physical_verified": false,
+      "awc_verified": false,
+      "role": "Denge",
+      "provenance": {
+        "ph": {
+          "class": "MEASURED_OR_MEAN",
+          "sources": [
+            "JPN82"
+          ],
+          "note": "Japon araştırmasının belirli fraksiyonlarından; temsilî değer/ortalama."
+        },
+        "cec": {
+          "class": "MEASURED_OR_MEAN",
+          "sources": [
+            "JPN82"
+          ],
+          "note": "Japon araştırmasının belirli fraksiyonlarından; temsilî değer/ortalama."
+        },
+        "cc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "afp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "tp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "awc": {
+          "class": "MISSING",
+          "sources": [],
+          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+        },
+        "density": {
+          "class": "MEASURED_OR_MEAN",
+          "sources": [
+            "JPN82"
+          ],
+          "note": "Japon araştırmasının belirli fraksiyonlarından; temsilî değer/ortalama."
+        }
+      },
+      "legacy_max_share": 100,
+      "legacy_grade": "C",
+      "reference_profiles": [],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": false,
+        "awc_verified": false
+      },
+      "chemical_reference": {
+        "min_mm": 3,
+        "max_mm": 6,
+        "source": "JPN82",
+        "note": "Dört iri fraksiyon örneğinin pH/CEC/yoğunluk ortalaması; belirli bir ticari ürün ölçümü değil."
+      },
+      "default_grain_group": "fine",
+      "grain_applicable": true
+    },
+    {
+      "id": "M02",
+      "name": "Kanuma",
+      "ph": 5,
+      "cec": 15,
+      "cc": 47.55,
+      "afp": 36.45,
+      "tp": 84,
+      "awc": null,
+      "grade": "Alan bazlı",
+      "density": 0.234,
+      "kind": "Mineral granül",
+      "min_mm": 3,
+      "max_mm": 6,
+      "note": "Japon Kanuma; asidik profil",
+      "original_url": "https://www.jstage.jst.go.jp/article/dojo/53/1/53_KJ00001687356/_pdf",
+      "physical_verified": false,
+      "awc_verified": false,
+      "role": "Asit/Su",
+      "provenance": {
+        "ph": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13",
+            "AZALEA"
+          ],
+          "note": "pH 5,0 eski ürün odaklı temsilî değer; tür rehberi kesin pH 5,0 ölçümü vermez."
+        },
+        "cec": {
+          "class": "MEASURED_OR_MEAN",
+          "sources": [
+            "JPN82"
+          ],
+          "note": "Japon araştırmasında belirli granül sınıfı; pH 5,0 ayrıca ürün-tabanlı tasarım kararı. V17: CEC/yoğunluk fraksiyon uyumsuzluğu nedeniyle karışım CEC hesabına alınmaz."
+        },
+        "cc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 sayısı korunmuştur. Sayıya bağlı bağımsız makale/tablo ve karşılaştırılabilir numune koşulu kaydı eksik; doğrulanmış literatür sentezi olarak kullanılamaz."
+        },
+        "afp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 sayısı korunmuştur. Sayıya bağlı bağımsız makale/tablo ve karşılaştırılabilir numune koşulu kaydı eksik; doğrulanmış literatür sentezi olarak kullanılamaz."
+        },
+        "tp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 sayısı korunmuştur. Sayıya bağlı bağımsız makale/tablo ve karşılaştırılabilir numune koşulu kaydı eksik; doğrulanmış literatür sentezi olarak kullanılamaz."
+        },
+        "awc": {
+          "class": "MISSING",
+          "sources": [],
+          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+        },
+        "density": {
+          "class": "MEASURED_OR_MEAN",
+          "sources": [
+            "JPN82"
+          ],
+          "note": "Japon araştırmasında belirli granül sınıfı; pH 5,0 ayrıca ürün-tabanlı tasarım kararı."
+        }
+      },
+      "legacy_max_share": 100,
+      "legacy_grade": "B",
+      "reference_profiles": [],
+      "cec_density_compatible": false,
+      "legacy_flags": {
+        "physical_verified": true,
+        "awc_verified": false
+      },
+      "chemical_reference": {
+        "source": "JPN82",
+        "cec_fraction_mm": [
+          1,
+          3
+        ],
+        "density_fraction_mm": [
+          3,
+          6
+        ],
+        "note": "CEC ile yoğunluk fraksiyonları eşleşmiyor; kütlesel CEC hesabında kullanılmaz. Nominal değerler tarihsel referans olarak korunur."
+      },
+      "default_grain_group": "medium",
+      "grain_applicable": true
+    },
+    {
+      "id": "M03",
+      "name": "Kiryu",
+      "ph": 6.2,
+      "cec": 14.19,
+      "cc": 23.3333,
+      "afp": 26.6667,
+      "tp": 50,
+      "awc": null,
+      "grade": "Alan bazlı",
+      "density": 0.625,
+      "kind": "Mineral granül",
+      "min_mm": 3,
+      "max_mm": 6,
+      "note": "Ürün tane fraksiyonu değişken",
+      "original_url": "https://www.jstage.jst.go.jp/article/dojo/53/1/53_KJ00001687356/_pdf",
+      "physical_verified": false,
+      "awc_verified": false,
+      "role": "Hava",
+      "provenance": {
+        "ph": {
+          "class": "MEASURED_OR_MEAN",
+          "sources": [
+            "JPN82"
+          ],
+          "note": "Japon araştırmasının belirli fraksiyonlarından; temsilî değer/ortalama."
+        },
+        "cec": {
+          "class": "MEASURED_OR_MEAN",
+          "sources": [
+            "JPN82"
+          ],
+          "note": "Japon araştırmasının belirli fraksiyonlarından; temsilî değer/ortalama. V17: CEC/yoğunluk fraksiyon uyumsuzluğu nedeniyle karışım CEC hesabına alınmaz."
+        },
+        "cc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "afp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "tp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "awc": {
+          "class": "MISSING",
+          "sources": [],
+          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+        },
+        "density": {
+          "class": "MEASURED_OR_MEAN",
+          "sources": [
+            "JPN82"
+          ],
+          "note": "Japon araştırmasının belirli fraksiyonlarından; temsilî değer/ortalama."
+        }
+      },
+      "legacy_max_share": 100,
+      "legacy_grade": "C",
+      "reference_profiles": [],
+      "cec_density_compatible": false,
+      "legacy_flags": {
+        "physical_verified": false,
+        "awc_verified": false
+      },
+      "chemical_reference": {
+        "source": "JPN82",
+        "cec_fraction_mm": [
+          1,
+          6
+        ],
+        "density_fraction_mm": [
+          3,
+          6
+        ],
+        "note": "CEC ile yoğunluk fraksiyonları eşleşmiyor; kütlesel CEC hesabında kullanılmaz. Nominal değerler tarihsel referans olarak korunur."
+      },
+      "default_grain_group": "medium",
+      "grain_applicable": true
+    },
+    {
+      "id": "M04",
+      "name": "Pomza",
+      "ph": 7.73,
+      "cec": 2,
+      "cc": 29.86,
+      "afp": 44.33,
+      "tp": 74.19,
+      "awc": 9.52,
+      "grade": "Alan bazlı",
+      "density": 0.53,
+      "kind": "Mineral granül",
+      "min_mm": 4,
+      "max_mm": 8,
+      "note": "4–7 mm ölçümüne yakın",
+      "original_url": "https://doi.org/10.3390/horticulturae12040501",
+      "physical_verified": true,
+      "awc_verified": true,
+      "role": "Hava",
+      "provenance": {
+        "ph": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Kaynak numunesinin 1:5 su ekstraktı pH değeri. Kullanıcının ürün/karışım pH ölçümü değildir; stok aktarımı ayrıca değerlendirilir."
+        },
+        "cec": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cc": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "afp": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "tp": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "awc": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "density": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Kaynak numuneye ait yığın yoğunluğu; marka/parti değişebilir."
+        }
+      },
+      "legacy_max_share": 100,
+      "legacy_grade": "A",
+      "reference_profiles": [
+        {
+          "id": "M04_1_3",
+          "min_mm": 1,
+          "max_mm": 3,
+          "cc": 32.11,
+          "afp": 44.15,
+          "tp": 76.25,
+          "awc": 21.5,
+          "density": 0.48,
+          "source_ph": 7.73,
+          "reference_height_cm": 12,
+          "source": "SCH26",
+          "method": "Tablo 2, drenaj sonrası su/hava; AWC maksimum su kapasitesi eksi kalıcı solma noktası.",
+          "note": "Kaynak numunesi; stok grubuna eşleşme aktarılabilirlik göstergesidir, gerçek ürün ölçümü değildir."
+        },
+        {
+          "id": "M04_4_7",
+          "min_mm": 4,
+          "max_mm": 7,
+          "cc": 29.86,
+          "afp": 44.33,
+          "tp": 74.19,
+          "awc": 9.52,
+          "density": 0.53,
+          "source_ph": 7.73,
+          "reference_height_cm": 12,
+          "source": "SCH26",
+          "method": "Tablo 2, drenaj sonrası su/hava; AWC maksimum su kapasitesi eksi kalıcı solma noktası.",
+          "note": "Kaynak numunesi; stok grubuna eşleşme aktarılabilirlik göstergesidir, gerçek ürün ölçümü değildir."
+        },
+        {
+          "id": "M04_7_14",
+          "min_mm": 7,
+          "max_mm": 14,
+          "cc": 27.64,
+          "afp": 42.7,
+          "tp": 70.34,
+          "awc": 11.62,
+          "density": 0.56,
+          "source_ph": 7.73,
+          "reference_height_cm": 12,
+          "source": "SCH26",
+          "method": "Tablo 2, drenaj sonrası su/hava; AWC maksimum su kapasitesi eksi kalıcı solma noktası.",
+          "note": "Kaynak numunesi; stok grubuna eşleşme aktarılabilirlik göstergesidir, gerçek ürün ölçümü değildir."
+        }
+      ],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": true,
+        "awc_verified": true
+      },
+      "legacy_ph": 7,
+      "default_grain_group": "medium",
+      "grain_applicable": true
+    },
+    {
+      "id": "M05",
+      "name": "Lav taşı",
+      "ph": 7.47,
+      "cec": 2,
+      "cc": 17.02,
+      "afp": 53.28,
+      "tp": 70.3,
+      "awc": 10.06,
+      "grade": "Alan bazlı",
+      "density": 0.63,
+      "kind": "Mineral granül",
+      "min_mm": 4,
+      "max_mm": 8,
+      "note": "Kırmızı pomza/scoria kimliği kontrol edilmeli",
+      "original_url": "https://doi.org/10.3390/horticulturae12040501",
+      "physical_verified": true,
+      "awc_verified": true,
+      "role": "Hava",
+      "provenance": {
+        "ph": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Kaynak numunesinin 1:5 su ekstraktı pH değeri. Kullanıcının ürün/karışım pH ölçümü değildir; stok aktarımı ayrıca değerlendirilir."
+        },
+        "cec": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cc": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "afp": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "tp": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "awc": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "density": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Kaynak numuneye ait yığın yoğunluğu; marka/parti değişebilir."
+        }
+      },
+      "legacy_max_share": 100,
+      "legacy_grade": "A",
+      "reference_profiles": [
+        {
+          "id": "M05_4_7",
+          "min_mm": 4,
+          "max_mm": 7,
+          "cc": 17.02,
+          "afp": 53.28,
+          "tp": 70.3,
+          "awc": 10.06,
+          "density": 0.63,
+          "source_ph": 7.47,
+          "reference_height_cm": 12,
+          "source": "SCH26",
+          "method": "Tablo 2, drenaj sonrası su/hava; AWC maksimum su kapasitesi eksi kalıcı solma noktası.",
+          "note": "Kaynak numunesi; stok grubuna eşleşme aktarılabilirlik göstergesidir, gerçek ürün ölçümü değildir."
+        }
+      ],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": true,
+        "awc_verified": true
+      },
+      "legacy_ph": 7.2,
+      "default_grain_group": "medium",
+      "grain_applicable": true
+    },
+    {
+      "id": "M06",
+      "name": "Kiremit irmiği",
+      "ph": 8.57,
+      "cec": 1,
+      "cc": 16.51,
+      "afp": 44.22,
+      "tp": 60.73,
+      "awc": 12.73,
+      "grade": "Alan bazlı",
+      "density": 0.99,
+      "kind": "Mineral granül",
+      "min_mm": 2,
+      "max_mm": 7,
+      "note": "Tuğla kırığıyla tane farkına dikkat",
+      "original_url": "https://doi.org/10.3390/horticulturae12040501",
+      "physical_verified": true,
+      "awc_verified": true,
+      "role": "Hava",
+      "provenance": {
+        "ph": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Kaynak numunesinin 1:5 su ekstraktı pH değeri. Kullanıcının ürün/karışım pH ölçümü değildir; stok aktarımı ayrıca değerlendirilir."
+        },
+        "cec": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cc": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "afp": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "tp": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "awc": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "density": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Kaynak numuneye ait yığın yoğunluğu; marka/parti değişebilir."
+        }
+      },
+      "legacy_max_share": 100,
+      "legacy_grade": "A",
+      "reference_profiles": [
+        {
+          "id": "M06_4_7",
+          "min_mm": 4,
+          "max_mm": 7,
+          "cc": 16.51,
+          "afp": 44.22,
+          "tp": 60.73,
+          "awc": 12.73,
+          "density": 0.99,
+          "source_ph": 8.57,
+          "reference_height_cm": 12,
+          "source": "SCH26",
+          "method": "Tablo 2, drenaj sonrası su/hava; AWC maksimum su kapasitesi eksi kalıcı solma noktası.",
+          "note": "Kaynak numunesi; stok grubuna eşleşme aktarılabilirlik göstergesidir, gerçek ürün ölçümü değildir."
+        }
+      ],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": true,
+        "awc_verified": true
+      },
+      "legacy_ph": 7.2,
+      "default_grain_group": "medium",
+      "grain_applicable": true
+    },
+    {
+      "id": "M07",
+      "name": "Saksı toprağı",
+      "ph": 6.5,
+      "cec": 20,
+      "cc": 64,
+      "afp": 16,
+      "tp": 80,
+      "awc": null,
+      "grade": "Alan bazlı",
+      "density": null,
+      "kind": "Organik/lifli",
+      "min_mm": null,
+      "max_mm": null,
+      "note": "Bileşim üründen ürüne değişir",
+      "original_url": null,
+      "physical_verified": false,
+      "awc_verified": false,
+      "role": "Organik",
+      "provenance": {
+        "ph": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cec": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "afp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "tp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "awc": {
+          "class": "MISSING",
+          "sources": [],
+          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+        },
+        "density": {
+          "class": "MISSING",
+          "sources": [],
+          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+        }
+      },
+      "legacy_max_share": 15,
+      "legacy_grade": "C",
+      "reference_profiles": [],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": false,
+        "awc_verified": false
+      },
+      "default_grain_group": "fine",
+      "grain_applicable": false
+    },
+    {
+      "id": "M08",
+      "name": "Humus",
+      "ph": 6.2,
+      "cec": 250,
+      "cc": 74.375,
+      "afp": 10.625,
+      "tp": 85,
+      "awc": null,
+      "grade": "Alan bazlı",
+      "density": null,
+      "kind": "Organik/lifli",
+      "min_mm": null,
+      "max_mm": null,
+      "note": "Humus türü bilinmiyor",
+      "original_url": null,
+      "physical_verified": false,
+      "awc_verified": false,
+      "role": "Organik",
+      "provenance": {
+        "ph": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cec": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "afp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "tp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "awc": {
+          "class": "MISSING",
+          "sources": [],
+          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+        },
+        "density": {
+          "class": "MISSING",
+          "sources": [],
+          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+        }
+      },
+      "legacy_max_share": 10,
+      "legacy_grade": "C",
+      "reference_profiles": [],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": false,
+        "awc_verified": false
+      },
+      "default_grain_group": "fine",
+      "grain_applicable": false
+    },
+    {
+      "id": "M09",
+      "name": "Leonardit",
+      "ph": 4,
+      "cec": 350,
+      "cc": 75.5556,
+      "afp": 9.4444,
+      "tp": 85,
+      "awc": null,
+      "grade": "Alan bazlı",
+      "density": null,
+      "kind": "Katkı",
+      "min_mm": null,
+      "max_mm": null,
+      "note": "Ana granüler bileşen olarak önerilmez",
+      "original_url": null,
+      "physical_verified": false,
+      "awc_verified": false,
+      "role": "Katkı",
+      "provenance": {
+        "ph": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cec": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "afp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "tp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "awc": {
+          "class": "MISSING",
+          "sources": [],
+          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+        },
+        "density": {
+          "class": "MISSING",
+          "sources": [],
+          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+        }
+      },
+      "legacy_max_share": 0,
+      "legacy_grade": "C",
+      "reference_profiles": [],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": false,
+        "awc_verified": false
+      },
+      "default_grain_group": "fine",
+      "grain_applicable": false
+    },
+    {
+      "id": "M10",
+      "name": "Torf",
+      "ph": 4.5,
+      "cec": 200,
+      "cc": 60.6,
+      "afp": 16.5,
+      "tp": 77.1,
+      "awc": null,
+      "grade": "Alan bazlı",
+      "density": null,
+      "kind": "Organik/lifli",
+      "min_mm": null,
+      "max_mm": null,
+      "note": "Asidik torf/kireçli torf ayrılmalı",
+      "original_url": null,
+      "physical_verified": false,
+      "awc_verified": false,
+      "role": "Asit/Su",
+      "provenance": {
+        "ph": {
+          "class": "LITERATURE_SYNTHESIS",
+          "sources": [
+            "CAR15"
+          ],
+          "note": "İşlenmemiş asidik torf için yaklaşık referans; kireçli torfta geçerli değil."
+        },
+        "cec": {
+          "class": "LITERATURE_SYNTHESIS",
+          "sources": [
+            "CAR15"
+          ],
+          "note": "Derlemede bildirilen CEC aralığının yaklaşık temsilî merkezi."
+        },
+        "cc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "afp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "tp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "awc": {
+          "class": "MISSING",
+          "sources": [],
+          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+        },
+        "density": {
+          "class": "MISSING",
+          "sources": [],
+          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+        }
+      },
+      "legacy_max_share": 35,
+      "legacy_grade": "B",
+      "reference_profiles": [],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": true,
+        "awc_verified": false
+      },
+      "default_grain_group": "fine",
+      "grain_applicable": false
+    },
+    {
+      "id": "M11",
+      "name": "Kum",
+      "ph": 7.5,
+      "cec": 1,
+      "cc": 10,
+      "afp": 20,
+      "tp": 30,
+      "awc": null,
+      "grade": "Alan bazlı",
+      "density": 1.16,
+      "kind": "Mineral granül",
+      "min_mm": 0.5,
+      "max_mm": 2,
+      "note": "Kalkerli / kuvars ayrılmalı",
+      "original_url": "https://www.jstage.jst.go.jp/article/jjfs/98/6/98_265/_pdf/-char/ja",
+      "physical_verified": false,
+      "awc_verified": false,
+      "role": "Hava",
+      "provenance": {
+        "ph": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cec": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "afp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "tp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "awc": {
+          "class": "MISSING",
+          "sources": [],
+          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+        },
+        "density": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        }
+      },
+      "legacy_max_share": 100,
+      "legacy_grade": "C",
+      "reference_profiles": [],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": false,
+        "awc_verified": false
+      },
+      "default_grain_group": "fine",
+      "grain_applicable": true
+    },
+    {
+      "id": "M12",
+      "name": "Perlit",
+      "ph": 8.73,
+      "cec": 3,
+      "cc": 24.23,
+      "afp": 67.27,
+      "tp": 91.5,
+      "awc": 11.79,
+      "grade": "Alan bazlı",
+      "density": 0.1,
+      "kind": "Mineral granül",
+      "min_mm": 2,
+      "max_mm": 7,
+      "note": "Literatür granül referansı",
+      "original_url": "https://doi.org/10.3390/horticulturae12040501",
+      "physical_verified": true,
+      "awc_verified": true,
+      "role": "Hava",
+      "provenance": {
+        "ph": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Kaynak numunesinin 1:5 su ekstraktı pH değeri. Kullanıcının ürün/karışım pH ölçümü değildir; stok aktarımı ayrıca değerlendirilir."
+        },
+        "cec": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cc": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "afp": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "tp": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "awc": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "density": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Kaynak numuneye ait yığın yoğunluğu; marka/parti değişebilir."
+        }
+      },
+      "legacy_max_share": 100,
+      "legacy_grade": "A",
+      "reference_profiles": [
+        {
+          "id": "M12_4_7",
+          "min_mm": 4,
+          "max_mm": 7,
+          "cc": 24.23,
+          "afp": 67.27,
+          "tp": 91.5,
+          "awc": 11.79,
+          "density": 0.1,
+          "source_ph": 8.73,
+          "reference_height_cm": 12,
+          "source": "SCH26",
+          "method": "Tablo 2, drenaj sonrası su/hava; AWC maksimum su kapasitesi eksi kalıcı solma noktası.",
+          "note": "Kaynak numunesi; stok grubuna eşleşme aktarılabilirlik göstergesidir, gerçek ürün ölçümü değildir."
+        }
+      ],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": true,
+        "awc_verified": true
+      },
+      "legacy_ph": 7,
+      "default_grain_group": "medium",
+      "grain_applicable": true
+    },
+    {
+      "id": "M13",
+      "name": "Vermikülit",
+      "ph": 6.1,
+      "cec": 130,
+      "cc": 46.6,
+      "afp": 48.52,
+      "tp": 95.12,
+      "awc": 21.43,
+      "grade": "Alan bazlı",
+      "density": 0.11,
+      "kind": "Mineral granül",
+      "min_mm": 2,
+      "max_mm": 8,
+      "note": "Granül/lamel davranışı değişken",
+      "original_url": "https://doi.org/10.3390/horticulturae12040501",
+      "physical_verified": true,
+      "awc_verified": true,
+      "role": "Su",
+      "provenance": {
+        "ph": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Kaynak numunesinin 1:5 su ekstraktı pH değeri. Kullanıcının ürün/karışım pH ölçümü değildir; stok aktarımı ayrıca değerlendirilir."
+        },
+        "cec": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cc": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "afp": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "tp": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "awc": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "density": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Kaynak numuneye ait yığın yoğunluğu; marka/parti değişebilir."
+        }
+      },
+      "legacy_max_share": 100,
+      "legacy_grade": "A",
+      "reference_profiles": [
+        {
+          "id": "M13_4_7",
+          "min_mm": 4,
+          "max_mm": 7,
+          "cc": 46.6,
+          "afp": 48.52,
+          "tp": 95.12,
+          "awc": 21.43,
+          "density": 0.11,
+          "source_ph": 6.1,
+          "reference_height_cm": 12,
+          "source": "SCH26",
+          "method": "Tablo 2, drenaj sonrası su/hava; AWC maksimum su kapasitesi eksi kalıcı solma noktası.",
+          "note": "Kaynak numunesi; stok grubuna eşleşme aktarılabilirlik göstergesidir, gerçek ürün ölçümü değildir."
+        }
+      ],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": true,
+        "awc_verified": true
+      },
+      "legacy_ph": 6.1,
+      "default_grain_group": "medium",
+      "grain_applicable": true
+    },
+    {
+      "id": "M14",
+      "name": "Sfagnum moss",
+      "ph": 4,
+      "cec": 100,
+      "cc": 85,
+      "afp": 10,
+      "tp": 95,
+      "awc": null,
+      "grade": "Alan bazlı",
+      "density": null,
+      "kind": "Organik/lifli",
+      "min_mm": null,
+      "max_mm": null,
+      "note": "Uzun lifli sphagnum",
+      "original_url": null,
+      "physical_verified": false,
+      "awc_verified": false,
+      "role": "Asit/Su",
+      "provenance": {
+        "ph": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cec": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "afp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "tp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "awc": {
+          "class": "MISSING",
+          "sources": [],
+          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+        },
+        "density": {
+          "class": "MISSING",
+          "sources": [],
+          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+        }
+      },
+      "legacy_max_share": 20,
+      "legacy_grade": "C",
+      "reference_profiles": [],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": false,
+        "awc_verified": false
+      },
+      "default_grain_group": "fine",
+      "grain_applicable": false
+    },
+    {
+      "id": "M15",
+      "name": "Kokopit",
+      "ph": 5.8,
+      "cec": 65,
+      "cc": 78.45,
+      "afp": 11.25,
+      "tp": 89.7,
+      "awc": null,
+      "grade": "Alan bazlı",
+      "density": null,
+      "kind": "Organik/lifli",
+      "min_mm": null,
+      "max_mm": null,
+      "note": "Yıkanmış/tamponlanmış ürün tercih edilmeli",
+      "original_url": null,
+      "physical_verified": false,
+      "awc_verified": false,
+      "role": "Su",
+      "provenance": {
+        "ph": {
+          "class": "LITERATURE_SYNTHESIS",
+          "sources": [
+            "CAR15"
+          ],
+          "note": "Ürün tipine ve yıkamaya bağlı pH tahmini; 5,8 ölçümü doğrudan derlemedeki tek örnek değildir."
+        },
+        "cec": {
+          "class": "LITERATURE_SYNTHESIS",
+          "sources": [
+            "CAR15"
+          ],
+          "note": "Derlemede bildirilen CEC aralığının yaklaşık temsilî merkezi."
+        },
+        "cc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "afp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "tp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "awc": {
+          "class": "MISSING",
+          "sources": [],
+          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+        },
+        "density": {
+          "class": "MISSING",
+          "sources": [],
+          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+        }
+      },
+      "legacy_max_share": 25,
+      "legacy_grade": "B",
+      "reference_profiles": [],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": true,
+        "awc_verified": false
+      },
+      "default_grain_group": "fine",
+      "grain_applicable": false
+    },
+    {
+      "id": "M16",
+      "name": "Ağaç kabuğu",
+      "ph": 5.5,
+      "cec": 50,
+      "cc": 51.3,
+      "afp": 26.5,
+      "tp": 77.8,
+      "awc": null,
+      "grade": "Alan bazlı",
+      "density": null,
+      "kind": "Organik parçacık",
+      "min_mm": null,
+      "max_mm": null,
+      "note": "Parçalanmış çam kabuğu; dane grubu seçilir. Fiziksel değerler V13 varsayımıdır; üç boyut için ayrı ölçüm eğrisi yoktur.",
+      "original_url": null,
+      "physical_verified": false,
+      "awc_verified": false,
+      "role": "Denge",
+      "provenance": {
+        "ph": {
+          "class": "LITERATURE_SYNTHESIS",
+          "sources": [
+            "CAR15"
+          ],
+          "note": "Kompostlanmış kabukların pH aralığı; ağaç türüne bağlı."
+        },
+        "cec": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "afp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "tp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "awc": {
+          "class": "MISSING",
+          "sources": [],
+          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+        },
+        "density": {
+          "class": "MISSING",
+          "sources": [],
+          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+        }
+      },
+      "legacy_max_share": 25,
+      "legacy_grade": "B",
+      "reference_profiles": [],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": true,
+        "awc_verified": false
+      },
+      "default_grain_group": "fine",
+      "grain_applicable": true
+    },
+    {
+      "id": "M17",
+      "name": "Volkanik Tüf",
+      "ph": 7,
+      "cec": 20,
+      "cc": 43.75,
+      "afp": 26.25,
+      "tp": 70,
+      "awc": null,
+      "grade": "Alan bazlı",
+      "density": null,
+      "kind": "Mineral granül",
+      "min_mm": 2,
+      "max_mm": 8,
+      "note": "Tüf türü kimliği belirsiz",
+      "original_url": null,
+      "physical_verified": false,
+      "awc_verified": false,
+      "role": "Hava",
+      "provenance": {
+        "ph": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cec": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "afp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "tp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "awc": {
+          "class": "MISSING",
+          "sources": [],
+          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+        },
+        "density": {
+          "class": "MISSING",
+          "sources": [],
+          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+        }
+      },
+      "legacy_max_share": 100,
+      "legacy_grade": "C",
+      "reference_profiles": [],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": false,
+        "awc_verified": false
+      },
+      "default_grain_group": "fine",
+      "grain_applicable": true
+    },
+    {
+      "id": "M18",
+      "name": "Diatomit",
+      "ph": 8.55,
+      "cec": 22.21,
+      "cc": 58.825,
+      "afp": 22.625,
+      "tp": 81.45,
+      "awc": null,
+      "grade": "Alan bazlı",
+      "density": 0.41,
+      "kind": "Mineral granül",
+      "min_mm": 2,
+      "max_mm": 8,
+      "note": "Toz/granül kesin ayrılmalı",
+      "original_url": null,
+      "physical_verified": false,
+      "awc_verified": false,
+      "role": "Su",
+      "provenance": {
+        "ph": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "DIAT11"
+          ],
+          "note": "Diatomit 2–4 ve 4–8 mm numune ölçümü; CC/AFP bu kaynaktan değil."
+        },
+        "cec": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "DIAT11"
+          ],
+          "note": "Diatomit 2–4 ve 4–8 mm numune ölçümü; CC/AFP bu kaynaktan değil."
+        },
+        "cc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "afp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "tp": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "DIAT11"
+          ],
+          "note": "Diatomit 2–4 ve 4–8 mm numune ölçümü; CC/AFP bu kaynaktan değil."
+        },
+        "awc": {
+          "class": "MISSING",
+          "sources": [],
+          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+        },
+        "density": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "DIAT11"
+          ],
+          "note": "2–4 ve 4–8 mm diatomit, 0,41 g/cm³."
+        }
+      },
+      "legacy_max_share": 100,
+      "legacy_grade": "C",
+      "reference_profiles": [],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": false,
+        "awc_verified": false
+      },
+      "default_grain_group": "fine",
+      "grain_applicable": true
+    },
+    {
+      "id": "M19",
+      "name": "Turface",
+      "ph": 6.5,
+      "cec": 30,
+      "cc": 46.25,
+      "afp": 27.75,
+      "tp": 74,
+      "awc": null,
+      "grade": "Alan bazlı",
+      "density": 0.593,
+      "kind": "Mineral granül",
+      "min_mm": 2,
+      "max_mm": 5,
+      "note": "Turface MVP referans",
+      "original_url": null,
+      "physical_verified": false,
+      "awc_verified": false,
+      "role": "Denge",
+      "provenance": {
+        "ph": {
+          "class": "TECHNICAL_DATASHEET",
+          "sources": [
+            "TURF"
+          ],
+          "note": "Üreticinin ürün teknik föyü; CC/AFP sütunları üretici föyünden doğrudan alınmadı."
+        },
+        "cec": {
+          "class": "TECHNICAL_DATASHEET",
+          "sources": [
+            "TURF"
+          ],
+          "note": "Üreticinin ürün teknik föyü; CC/AFP sütunları üretici föyünden doğrudan alınmadı."
+        },
+        "cc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "afp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "tp": {
+          "class": "TECHNICAL_DATASHEET",
+          "sources": [
+            "TURF"
+          ],
+          "note": "Üreticinin ürün teknik föyü; CC/AFP sütunları üretici föyünden doğrudan alınmadı."
+        },
+        "awc": {
+          "class": "MISSING",
+          "sources": [],
+          "note": "V13 dosyasında ölçüm yok; otomatik olarak doldurulmadı."
+        },
+        "density": {
+          "class": "TECHNICAL_DATASHEET",
+          "sources": [
+            "TURF"
+          ],
+          "note": "Üreticinin bildirdiği 593±32 kg/m³; g/cm³ değerine dönüştürüldü."
+        }
+      },
+      "legacy_max_share": 100,
+      "legacy_grade": "C",
+      "reference_profiles": [],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": false,
+        "awc_verified": false
+      },
+      "default_grain_group": "fine",
+      "grain_applicable": true
+    },
+    {
+      "id": "M20",
+      "name": "Zeolit (Klinoptilolit)",
+      "ph": 7.43,
+      "cec": 125,
+      "cc": 20.55,
+      "afp": 35.96,
+      "tp": 56.51,
+      "awc": 18.47,
+      "grade": "Alan bazlı",
+      "density": 1.02,
+      "kind": "Mineral granül",
+      "min_mm": 4,
+      "max_mm": 7,
+      "note": "Klinoptilolit; ince toz kullanılmamalı",
+      "original_url": "https://doi.org/10.3390/horticulturae12040501",
+      "physical_verified": true,
+      "awc_verified": true,
+      "role": "Denge",
+      "provenance": {
+        "ph": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Kaynak numunesinin 1:5 su ekstraktı pH değeri. Kullanıcının ürün/karışım pH ölçümü değildir; stok aktarımı ayrıca değerlendirilir."
+        },
+        "cec": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cc": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "afp": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "tp": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "awc": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "density": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "4–7 mm numunenin kuru yığın yoğunluğu."
+        }
+      },
+      "legacy_max_share": 100,
+      "legacy_grade": "A",
+      "reference_profiles": [
+        {
+          "id": "M20_4_7",
+          "min_mm": 4,
+          "max_mm": 7,
+          "cc": 20.55,
+          "afp": 35.96,
+          "tp": 56.51,
+          "awc": 18.47,
+          "density": 1.02,
+          "source_ph": 7.43,
+          "reference_height_cm": 12,
+          "source": "SCH26",
+          "method": "Tablo 2, drenaj sonrası su/hava; AWC maksimum su kapasitesi eksi kalıcı solma noktası.",
+          "note": "Kaynak numunesi; stok grubuna eşleşme aktarılabilirlik göstergesidir, gerçek ürün ölçümü değildir."
+        }
+      ],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": true,
+        "awc_verified": true
+      },
+      "legacy_ph": 7.43,
+      "default_grain_group": "medium",
+      "grain_applicable": true
+    }
+  ],
+  "species": [
+    {
+      "id": "T01",
+      "name": "Ficus microcarpa (Tiger Bark)",
+      "latin": "Ficus microcarpa",
+      "group": "Tropik",
+      "target_cc": 35,
+      "target_afp": 25,
+      "ph_min": 5.5,
+      "ph_max": 7,
+      "care_note": "Tropik; dona maruz bırakma",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "FICUS",
+        "MODEL"
+      ],
+      "outdoor_required": false
+    },
+    {
+      "id": "T02",
+      "name": "Ficus benjamina",
+      "latin": "Ficus benjamina",
+      "group": "Tropik",
+      "target_cc": 36,
+      "target_afp": 25,
+      "ph_min": 5.5,
+      "ph_max": 7,
+      "care_note": "Tropik; ani yer değişiminden kaçın",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "FICUS",
+        "MODEL"
+      ],
+      "outdoor_required": false
+    },
+    {
+      "id": "T03",
+      "name": "Ficus salicaria",
+      "latin": "Ficus salicaria",
+      "group": "Tropik",
+      "target_cc": 35,
+      "target_afp": 26,
+      "ph_min": 5.5,
+      "ph_max": 7,
+      "care_note": "Tropik, yüksek ışık",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "FICUS",
+        "MODEL"
+      ],
+      "outdoor_required": false
+    },
+    {
+      "id": "T04",
+      "name": "Çin karaağacı",
+      "latin": "Ulmus parvifolia",
+      "group": "Ilıman",
+      "target_cc": 34,
+      "target_afp": 25,
+      "ph_min": 5.8,
+      "ph_max": 7.3,
+      "care_note": "Dış ortam tercih edilir; köken ve adaptasyona bağlı aydınlık, korunaklı iç ortam yetiştiriciliği de mümkündür. Kışlama ve ışık koşullarını değerlendir.",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL",
+        "RHS_BONSAI"
+      ],
+      "outdoor_required": false,
+      "outdoor_preferred": true,
+      "indoor_possible": true
+    },
+    {
+      "id": "T05",
+      "name": "Japon karaağacı",
+      "latin": "Zelkova serrata",
+      "group": "Ilıman",
+      "target_cc": 34,
+      "target_afp": 26,
+      "ph_min": 5.7,
+      "ph_max": 7,
+      "care_note": "Dış mekânda kış dormansisi",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL"
+      ],
+      "outdoor_required": true
+    },
+    {
+      "id": "T06",
+      "name": "Japon akçaağacı",
+      "latin": "Acer palmatum",
+      "group": "Ilıman",
+      "target_cc": 38,
+      "target_afp": 24,
+      "ph_min": 5.5,
+      "ph_max": 6.8,
+      "care_note": "Yaz öğle güneşinden koru; kış dormansisi",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL"
+      ],
+      "outdoor_required": true
+    },
+    {
+      "id": "T07",
+      "name": "Üç dişli akçaağaç",
+      "latin": "Acer buergerianum",
+      "group": "Ilıman",
+      "target_cc": 35,
+      "target_afp": 27,
+      "ph_min": 5.8,
+      "ph_max": 7.3,
+      "care_note": "Kış dormansisi",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL"
+      ],
+      "outdoor_required": true
+    },
+    {
+      "id": "T08",
+      "name": "Nana ardıç",
+      "latin": "Juniperus procumbens 'Nana'",
+      "group": "Kozalaklı",
+      "target_cc": 27,
+      "target_afp": 37,
+      "ph_min": 5.6,
+      "ph_max": 7.2,
+      "care_note": "Yıl boyu dış mekân; kuvvetli ışık",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "JUNIPER",
+        "MODEL",
+        "BONSAI_SOIL"
+      ],
+      "outdoor_required": true
+    },
+    {
+      "id": "T09",
+      "name": "Çin ardıcı",
+      "latin": "Juniperus chinensis",
+      "group": "Kozalaklı",
+      "target_cc": 27,
+      "target_afp": 37,
+      "ph_min": 5.6,
+      "ph_max": 7.2,
+      "care_note": "Yıl boyu dış mekân",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL",
+        "BONSAI_SOIL"
+      ],
+      "outdoor_required": true
+    },
+    {
+      "id": "T10",
+      "name": "Japon karaçamı",
+      "latin": "Pinus thunbergii",
+      "group": "Kozalaklı",
+      "target_cc": 25,
+      "target_afp": 39,
+      "ph_min": 5.4,
+      "ph_max": 7,
+      "care_note": "Yıl boyu dış mekân; mikoriza/kök sağlığı",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL",
+        "BONSAI_SOIL"
+      ],
+      "outdoor_required": true
+    },
+    {
+      "id": "T11",
+      "name": "Japon beyazçamı",
+      "latin": "Pinus parviflora",
+      "group": "Kozalaklı",
+      "target_cc": 26,
+      "target_afp": 37,
+      "ph_min": 5.4,
+      "ph_max": 6.8,
+      "care_note": "Yıl boyu dış mekân",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL",
+        "BONSAI_SOIL"
+      ],
+      "outdoor_required": true
+    },
+    {
+      "id": "T12",
+      "name": "Sarıçam",
+      "latin": "Pinus sylvestris",
+      "group": "Kozalaklı",
+      "target_cc": 25,
+      "target_afp": 40,
+      "ph_min": 5.5,
+      "ph_max": 7,
+      "care_note": "Yıl boyu dış mekân",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL",
+        "BONSAI_SOIL"
+      ],
+      "outdoor_required": true
+    },
+    {
+      "id": "T13",
+      "name": "Podocarpus",
+      "latin": "Podocarpus macrophyllus",
+      "group": "Subtropik",
+      "target_cc": 33,
+      "target_afp": 30,
+      "ph_min": 5.3,
+      "ph_max": 6.8,
+      "care_note": "Çok aydınlık; ıslak köke dikkat",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL"
+      ],
+      "outdoor_required": false
+    },
+    {
+      "id": "T14",
+      "name": "Carmona / Fukien tea",
+      "latin": "Ehretia microphylla",
+      "group": "Tropik",
+      "target_cc": 38,
+      "target_afp": 26,
+      "ph_min": 5.5,
+      "ph_max": 6.8,
+      "care_note": "Tropik; nem kararlılığı",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL"
+      ],
+      "outdoor_required": false
+    },
+    {
+      "id": "T15",
+      "name": "Sageretia",
+      "latin": "Sageretia thea",
+      "group": "Subtropik",
+      "target_cc": 37,
+      "target_afp": 25,
+      "ph_min": 5.5,
+      "ph_max": 7,
+      "care_note": "Don ve kuraklık stresinden koru",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL"
+      ],
+      "outdoor_required": false
+    },
+    {
+      "id": "T16",
+      "name": "Serissa",
+      "latin": "Serissa japonica",
+      "group": "Subtropik",
+      "target_cc": 38,
+      "target_afp": 26,
+      "ph_min": 5.5,
+      "ph_max": 6.8,
+      "care_note": "Kök neminde ani değişime duyarlı",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL"
+      ],
+      "outdoor_required": false
+    },
+    {
+      "id": "T17",
+      "name": "Harland şimşir",
+      "latin": "Buxus harlandii",
+      "group": "Subtropik",
+      "target_cc": 33,
+      "target_afp": 30,
+      "ph_min": 6,
+      "ph_max": 7.5,
+      "care_note": "Havalanma ve parlak ışık",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL"
+      ],
+      "outdoor_required": false
+    },
+    {
+      "id": "T18",
+      "name": "Adi şimşir",
+      "latin": "Buxus sempervirens",
+      "group": "Ilıman",
+      "target_cc": 32,
+      "target_afp": 29,
+      "ph_min": 6,
+      "ph_max": 7.5,
+      "care_note": "Dış mekân kış döngüsü",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL"
+      ],
+      "outdoor_required": true
+    },
+    {
+      "id": "T19",
+      "name": "Portulacaria afra",
+      "latin": "Portulacaria afra",
+      "group": "Sukulent",
+      "target_cc": 21,
+      "target_afp": 40,
+      "ph_min": 5.8,
+      "ph_max": 7.5,
+      "care_note": "Kökler uzun süre ıslak kalmamalı",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL"
+      ],
+      "outdoor_required": false
+    },
+    {
+      "id": "T20",
+      "name": "Crassula ovata",
+      "latin": "Crassula ovata",
+      "group": "Sukulent",
+      "target_cc": 20,
+      "target_afp": 42,
+      "ph_min": 5.8,
+      "ph_max": 7.5,
+      "care_note": "Az su; havalanma öncelikli",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL"
+      ],
+      "outdoor_required": false
+    },
+    {
+      "id": "T21",
+      "name": "Zeytin",
+      "latin": "Olea europaea",
+      "group": "Akdeniz",
+      "target_cc": 27,
+      "target_afp": 37,
+      "ph_min": 6,
+      "ph_max": 7.8,
+      "care_note": "Yüksek ışık; kışın serinlik",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL"
+      ],
+      "outdoor_required": true
+    },
+    {
+      "id": "T22",
+      "name": "Mersin / Murt",
+      "latin": "Myrtus communis",
+      "group": "Akdeniz",
+      "target_cc": 31,
+      "target_afp": 34,
+      "ph_min": 5.5,
+      "ph_max": 7.3,
+      "care_note": "Yüksek ışık; küçük saksıda kurutma riski",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL"
+      ],
+      "outdoor_required": true
+    },
+    {
+      "id": "T23",
+      "name": "Sakız ağacı",
+      "latin": "Pistacia lentiscus",
+      "group": "Akdeniz",
+      "target_cc": 27,
+      "target_afp": 38,
+      "ph_min": 6,
+      "ph_max": 8,
+      "care_note": "Güneş; aşırı ıslaklık riski",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL"
+      ],
+      "outdoor_required": true
+    },
+    {
+      "id": "T24",
+      "name": "Nar",
+      "latin": "Punica granatum",
+      "group": "Akdeniz",
+      "target_cc": 33,
+      "target_afp": 29,
+      "ph_min": 5.8,
+      "ph_max": 7.5,
+      "care_note": "Mevsimsel ritim/dış mekân",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL"
+      ],
+      "outdoor_required": true
+    },
+    {
+      "id": "T25",
+      "name": "Ateş dikeni",
+      "latin": "Pyracantha coccinea",
+      "group": "Ilıman",
+      "target_cc": 33,
+      "target_afp": 29,
+      "ph_min": 5.8,
+      "ph_max": 7.5,
+      "care_note": "Dış mekân; meyve döneminde susuz bırakma",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL"
+      ],
+      "outdoor_required": true
+    },
+    {
+      "id": "T26",
+      "name": "Cotoneaster",
+      "latin": "Cotoneaster horizontalis",
+      "group": "Ilıman",
+      "target_cc": 32,
+      "target_afp": 30,
+      "ph_min": 5.8,
+      "ph_max": 7.5,
+      "care_note": "Dış mekân; mevsimsel dinlenme",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL"
+      ],
+      "outdoor_required": true
+    },
+    {
+      "id": "T27",
+      "name": "Begonvil",
+      "latin": "Bougainvillea glabra",
+      "group": "Subtropik",
+      "target_cc": 28,
+      "target_afp": 35,
+      "ph_min": 5.5,
+      "ph_max": 7,
+      "care_note": "Güneş; çiçek döneminde hafif kuruma",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL"
+      ],
+      "outdoor_required": false
+    },
+    {
+      "id": "T28",
+      "name": "Kurtbağrı",
+      "latin": "Ligustrum obtusifolium",
+      "group": "Ilıman",
+      "target_cc": 33,
+      "target_afp": 28,
+      "ph_min": 5.8,
+      "ph_max": 7.5,
+      "care_note": "Dış mekân tercih edilir",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL"
+      ],
+      "outdoor_required": true
+    },
+    {
+      "id": "T29",
+      "name": "Japon çobanpüskülü",
+      "latin": "Ilex crenata",
+      "group": "Ilıman",
+      "target_cc": 36,
+      "target_afp": 26,
+      "ph_min": 5,
+      "ph_max": 6.7,
+      "care_note": "Hafif asidik ortam tercih edilir",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL"
+      ],
+      "outdoor_required": true
+    },
+    {
+      "id": "T30",
+      "name": "Satsuki açelya",
+      "latin": "Rhododendron indicum",
+      "group": "Asidik",
+      "target_cc": 41,
+      "target_afp": 24,
+      "ph_min": 4.3,
+      "ph_max": 5.5,
+      "care_note": "Asit seven; Kanuma/torf uygun",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "AZALEA",
+        "MODEL"
+      ],
+      "outdoor_required": true
+    },
+    {
+      "id": "T31",
+      "name": "Kurume açelya",
+      "latin": "Rhododendron obtusum",
+      "group": "Asidik",
+      "target_cc": 41,
+      "target_afp": 24,
+      "ph_min": 4.3,
+      "ph_max": 5.5,
+      "care_note": "Asit seven; Kanuma/torf uygun",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "AZALEA",
+        "MODEL"
+      ],
+      "outdoor_required": true
+    },
+    {
+      "id": "T32",
+      "name": "Yaban mersini (Sunshine Blue)",
+      "latin": "Vaccinium corymbosum",
+      "group": "Asidik",
+      "target_cc": 42,
+      "target_afp": 23,
+      "ph_min": 4.3,
+      "ph_max": 5.5,
+      "care_note": "Asidik substrat ve düşük alkalinite önemli",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BLUEBERRY",
+        "BONSAI",
+        "MODEL"
+      ],
+      "outdoor_required": true
+    },
+    {
+      "id": "T33",
+      "name": "Süs elması",
+      "latin": "Malus spp.",
+      "group": "Ilıman",
+      "target_cc": 36,
+      "target_afp": 25,
+      "ph_min": 5.7,
+      "ph_max": 7.1,
+      "care_note": "Kış dormansisi; çiçek/meyve döneminde nem",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL"
+      ],
+      "outdoor_required": true
+    },
+    {
+      "id": "T34",
+      "name": "Japon eriği",
+      "latin": "Prunus mume",
+      "group": "Ilıman",
+      "target_cc": 33,
+      "target_afp": 28,
+      "ph_min": 5.6,
+      "ph_max": 7.1,
+      "care_note": "Kış dormansisi",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL"
+      ],
+      "outdoor_required": true
+    },
+    {
+      "id": "T35",
+      "name": "Ginkgo",
+      "latin": "Ginkgo biloba",
+      "group": "Ilıman",
+      "target_cc": 32,
+      "target_afp": 30,
+      "ph_min": 5.6,
+      "ph_max": 7.4,
+      "care_note": "Dış mekân, kış dormansisi",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL"
+      ],
+      "outdoor_required": true
+    },
+    {
+      "id": "T36",
+      "name": "Japon kayını",
+      "latin": "Fagus crenata",
+      "group": "Ilıman",
+      "target_cc": 38,
+      "target_afp": 24,
+      "ph_min": 5.4,
+      "ph_max": 6.9,
+      "care_note": "Dış mekân; kök kurumasından kaçın",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL"
+      ],
+      "outdoor_required": true
+    },
+    {
+      "id": "T37",
+      "name": "Gürgen",
+      "latin": "Carpinus betulus",
+      "group": "Ilıman",
+      "target_cc": 35,
+      "target_afp": 26,
+      "ph_min": 5.8,
+      "ph_max": 7.3,
+      "care_note": "Dış mekân; kış dormansisi",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL"
+      ],
+      "outdoor_required": true
+    },
+    {
+      "id": "T38",
+      "name": "Japon porsuğu",
+      "latin": "Taxus cuspidata",
+      "group": "Kozalaklı",
+      "target_cc": 33,
+      "target_afp": 30,
+      "ph_min": 5.8,
+      "ph_max": 7.4,
+      "care_note": "Dış mekân; serin kök bölgesi",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL",
+        "BONSAI_SOIL"
+      ],
+      "outdoor_required": true
+    },
+    {
+      "id": "T39",
+      "name": "Avrupa ladini",
+      "latin": "Picea abies",
+      "group": "Kozalaklı",
+      "target_cc": 35,
+      "target_afp": 30,
+      "ph_min": 5.1,
+      "ph_max": 6.8,
+      "care_note": "Yaz sıcaklarına dikkat; dış mekân",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL",
+        "BONSAI_SOIL"
+      ],
+      "outdoor_required": true
+    },
+    {
+      "id": "T40",
+      "name": "Japon biberi / Zanthoxylum",
+      "latin": "Zanthoxylum piperitum",
+      "group": "Ilıman",
+      "target_cc": 34,
+      "target_afp": 28,
+      "ph_min": 5.5,
+      "ph_max": 7.2,
+      "care_note": "Serin dönem/dinlenme gereksinimi",
+      "target_source_class": "DESIGN_TARGET_NOT_MEASURED",
+      "source_ids": [
+        "BONSAI",
+        "MODEL"
+      ],
+      "outdoor_required": true
+    }
+  ],
+  "sources": [
+    {
+      "id": "JPN82",
+      "title": "Kojima, Sato & Maruyama (1982) — Potting material physical and chemical properties",
+      "type": "Hakemli araştırma",
+      "url": "https://www.jstage.jst.go.jp/article/dojo/53/1/53_KJ00001687356/_pdf",
+      "note": "Akadama, Kanuma, Kiryu: tane sınıfı, pH, CEC ve hacim/kütle verileri. Her fiziksel değer için otomatik kanıt değildir."
+    },
+    {
+      "id": "SCH26",
+      "title": "Schabauer ve ark. (2026) — Water Retention and Evaporation Dynamics of Mineral Growing Media",
+      "type": "Hakemli araştırma",
+      "url": "https://www.mdpi.com/2311-7524/12/4/501",
+      "note": "Pomza, lav/scoria, perlit, vermikülit, zeolit, tuğla kırığı: belirli numunelerin CC/AFP/TP/AWC ölçümleri."
+    },
+    {
+      "id": "CAR15",
+      "title": "Carlile ve ark. (2015) — Organic Growing Media: Constituents and Properties",
+      "type": "Hakemli derleme",
+      "url": "https://acsess.onlinelibrary.wiley.com/doi/full/10.2136/vzj2014.09.0125",
+      "note": "Torf, kokopit, çam kabuğu gibi bileşenlerin CEC/pH aralıkları, fiziksel özellik değişkenliği."
+    },
+    {
+      "id": "TURF",
+      "title": "Profile Products — Turface MVP teknik föyü",
+      "type": "Üretici teknik belgesi",
+      "url": "https://www.turface.com/sites/default/files/_media/resource/turface_mvp_data_sheet_3.20.17.pdf",
+      "note": "TP %74, CEC 30±5, pH 6,5±1; kapiler/nokapiler gözenekler doğrudan CC/AFP olarak alınmamalıdır."
+    },
+    {
+      "id": "RHIE17",
+      "title": "Rhie & Kim (2017) — Coir dust and perlite mixes",
+      "type": "Hakemli araştırma",
+      "url": "https://journals.ashs.org/downloadpdf/view/journals/hortsci/52/1/article-p162.pdf",
+      "note": "Karışımda su/hava özelliklerinin doğrusal ortalamadan sapabildiğini gösteren deney."
+    },
+    {
+      "id": "FAO56",
+      "title": "FAO Irrigation and Drainage Paper 56 — Meteorolojik veriler",
+      "type": "Uluslararası teknik referans",
+      "url": "https://www.fao.org/4/X0490E/x0490e07.htm",
+      "note": "V13/V16 tarihsel VPD bağıntısının kaynağı. V17 genel iklim bantlarında VPD hesabı yapılmaz; bu kaynak yeni bantların doğrulaması değildir."
+    },
+    {
+      "id": "IOWA",
+      "title": "Iowa State Extension — Potting media components and handling",
+      "type": "Üniversite rehberi",
+      "url": "https://yardandgarden.extension.iastate.edu/article/2025/03/potting-media-components-and-handling",
+      "note": "Saksı yüksekliği, fiziksel ortam davranışı, malzeme seçimi."
+    },
+    {
+      "id": "UCANR",
+      "title": "University of California ANR — Water and air porosity",
+      "type": "Üniversite rehberi",
+      "url": "https://ucanr.edu/blog/nursery-and-flower-grower/article/soil-mixes-part-2-water-and-air-porosity",
+      "note": "CC, AFP, gözeneklilik tanımları."
+    },
+    {
+      "id": "BONSAI",
+      "title": "Bonsai Empire — Tree species care library",
+      "type": "Bonsai yetiştiriciliği rehberi",
+      "url": "https://www.bonsaiempire.com/tree-species",
+      "note": "Tür bazında genel bakım; uygulamadaki sayısal CC/AFP hedefleri yayın değerleri değil."
+    },
+    {
+      "id": "AZALEA",
+      "title": "Bonsai Empire — Azalea bonsai",
+      "type": "Tür rehberi",
+      "url": "https://www.bonsaiempire.com/tree-species/azalea",
+      "note": "Asidik ortam/Kanuma ve düşük alkaliniteli su gereksinimi."
+    },
+    {
+      "id": "JUNIPER",
+      "title": "Bonsai Empire — Juniper bonsai",
+      "type": "Tür rehberi",
+      "url": "https://www.bonsaiempire.com/tree-species/juniper",
+      "note": "Dış ortam ve suyun kökleri uzun süre doygun bırakmaması."
+    },
+    {
+      "id": "FICUS",
+      "title": "Bonsai Empire — Ficus bonsai",
+      "type": "Tür rehberi",
+      "url": "https://www.bonsaiempire.com/tree-species/ficus",
+      "note": "Tropik ficus bakım ve sulama genel yaklaşımı."
+    },
+    {
+      "id": "DIAT11",
+      "title": "Angin, Kose & Aslantas (2011) — Effect of diatomite on growth of strawberry",
+      "type": "Hakemli araştırma",
+      "url": "https://www.pakbs.org/pjbot/papers/1751921555.pdf",
+      "note": "2–4/4–8 mm diatomit; pH 8,55, CEC 22,21, TP %81,45 ve yığın yoğunluğu 0,41 g/cm³. CC/AFP sayıları bu yayından alınmadı."
+    },
+    {
+      "id": "V13",
+      "title": "Substrat Hesaplayıcı V13 — önceki çalışma kayıtları",
+      "type": "İç kaynak / Excel",
+      "url": null,
+      "note": "Orijinal V13 dosyası bu pakete eklenmiştir. Bağımsız ölçüm kanıtı bulunmayan sayılar aynen korunmuş ve tahmin işaretlenmiştir."
+    },
+    {
+      "id": "MODEL",
+      "title": "V13/V14 tasarım kuralları ve karar puanları",
+      "type": "Hesaplama varsayımı",
+      "url": null,
+      "note": "40 tür için CC/AFP hedefleri, karışım seçme puanları, iklim/kap/tane düzeltmeleri deneysel optimum değildir."
+    },
+    {
+      "id": "V17_RULES",
+      "title": "BonsaiLAB V17 tasarım kabulleri ve sonlu arama alanı",
+      "type": "İç model kaydı",
+      "url": null,
+      "note": "İklim/mevsim kurutma baskısı bantları, tür hedefleri, sınırlar ve puanlar ölçülmüş optimum değildir. 1–4 bileşen ve yüzde 5 adımlardaki bütün düzen-geçerli adaylar aranır."
+    },
+    {
+      "id": "BLUEBERRY",
+      "title": "Oregon State University - Growing blueberries in your home garden",
+      "type": "Üniversite yetiştirme rehberi",
+      "url": "https://extension.oregonstate.edu/catalog/ec-1304-growing-blueberries-your-home-garden",
+      "note": "Asitlik, sulama ve ortam gereksinimi; V17 CC/AFP yüzdelerinin deneysel doğrulaması değildir."
+    },
+    {
+      "id": "BONSAI_SOIL",
+      "title": "Bonsai Empire - Bonsai soil, recommended substrate mixtures",
+      "type": "Yetiştiricilik rehberi",
+      "url": "https://www.bonsaiempire.com/basics/bonsai-care/bonsai-soil",
+      "note": "Kozalaklı karışımlarında Akadama/pomza/lav temel yaklaşımı ve koşula uyarlama. V18 sayısal üst sınırlarını deneysel olarak doğrulamaz."
+    },
+    {
+      "id": "BOON_SOIL",
+      "title": "Bonsai Empire - To Akadama, or not to Akadama? / yetiştiricilerin kendi uygulamaları",
+      "type": "Birincil yetiştirici beyanları",
+      "url": "https://www.bonsaiempire.com/blog/akadama-soil",
+      "note": "Bonsai Boon: granüler karışım ve iklime göre değişen ince sfagnum üst kaplaması. Uzun lifli sfagnum ile torf ayrılır; evrensel yasak/optimum iddiası değildir."
+    },
+    {
+      "id": "V18_RULES",
+      "title": "BonsaiLAB V18 kullanım rolü, dane uygunluğu ve iki yönlü hedef puanı",
+      "type": "İç model kaydı",
+      "url": null,
+      "note": "Uzun süreli bonsai saksısı için iç tasarım kuralları. Perlit havalandırma katkısıdır; ana granüler iskelet sayılmaz. Çam/kozalaklılarda sfagnum standart reçeteye otomatik eklenmez. Sayısal sınırlar deneysel optimum değildir."
+    },
+    {
+      "id": "V20_RULES",
+      "title": "BonsaiLAB V20 kolay temin alternatifi ve kabuk dane seçimi",
+      "type": "İç model kaydı",
+      "url": null,
+      "note": "Bu dört malzemeyi dışlar; diğerleri yalnız kullanıcı stokta Var işaretlediyse kullanılır. Ülke kökeni veya anlık piyasa stok araştırması değildir. Kabuk organik pay sınırını korur; dane uygunluğu mineral taneler gibi iç model puanıdır. Kabuk için fraksiyona özgü CC/AFP uydurulmaz."
+    },
+    {
+      "id": "BARK_PSD",
+      "title": "NC State: ticari çam kabuklarının fiziksel ve hidrolik özellikleri",
+      "type": "Araştırma makalesi",
+      "url": "https://woodsubstrates.cals.ncsu.edu/wp-content/uploads/sites/147/2020/02/phys-hydro-prop-comm-pine-bark.pdf",
+      "note": "Kabuk parçacık dağılımının su/hava davranışıyla ilişkisini destekler; uygulamadaki 2–5/4–8/8–12 mm grupların sayısal CC/AFP değerlerinin kaynağı değildir."
+    },
+    {
+      "id": "V21_RULES",
+      "title": "BonsaiLAB V21 fiyatlandırmasız tasarım ve teknik denetim",
+      "type": "İç model kaydı",
+      "url": null,
+      "note": "Fiyat girdisi ve maliyet hedefi kaldırıldı. Sonlu arama sınırları tek kural tablosundan okunur. Dane önerisinin ayrı senaryoda kalan kısıtları açıklanır."
+    },
+    {
+      "id": "LONDRA18",
+      "title": "Londra, Paraskevopoulou & Psychogiou (2018) — peat/coir/perlite hydraulic curves",
+      "type": "Hakemli araştırma",
+      "url": "https://doi.org/10.3390/w10060722",
+      "note": "Tablo 3: 0/25/50 hacim % perlit içeren torf ve kokopit eğrileri. H cm, alpha cm^-1. pH dolomitle ayarlı; kimyasal pH kalibrasyonu olarak kullanılmaz."
+    },
+    {
+      "id": "GABRIEL09",
+      "title": "Gabriel, Altland & Owen (2009) — peat/pumice in Douglas fir bark",
+      "type": "Hakemli araştırma",
+      "url": "https://doi.org/10.21273/HORTSCI.44.3.874",
+      "note": "Tablo 2: dokuz log-lojistik eğri; torf ve pomza ayrı ayrı %0/15/30, kalan kabuk. Kolon eğrisi ile porometre değerleri aynı ölçüm değildir."
+    },
+    {
+      "id": "ALTLAND10",
+      "title": "Altland, Owen & Fonteno (2010) — low-tension moisture characteristic curves",
+      "type": "Hakemli araştırma",
+      "url": "https://doi.org/10.21273/JASHS.135.6.563",
+      "note": "Basınç yüksekliği ve su tutma eğrisi; yöntem ve paketlenme farklılıkları. Genel optimum veya tüm karışımlara ortak katsayı vermez."
+    },
+    {
+      "id": "FIELDS14",
+      "title": "Fields ve ark. (2014) — container geometry and peat/perlite mixes",
+      "type": "Hakemli araştırma",
+      "url": "https://doi.org/10.21273/HORTSCI.49.6.827",
+      "note": "Eğriyi kap geometrisiyle bütünleştirme yaklaşımı; ince perlitin havalanması iri perlitten farklı olabilir."
+    },
+    {
+      "id": "PH_BUFFER21",
+      "title": "Xu, Mohamed, Li, Lu, Yu & Jiang (2021) — buffering capacity of soilless substrates",
+      "type": "Hakemli araştırma",
+      "url": "https://doi.org/10.3389/fpls.2021.644229",
+      "note": "pH tamponlama titrasyonla değerlendirilir; CEC veya pH ortalaması aynı büyüklük değildir."
+    },
+    {
+      "id": "V23_RULES",
+      "title": "BonsaiLAB V23 eğri, interpolasyon ve sayısal tamamlama modeli",
+      "type": "İç model kaydı",
+      "url": null,
+      "note": "Eksik özelliklerde ve kimyasal tamponlamada açık iç model önkabulleri kullanılır. Katsayılar ürün ölçümü veya yayından alınmış titrasyon verisi değildir. Aralıklar tasarım duyarlılığıdır; istatistiksel güven aralığı değildir."
+    },
+    {
+      "id": "EST23",
+      "title": "BonsaiLAB V23 — eksik değer tahmin önkabulleri",
+      "type": "İç model varsayımı",
+      "url": null,
+      "note": "Eksik özelliklerde ve kimyasal tamponlamada açık iç model önkabulleri kullanılır. Katsayılar ürün ölçümü veya yayından alınmış titrasyon verisi değildir. Aralıklar tasarım duyarlılığıdır; istatistiksel güven aralığı değildir."
+    },
+    {
+      "id": "RHS_BONSAI",
+      "title": "RHS — Bonsai / Indoor bonsai",
+      "type": "Bahçıvanlık kurumu rehberi",
+      "url": "https://www.rhs.org.uk/plants/types/trees/bonsai",
+      "note": "Çin karaağacı için korunaklı aydınlık iç ortam yetiştiriciliği de listelenir; bütün evlerin uygunluğu anlamına gelmez."
+    },
+    {
+      "id": "V24_RULES",
+      "title": "BonsaiLAB V24 sürekli model köprüsü ve tür uyumu",
+      "type": "İç model kaydı",
+      "url": null,
+      "note": "Her uygun alt model tüm reçeteyi ayrı hesaplar. Tahminler organik × katkı hacim desteğine göre ağırlıklı ortalanır; örtüşen malzeme payları toplanmaz. Kaynak numunesinden stok ailesine aktarım ölçülmüş stok değildir. Ölçüm aralığında kaynak düğümleri arasında interpolasyon; aralık dışında saf bileşen uç noktalarına sınırlı konveks köprü tahmini. Köprü bölgesi ayrı etiketlidir; yayımlanmış deney sayılmaz. Oran sınırında sıçrama yoktur."
+    },
+    {
+      "id": "V25_RULES",
+      "title": "BonsaiLAB V25 — pH tercih bandına göre reçete seçimi",
+      "type": "İç model kaydı",
+      "url": null,
+      "note": "Sayısal pH tahmini tercih bandına göre reçete seçiminde kullanılır. Uygun aday yoksa en yakın tahmin verilir; bu deneysel kimyasal doğrulama değildir."
+    },
+    {
+      "id": "V26_RULES",
+      "title": "BonsaiLAB V26 — kütle korunumu, yüksek emiş suyu ve tutarlı rapor",
+      "type": "İç model kaydı",
+      "url": null,
+      "note": "Oranlar ve malzeme ml miktarları karıştırma öncesi gevşek girdi hacimleridir. Kuru kütle bileşen yoğunluğu × girdi hacmi ile korunur. Kaynak karışım yoğunluğundan son hacim = kuru kütle / karışım yoğunluğu senaryosu hesaplanır. Bu ölçülmüş büzülme değildir; numune, paketlenme ve yöntem farklarını da içerir. Su ml tahminleri bu son hacim senaryosuna bağlıdır."
+    },
+    {
+      "id": "YEAR27",
+      "title": "BonsaiLAB V27 — yıl boyu tek reçete tasarımı",
+      "type": "İç model kaydı",
+      "url": null,
+      "note": "Sıcak, geçiş ve serin dönem bantları birlikte kullanılır. CC üst hedefinin ve AFP üst hedefinin ayrı ayrı mevsimsel maksimumları optimizasyona girer; ortalama mevsim kullanılmaz. Her reçetede üç mevsim hedef kontrolü gösterilir. Işık/rüzgâr/sulama/saksı katsayıları tasarım önkabulleridir; deneysel bonsai oran katsayısı değildir. Yönün genel dayanağı: https://www.extension.umd.edu/resource/growing-vegetables-containers-and-salad-tables ; bu kaynak sayısal katsayıları doğrulamaz."
+    }
+  ],
+  "climates": [
+    {
+      "id": "mild",
+      "name": "Ilıman / dengeli",
+      "description": "Mevsime göre değişen orta kurutma baskısı.",
+      "dry_bands": {
+        "warm": [
+          0,
+          0.65
+        ],
+        "shoulder": [
+          -0.25,
+          0.4
+        ],
+        "cool": [
+          -0.5,
+          0.05
+        ]
+      }
+    },
+    {
+      "id": "mediterranean",
+      "name": "Akdeniz / yazları sıcak ve kuru",
+      "description": "Sıcak dönemde su kaybı yüksek; serin dönemde ıslaklık riski artabilir.",
+      "dry_bands": {
+        "warm": [
+          0.45,
+          1.2
+        ],
+        "shoulder": [
+          -0.2,
+          0.55
+        ],
+        "cool": [
+          -0.45,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "continental",
+      "name": "Karasal / yaz-kış farkı belirgin",
+      "description": "Yaz kuruması ve kış donu ayrı değerlendirilir.",
+      "dry_bands": {
+        "warm": [
+          0.3,
+          1.2
+        ],
+        "shoulder": [
+          -0.3,
+          0.45
+        ],
+        "cool": [
+          -0.55,
+          0.05
+        ]
+      }
+    },
+    {
+      "id": "coolhumid",
+      "name": "Nemli ılıman / serin ve yağışlı",
+      "description": "Uzun ıslak kalma ve havalanma yönetimi öne çıkar.",
+      "dry_bands": {
+        "warm": [
+          -0.05,
+          0.6
+        ],
+        "shoulder": [
+          -0.4,
+          0.25
+        ],
+        "cool": [
+          -0.65,
+          0
+        ]
+      }
+    },
+    {
+      "id": "hothumid",
+      "name": "Sıcak ve nemli",
+      "description": "Sıcaklık ile nem birlikte değişir; havalanma ve sulama izlenir.",
+      "dry_bands": {
+        "warm": [
+          0.1,
+          0.75
+        ],
+        "shoulder": [
+          -0.2,
+          0.5
+        ],
+        "cool": [
+          -0.35,
+          0.3
+        ]
+      }
+    }
+  ],
+  "modelling": {
+    "description": "Genel iklim + mevsim bantlarıyla, kaynak aktarılabilirliği ayrı tutulan karar desteği.",
+    "height": "Malzemenin kaynağında kap yüksekliği biliniyorsa o referansla sınırlı sezgisel senaryo; aksi halde referans değer değiştirilmez.",
+    "ph": "Nominal hacim ağırlıklı tarama endeksi; gerçek karışım pH ölçümü değildir.",
+    "mass_cec": "Yoğunluk ve CEC değerleri karşılaştırılabilir fraksiyonlardan geliyorsa kütle ağırlıklı; eksik/uyumsuz durumda hesaplanmaz.",
+    "climate": "Genel iklimin üç mevsim bandı birlikte kullanılır. Sıcak/kuru ucun CC ve serin/nemli ucun AFP üst hedefleri ayrı ayrı gözetilir; ölçülmüş meteoroloji değildir.",
+    "search": "1–4 bileşen ve %5 adımda tam arama; kullanım rolü ve iki yönlü CC/AFP puanı. Yetiştirme optimumu kanıtı değil."
+  },
+  "grain_groups": [
+    {
+      "id": "fine",
+      "name": "İnce · 2–5 mm",
+      "min_mm": 2,
+      "max_mm": 5
+    },
+    {
+      "id": "medium",
+      "name": "Orta · 4–8 mm",
+      "min_mm": 4,
+      "max_mm": 8
+    },
+    {
+      "id": "coarse",
+      "name": "İri · 8–12 mm",
+      "min_mm": 8,
+      "max_mm": 12
+    }
+  ],
+  "seasons": [
+    {
+      "id": "year_round",
+      "name": "Yıl boyu kullanım"
+    }
+  ],
+  "rules": {
+    "source": "V26_RULES",
+    "grid_step": 5,
+    "max_components": 4,
+    "primary_min": {
+      "Asidik": 25,
+      "default": 55,
+      "Kozalaklı": 75
+    },
+    "organic_max": {
+      "Asidik": 75,
+      "Sukulent": 10,
+      "Kozalaklı": 20,
+      "Akdeniz": 35,
+      "default": 45
+    },
+    "addon_max": 15,
+    "acid_min": 25,
+    "shares": {
+      "Akadama": 85,
+      "Kanuma": {
+        "Asidik": 100,
+        "default": 15
+      },
+      "Kiryu": {
+        "Kozalaklı": 60,
+        "default": 40
+      },
+      "Pomza": 100,
+      "Lav taşı": 100,
+      "Perlit": {
+        "Kozalaklı": 20,
+        "Sukulent": 20,
+        "default": 30
+      },
+      "Kiremit irmiği": 35,
+      "Turface": 70,
+      "Volkanik Tüf": 55,
+      "Kum": 25,
+      "Torf": {
+        "Asidik": 70,
+        "default": 40
+      },
+      "Kokopit": {
+        "Tropik": 40,
+        "Subtropik": 40,
+        "default": 30
+      },
+      "Ağaç kabuğu": 40,
+      "Sfagnum moss": {
+        "Kozalaklı": 0,
+        "Sukulent": 0,
+        "Asidik": 20,
+        "default": 10
+      },
+      "Humus": 5,
+      "Leonardit": 0,
+      "Vermikülit": 10,
+      "Zeolit (Klinoptilolit)": 10,
+      "Diatomit": 10,
+      "Saksı toprağı": 20
+    },
+    "note": "Uzun süreli bonsai saksısı için iç tasarım kuralları. Perlit havalandırma katkısıdır; ana granüler iskelet sayılmaz. Çam/kozalaklılarda sfagnum standart reçeteye otomatik eklenmez. Sayısal sınırlar deneysel optimum değildir.",
+    "acceptance": {
+      "min_cc_floor": 12,
+      "max_cc_deficit": 16,
+      "min_afp_floor": 10,
+      "max_afp_deficit": 12,
+      "min_grain_overlap": 0.15,
+      "conditional_grain_overlap": 0.45,
+      "conditional_source_index": 0.5,
+      "conditional_physical_share": 70,
+      "conditional_target_deficit": 2,
+      "note": "İhtiyatlı iç tasarım eşikleri; deneysel yetiştirme kabulü veya güvenlik sınırı değildir."
+    },
+    "grain_suitability": {
+      "small": {
+        "fine": 1,
+        "medium": 0.6,
+        "coarse": 0
+      },
+      "regular_small": {
+        "fine": 1,
+        "medium": 1,
+        "coarse": 0.25
+      },
+      "medium": {
+        "fine": 0.65,
+        "medium": 1,
+        "coarse": 0.75
+      },
+      "large": {
+        "fine": 0.45,
+        "medium": 0.85,
+        "coarse": 1
+      },
+      "note": "İç tasarım uygunluk puanı; geometrik örtüşme veya ölçülmüş başarı olasılığı değildir. 6–12 cm normal saksıda ince ve orta stoklar eşit uygun başlangıç gruplarıdır."
+    },
+    "score": {
+      "cc_excess_tolerance": 4,
+      "afp_excess_tolerance": 4,
+      "cc_excess_weight": 1,
+      "afp_excess_weight": 1.3,
+      "note": "Fiziksel asgari koşullardan sonra tahmini pH bandı uygunluğu önceliklidir; bandın dışında en yakın değer seçilir. Sonra fiziksel koşulluluk ve hedef puanı karşılaştırılır.",
+      "reference_weight": 3
+    },
+    "reference_mix": {
+      "Kozalaklı": {
+        "Akadama": 1,
+        "Pomza": 1,
+        "Lav taşı": 1
+      },
+      "Ilıman": {
+        "Akadama": 2,
+        "Pomza": 1,
+        "Lav taşı": 1
+      }
+    },
+    "reference_note": "BONSAI_SOIL yetiştiricilik rehberindeki başlangıç karışımıyla yumuşak karşılaştırma. Mevcut referans bileşenleri arasında normalize edilir; reçete veya bileşen sayısı zorlanmaz. İç puan ağırlığı deneysel optimum değildir.",
+    "grain_recommendation": {
+      "candidate_groups": "acceptable_grain_groups",
+      "note": "Seçilmiş reçetenin oranları sabit tutulur; saksı/aşamaya uygun gruplarda ayrı senaryo karşılaştırılır. Mevcut stok hesabı değiştirilmez. Karışım paketlenmesini ölçen optimum değildir.",
+      "uniform_sized_group": true
+    },
+    "easy_alternative": {
+      "excluded_materials": [
+        "Akadama",
+        "Kanuma",
+        "Kiryu",
+        "Turface"
+      ],
+      "note": "Bu dört malzemeyi dışlar; diğerleri yalnız kullanıcı stokta Var işaretlediyse kullanılır. Ülke kökeni veya anlık piyasa stok araştırması değildir."
+    },
+    "chemistry_policy": "Sayısal pH tahmini tercih bandına göre reçete seçiminde kullanılır. Uygun aday yoksa en yakın tahmin verilir; bu deneysel kimyasal doğrulama değildir.",
+    "source_note": "V26: V25 pH önceliği korunur; fiziksel aday kümesi boşsa ihlal önceliği açıkça belirtilir. Su/kütle/hacim bazı ayrıştırılır."
+  },
+  "source_workbook": {
+    "filename": "Bonsai_Substrat_Hesaplayici_V13_40Tur_AkilliSecim (1).xlsx",
+    "packaged_filename": "V13_Kaynak_Calisma_Kitabi.xlsx",
+    "sha256": "33b6c59e91f20d558a69b092dd43f18a97dd8eba9979e60c95fff17c397af63f",
+    "role": "20 malzeme ve 40 tür için tarihsel veri temeli; eski seçim formülleri V17 motoru değildir.",
+    "analysis_file": "EXCEL_KARSILASTIRMA.json"
+  },
+  "mixture_science": {
+    "version": 3,
+    "reference_height_cm": 12,
+    "integration": "Mean theta(z), z=0..H; constant-section drained container, hydrostatic equilibrium; Simpson quadrature.",
+    "pure_curves": {
+      "Torf": {
+        "source": "LONDRA18",
+        "curve": {
+          "kind": "vg",
+          "theta_r": 0.14,
+          "theta_s": 0.82,
+          "alpha_cm_inv": 0.05,
+          "n": 1.77
+        },
+        "unavailable_water": 0.1309,
+        "density": 0.081,
+        "auxiliary_property_provenance": {
+          "source": "LONDRA18",
+          "source_url": "https://doi.org/10.3390/w10060722",
+          "table": "Table 4, PDF page 10, row Ps",
+          "unavailable_water_units": "cm3/cm3; published 13.09 vol.% divided by 100",
+          "density_units": "g/cm3 = g/ml",
+          "method": "Nonavailable water at pressure-head magnitude 15000 cm water; density from published Bulk Density column.",
+          "transfer_note": "Sphagnum peat sample from the same source as the hydraulic curve. Source sample pH was dolomite-adjusted. These measurements do not validate user stock or buffered mixture pH."
+        }
+      },
+      "Kokopit": {
+        "source": "LONDRA18",
+        "curve": {
+          "kind": "vg",
+          "theta_r": 0.182,
+          "theta_s": 0.915,
+          "alpha_cm_inv": 0.117,
+          "n": 1.725
+        },
+        "unavailable_water": 0.13,
+        "density": 0.089,
+        "auxiliary_property_provenance": {
+          "source": "LONDRA18",
+          "source_url": "https://doi.org/10.3390/w10060722",
+          "table": "Table 4, PDF page 10, row C",
+          "unavailable_water_units": "cm3/cm3; published 13.00 vol.% divided by 100",
+          "density_units": "g/cm3 = g/ml",
+          "method": "Nonavailable water at pressure-head magnitude 15000 cm water; density from published Bulk Density column.",
+          "transfer_note": "Measured high-suction water, not fitted theta_r and not extrapolation of the low-head VG curve. Stock transfer remains an assumption."
+        }
+      },
+      "Ağaç kabuğu": {
+        "source": "GABRIEL09",
+        "curve": {
+          "kind": "log_logistic",
+          "theta_r": 0.31,
+          "theta_s": 0.8300000000000001,
+          "x0_cm": 7.38,
+          "n": 2.62
+        },
+        "unavailable_water": 0.23,
+        "density": 0.16,
+        "auxiliary_property_provenance": {
+          "source": "GABRIEL09",
+          "source_url": "https://www.sustainablesubstrates.com/uploads/5/2/5/5/5255820/zazirska_et_al._2009.pdf",
+          "table": "Table 3, PDF page 3 / journal page 876, peat 0%, pumice 0%, UAW=23 vol.% and Db=.16 g/cm3",
+          "unavailable_water_units": "cm3/cm3; source volumetric percent divided by 100",
+          "density_units": "g/cm3 = g/ml",
+          "measurement_pressure_MPa": 1.5,
+          "method": "PDF page 2 / journal page 875: water held at suction magnitude 1.5 MPa or greater, determined in 174cm3 cores (3.3cm high x 7.6cm internal diameter), porous ceramic pressure plate extractor. Bulk density from oven-dried material in separate 347cm3 porometer cores.",
+          "transfer_note": "Published aged Douglas-fir bark sample; source column moisture-retention curves used different packing/geometry from UAW/density measurements. Applying UAW and density to the curve family is a labelled sample-family/protocol transfer, not one jointly validated stock experiment. UAW is not the logistic fitted residual theta_r."
+        }
+      }
+    },
+    "binary": [
+      {
+        "id": "PEAT_PERLITE_18",
+        "source": "LONDRA18",
+        "organic": "Torf",
+        "aggregate": "Perlit",
+        "fractions": [
+          0,
+          0.25,
+          0.5
+        ],
+        "curves": [
+          {
+            "kind": "vg",
+            "theta_r": 0.14,
+            "theta_s": 0.82,
+            "alpha_cm_inv": 0.05,
+            "n": 1.77
+          },
+          {
+            "kind": "vg",
+            "theta_r": 0.099,
+            "theta_s": 0.78,
+            "alpha_cm_inv": 0.058,
+            "n": 1.634
+          },
+          {
+            "kind": "vg",
+            "theta_r": 0.088,
+            "theta_s": 0.75,
+            "alpha_cm_inv": 0.076,
+            "n": 1.587
+          }
+        ],
+        "max_grain_group": "medium",
+        "unavailable_water": [
+          0.1309,
+          0.123,
+          0.118
+        ],
+        "bulk_density_g_ml": [
+          0.081,
+          0.1,
+          0.116
+        ],
+        "auxiliary_property_provenance": {
+          "source": "LONDRA18",
+          "source_url": "https://doi.org/10.3390/w10060722",
+          "table": "Table 4, PDF page 10, Ps / Ps75:P25 / Ps50:P50",
+          "axis_order": "perlite volume fraction 0, 0.25, 0.50; same order as fractions and curves",
+          "unavailable_water_units": "cm3/cm3; published 13.09 / 12.30 / 11.80 vol.% divided by 100",
+          "density_units": "g/cm3 = g/ml",
+          "method": "Direct table values. Interpolate properties only inside the same published ratio domain. Do not infer unavailable water from fitted residual theta_r."
+        }
+      },
+      {
+        "id": "COIR_PERLITE_18",
+        "source": "LONDRA18",
+        "organic": "Kokopit",
+        "aggregate": "Perlit",
+        "fractions": [
+          0,
+          0.25,
+          0.5
+        ],
+        "curves": [
+          {
+            "kind": "vg",
+            "theta_r": 0.182,
+            "theta_s": 0.915,
+            "alpha_cm_inv": 0.117,
+            "n": 1.725
+          },
+          {
+            "kind": "vg",
+            "theta_r": 0.121,
+            "theta_s": 0.885,
+            "alpha_cm_inv": 0.145,
+            "n": 1.558
+          },
+          {
+            "kind": "vg",
+            "theta_r": 0,
+            "theta_s": 0.72,
+            "alpha_cm_inv": 0.204,
+            "n": 1.416
+          }
+        ],
+        "max_grain_group": "medium",
+        "unavailable_water": [
+          0.13,
+          0.13,
+          0.12
+        ],
+        "bulk_density_g_ml": [
+          0.089,
+          0.093,
+          0.094
+        ],
+        "auxiliary_property_provenance": {
+          "source": "LONDRA18",
+          "source_url": "https://doi.org/10.3390/w10060722",
+          "table": "Table 4, PDF page 10, C / C75:P25 / C50:P50",
+          "axis_order": "perlite volume fraction 0, 0.25, 0.50; same order as fractions and curves",
+          "unavailable_water_units": "cm3/cm3; published 13.00 / 13.00 / 12.00 vol.% divided by 100",
+          "density_units": "g/cm3 = g/ml",
+          "method": "Direct table values. Source density is that of the prepared mixture, not assumed additive volume. Transfer remains reference-sample estimation."
+        }
+      }
+    ],
+    "ternary": {
+      "id": "BARK_PEAT_PUMICE_09",
+      "source": "GABRIEL09",
+      "materials": [
+        "Ağaç kabuğu",
+        "Torf",
+        "Pomza"
+      ],
+      "axis": [
+        0,
+        0.15,
+        0.3
+      ],
+      "curves": [
+        {
+          "kind": "log_logistic",
+          "theta_r": 0.31,
+          "theta_s": 0.8300000000000001,
+          "x0_cm": 7.38,
+          "n": 2.62
+        },
+        {
+          "kind": "log_logistic",
+          "theta_r": 0.33,
+          "theta_s": 0.8200000000000001,
+          "x0_cm": 7.73,
+          "n": 2.66
+        },
+        {
+          "kind": "log_logistic",
+          "theta_r": 0.31,
+          "theta_s": 0.81,
+          "x0_cm": 6.42,
+          "n": 1.86
+        },
+        {
+          "kind": "log_logistic",
+          "theta_r": 0.32,
+          "theta_s": 0.8500000000000001,
+          "x0_cm": 7.83,
+          "n": 2.2
+        },
+        {
+          "kind": "log_logistic",
+          "theta_r": 0.33,
+          "theta_s": 0.8200000000000001,
+          "x0_cm": 7.76,
+          "n": 2.36
+        },
+        {
+          "kind": "log_logistic",
+          "theta_r": 0.32,
+          "theta_s": 0.8200000000000001,
+          "x0_cm": 7.66,
+          "n": 1.83
+        },
+        {
+          "kind": "log_logistic",
+          "theta_r": 0.31,
+          "theta_s": 0.8500000000000001,
+          "x0_cm": 8.63,
+          "n": 2.04
+        },
+        {
+          "kind": "log_logistic",
+          "theta_r": 0.33,
+          "theta_s": 0.8400000000000001,
+          "x0_cm": 8.76,
+          "n": 1.73
+        },
+        {
+          "kind": "log_logistic",
+          "theta_r": 0.36,
+          "theta_s": 0.8200000000000001,
+          "x0_cm": 9.41,
+          "n": 1.93
+        }
+      ],
+      "max_grain_group": "medium",
+      "bulk_density_g_ml": [
+        0.16,
+        0.22,
+        0.27,
+        0.15,
+        0.2,
+        0.25,
+        0.14,
+        0.18,
+        0.24
+      ],
+      "auxiliary_property_provenance": {
+        "source": "GABRIEL09",
+        "source_url": "https://www.sustainablesubstrates.com/uploads/5/2/5/5/5255820/zazirska_et_al._2009.pdf",
+        "table": "Table 3, PDF page 3 / journal page 876, Db column",
+        "axis_order": "row-major: peat fraction 0 / 0.15 / 0.30; within each row pumice fraction 0 / 0.15 / 0.30; same order as curves",
+        "density_units": "g/cm3 = g/ml",
+        "method": "Direct nine published dry bulk densities, visually checked against Table 3. Density and retention-curve measurements use different packing protocols; retain this as sample-family transfer, not validation of the same experimental column packing.",
+        "unavailable_water_policy": "Kullanılamayan su, unavailable_water dizisindeki dokuz ölçüm ve unavailable_water_provenance kaydıyla sağlanır. Düşük emiş eğrisinin theta_r parametresi PWP yerine kullanılmaz; kaynak eşik ve yöntem farkları ayrı kayıttadır."
+      },
+      "unavailable_water": [
+        0.23,
+        0.23,
+        0.25,
+        0.22,
+        0.21,
+        0.24,
+        0.21,
+        0.22,
+        0.22
+      ],
+      "unavailable_water_provenance": {
+        "source": "GABRIEL09",
+        "source_url": "https://www.sustainablesubstrates.com/uploads/5/2/5/5/5255820/zazirska_et_al._2009.pdf",
+        "table": "Table 3, PDF page 3 / journal page 876, UAW column",
+        "axis_order": "Row-major: peat fractions 0 / .15 / .30; within each row pumice fractions 0 / .15 / .30. Same order as existing curve and density arrays.",
+        "unavailable_water_units": "cm3/cm3. Published UAW percentages: 23,23,25,22,21,24,21,22,22.",
+        "measurement_pressure_MPa": 1.5,
+        "method": "Pressure-plate measured high-suction unavailable water (not low-suction water-buffering capacity and not residual fit parameter). Density/UAW cores and 112cm retention-curve columns have different packing protocols; preserve explicit transfer assumption when combining these measurements.",
+        "visual_evidence": "audit_v25_2026-10-19/science/gabriel_uaw_table3.png",
+        "method_evidence": "audit_v25_2026-10-19/science/gabriel_uaw_method.png"
+      }
+    },
+    "scope_note": "Her uygun alt model tüm reçeteyi ayrı hesaplar. Tahminler organik × katkı hacim desteğine göre ağırlıklı ortalanır; örtüşen malzeme payları toplanmaz. Kaynak numunesinden stok ailesine aktarım ölçülmüş stok değildir.",
+    "chemistry_note": "V23 göreli tamponlama önkabulleriyle sayısal pH tahmini ve duyarlılık aralığı verir; kaynak eğrilerinin dolomitle ayarlı pH değerleri ham karışıma aktarılmaz.",
+    "transfer_grain_policy": "Kaynak tane dağılımı stok aralığıyla birebir eşleşmez. İnce/orta grupta aile analoğu; iri grupta alt karışım interpolasyonu kapalı. Bu eşik iç aktarım kuralıdır, deneyle belirlenmiş sınır değildir.",
+    "mixture_volume_basis": "Oranlar ve malzeme ml miktarları karıştırma öncesi gevşek girdi hacimleridir. Kuru kütle bileşen yoğunluğu × girdi hacmi ile korunur. Kaynak karışım yoğunluğundan son hacim = kuru kütle / karışım yoğunluğu senaryosu hesaplanır. Bu ölçülmüş büzülme değildir; numune, paketlenme ve yöntem farklarını da içerir. Su ml tahminleri bu son hacim senaryosuna bağlıdır.",
+    "exponential_shape_note": "Mineral için tek 12 cm CC + TP + AWC verisi eğri biçimini belirlemez. Üstel aile, 2–50 cm saksı senaryosu için bir varsayımdır; parametre kalibrasyonu bağımsız yükseklik doğrulaması değildir.",
+    "boundary_note": "Ölçüm aralığında kaynak düğümleri arasında interpolasyon; aralık dışında saf bileşen uç noktalarına sınırlı konveks köprü tahmini. Köprü bölgesi ayrı etiketlidir; yayımlanmış deney sayılmaz. Oran sınırında sıçrama yoktur.",
+    "pressure_comparability_note": {
+      "LONDRA18": "Table4 nonavailable water at 15000cm water head, approximately 1.471MPa using standard gravity. The -100cm water head boundary is between buffering/difficultly-available water, not the nonavailable-water threshold.",
+      "GABRIEL09": "Methods UAW at1.5MPa or greater, approximately15295.7cm water head or15000hPa. Do not confuse MPa, kPa, hPa or cm water.",
+      "interpretation": "Both are conventional high-suction unavailable-water endpoints but thresholds differ by about2%. Retain source-specific threshold metadata instead of claiming numerically identical protocols. Model may use a common unavailable-water concept with this explicit approximation. Neither threshold establishes optimal irrigation timing or species-specific wilting onset."
+    }
+  },
+  "numeric_estimation": {
+    "version": 1,
+    "source": "EST23",
+    "density_g_ml": {
+      "Saksı toprağı": 0.35,
+      "Humus": 0.45,
+      "Leonardit": 0.65,
+      "Sfagnum moss": 0.05,
+      "Ağaç kabuğu": 0.16,
+      "Volkanik Tüf": 0.65
+    },
+    "awc_fraction_of_cc": {
+      "Akadama": 0.6,
+      "Kanuma": 0.55,
+      "Kiryu": 0.4,
+      "Saksı toprağı": 0.55,
+      "Humus": 0.5,
+      "Leonardit": 0.4,
+      "Kum": 0.25,
+      "Sfagnum moss": 0.65,
+      "Ağaç kabuğu": 0.45,
+      "Volkanik Tüf": 0.45,
+      "Diatomit": 0.5,
+      "Turface": 0.55
+    },
+    "relative_buffer_per_volume": {
+      "Akadama": 2.0,
+      "Kanuma": 2.0,
+      "Kiryu": 1.0,
+      "Pomza": 0.3,
+      "Lav taşı": 0.3,
+      "Kiremit irmiği": 0.35,
+      "Saksı toprağı": 3.0,
+      "Humus": 6.0,
+      "Leonardit": 8.0,
+      "Torf": 4.0,
+      "Kum": 0.15,
+      "Perlit": 0.1,
+      "Vermikülit": 3.0,
+      "Sfagnum moss": 3.0,
+      "Kokopit": 2.0,
+      "Ağaç kabuğu": 2.0,
+      "Volkanik Tüf": 1.0,
+      "Diatomit": 1.0,
+      "Turface": 2.0,
+      "Zeolit (Klinoptilolit)": 4.0
+    },
+    "ph_component_half_width": 0.7,
+    "buffer_relative_bounds": [
+      0.5,
+      2.0
+    ],
+    "density_relative_bounds": [
+      0.5,
+      1.5
+    ],
+    "cec_relative_bounds": [
+      0.5,
+      1.5
+    ],
+    "awc_fraction_half_width": 0.2,
+    "note": "Eksik özelliklerde ve kimyasal tamponlamada açık iç model önkabulleri kullanılır. Katsayılar ürün ölçümü veya yayından alınmış titrasyon verisi değildir. Aralıklar tasarım duyarlılığıdır; istatistiksel güven aralığı değildir.",
+    "ph_method": "Yerel doğrusal tamponlama yaklaşımı: sum(hacim payı × göreli tamponlama × bileşen pH)/sum(hacim payı × göreli tamponlama). Göreli tamponlama katsayıları varsayımdır, CEC yerine kullanılmaz; kireç ve sulama suyu etkisi eklenmemiş başlangıç senaryosudur.",
+    "source_auxiliary": {
+      "Torf": {
+        "density": 0.081,
+        "pwp": 13.089999999999998,
+        "source": "LONDRA18"
+      },
+      "Kokopit": {
+        "density": 0.089,
+        "pwp": 13.0,
+        "source": "LONDRA18"
+      },
+      "Ağaç kabuğu": {
+        "density": 0.16,
+        "pwp": 23.0,
+        "source": "GABRIEL09",
+        "note": "pwp uses percentage points, not fraction. Same high-suction source measurement as pure_curves unavailable_water=.23. Metadata transfer remains separate from raw historical material fields."
+      }
+    }
+  },
+  "material_estimates": [
+    {
+      "id": "M01",
+      "name": "Akadama",
+      "ph": 5.95,
+      "cec": 26.62,
+      "cc": 39,
+      "afp": 26,
+      "tp": 65,
+      "awc": 23.4,
+      "grade": "Alan bazlı",
+      "density": 0.47725,
+      "kind": "Mineral granül",
+      "min_mm": 2,
+      "max_mm": 6,
+      "note": "Japon granülü; fizik değerleri sınırlı",
+      "original_url": "https://www.jstage.jst.go.jp/article/dojo/53/1/53_KJ00001687356/_pdf",
+      "physical_verified": false,
+      "awc_verified": false,
+      "role": "Denge",
+      "provenance": {
+        "ph": {
+          "class": "MEASURED_OR_MEAN",
+          "sources": [
+            "JPN82"
+          ],
+          "note": "Japon araştırmasının belirli fraksiyonlarından; temsilî değer/ortalama."
+        },
+        "cec": {
+          "class": "MEASURED_OR_MEAN",
+          "sources": [
+            "JPN82"
+          ],
+          "note": "Japon araştırmasının belirli fraksiyonlarından; temsilî değer/ortalama."
+        },
+        "cc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "afp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "tp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "awc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "EST23"
+          ],
+          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+        },
+        "density": {
+          "class": "MEASURED_OR_MEAN",
+          "sources": [
+            "JPN82"
+          ],
+          "note": "Japon araştırmasının belirli fraksiyonlarından; temsilî değer/ortalama."
+        }
+      },
+      "legacy_max_share": 100,
+      "legacy_grade": "C",
+      "reference_profiles": [],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": false,
+        "awc_verified": false
+      },
+      "chemical_reference": {
+        "min_mm": 3,
+        "max_mm": 6,
+        "source": "JPN82",
+        "note": "Dört iri fraksiyon örneğinin pH/CEC/yoğunluk ortalaması; belirli bir ticari ürün ölçümü değil."
+      },
+      "default_grain_group": "fine",
+      "grain_applicable": true,
+      "numeric_estimation": {
+        "reference_transferred_fields": [],
+        "imputed_fields": [
+          "awc"
+        ],
+        "source": "EST23",
+        "relative_buffer": 2.0
+      }
+    },
+    {
+      "id": "M02",
+      "name": "Kanuma",
+      "ph": 5,
+      "cec": 15,
+      "cc": 47.55,
+      "afp": 36.45,
+      "tp": 84,
+      "awc": 26.1525,
+      "grade": "Alan bazlı",
+      "density": 0.234,
+      "kind": "Mineral granül",
+      "min_mm": 3,
+      "max_mm": 6,
+      "note": "Japon Kanuma; asidik profil",
+      "original_url": "https://www.jstage.jst.go.jp/article/dojo/53/1/53_KJ00001687356/_pdf",
+      "physical_verified": false,
+      "awc_verified": false,
+      "role": "Asit/Su",
+      "provenance": {
+        "ph": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13",
+            "AZALEA"
+          ],
+          "note": "pH 5,0 eski ürün odaklı temsilî değer; tür rehberi kesin pH 5,0 ölçümü vermez."
+        },
+        "cec": {
+          "class": "MEASURED_OR_MEAN",
+          "sources": [
+            "JPN82"
+          ],
+          "note": "Aktif model: farklı fraksiyonlardan CEC, korunmuş bileşen kuru kütleleriyle yaklaşık aktarılır; fraksiyon uyumu ve CEC belirsizliği ayrıca korunur."
+        },
+        "cc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 sayısı korunmuştur. Sayıya bağlı bağımsız makale/tablo ve karşılaştırılabilir numune koşulu kaydı eksik; doğrulanmış literatür sentezi olarak kullanılamaz."
+        },
+        "afp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 sayısı korunmuştur. Sayıya bağlı bağımsız makale/tablo ve karşılaştırılabilir numune koşulu kaydı eksik; doğrulanmış literatür sentezi olarak kullanılamaz."
+        },
+        "tp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 sayısı korunmuştur. Sayıya bağlı bağımsız makale/tablo ve karşılaştırılabilir numune koşulu kaydı eksik; doğrulanmış literatür sentezi olarak kullanılamaz."
+        },
+        "awc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "EST23"
+          ],
+          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+        },
+        "density": {
+          "class": "MEASURED_OR_MEAN",
+          "sources": [
+            "JPN82"
+          ],
+          "note": "Japon araştırmasında belirli granül sınıfı; pH 5,0 ayrıca ürün-tabanlı tasarım kararı."
+        }
+      },
+      "legacy_max_share": 100,
+      "legacy_grade": "B",
+      "reference_profiles": [],
+      "cec_density_compatible": false,
+      "legacy_flags": {
+        "physical_verified": true,
+        "awc_verified": false
+      },
+      "chemical_reference": {
+        "source": "JPN82",
+        "cec_fraction_mm": [
+          1,
+          3
+        ],
+        "density_fraction_mm": [
+          3,
+          6
+        ],
+        "note": "CEC ve yoğunluk farklı numune/fraksiyonlara aittir; aktif model bunları tahmini aktarım olarak kullanır, aynı numunede doğrulanmış ölçüm saymaz."
+      },
+      "default_grain_group": "medium",
+      "grain_applicable": true,
+      "numeric_estimation": {
+        "reference_transferred_fields": [],
+        "imputed_fields": [
+          "awc"
+        ],
+        "source": "EST23",
+        "relative_buffer": 2.0
+      }
+    },
+    {
+      "id": "M03",
+      "name": "Kiryu",
+      "ph": 6.2,
+      "cec": 14.19,
+      "cc": 23.3333,
+      "afp": 26.6667,
+      "tp": 50,
+      "awc": 9.333319999999999,
+      "grade": "Alan bazlı",
+      "density": 0.625,
+      "kind": "Mineral granül",
+      "min_mm": 3,
+      "max_mm": 6,
+      "note": "Ürün tane fraksiyonu değişken",
+      "original_url": "https://www.jstage.jst.go.jp/article/dojo/53/1/53_KJ00001687356/_pdf",
+      "physical_verified": false,
+      "awc_verified": false,
+      "role": "Hava",
+      "provenance": {
+        "ph": {
+          "class": "MEASURED_OR_MEAN",
+          "sources": [
+            "JPN82"
+          ],
+          "note": "Japon araştırmasının belirli fraksiyonlarından; temsilî değer/ortalama."
+        },
+        "cec": {
+          "class": "MEASURED_OR_MEAN",
+          "sources": [
+            "JPN82"
+          ],
+          "note": "Aktif model: farklı fraksiyonlardan CEC, korunmuş bileşen kuru kütleleriyle yaklaşık aktarılır; fraksiyon uyumu ve CEC belirsizliği ayrıca korunur."
+        },
+        "cc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "afp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "tp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "awc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "EST23"
+          ],
+          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+        },
+        "density": {
+          "class": "MEASURED_OR_MEAN",
+          "sources": [
+            "JPN82"
+          ],
+          "note": "Japon araştırmasının belirli fraksiyonlarından; temsilî değer/ortalama."
+        }
+      },
+      "legacy_max_share": 100,
+      "legacy_grade": "C",
+      "reference_profiles": [],
+      "cec_density_compatible": false,
+      "legacy_flags": {
+        "physical_verified": false,
+        "awc_verified": false
+      },
+      "chemical_reference": {
+        "source": "JPN82",
+        "cec_fraction_mm": [
+          1,
+          6
+        ],
+        "density_fraction_mm": [
+          3,
+          6
+        ],
+        "note": "CEC ve yoğunluk farklı numune/fraksiyonlara aittir; aktif model bunları tahmini aktarım olarak kullanır, aynı numunede doğrulanmış ölçüm saymaz."
+      },
+      "default_grain_group": "medium",
+      "grain_applicable": true,
+      "numeric_estimation": {
+        "reference_transferred_fields": [],
+        "imputed_fields": [
+          "awc"
+        ],
+        "source": "EST23",
+        "relative_buffer": 1.0
+      }
+    },
+    {
+      "id": "M04",
+      "name": "Pomza",
+      "ph": 7.73,
+      "cec": 2,
+      "cc": 29.86,
+      "afp": 44.33,
+      "tp": 74.19,
+      "awc": 9.52,
+      "grade": "Alan bazlı",
+      "density": 0.53,
+      "kind": "Mineral granül",
+      "min_mm": 4,
+      "max_mm": 8,
+      "note": "4–7 mm ölçümüne yakın",
+      "original_url": "https://doi.org/10.3390/horticulturae12040501",
+      "physical_verified": true,
+      "awc_verified": true,
+      "role": "Hava",
+      "provenance": {
+        "ph": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Kaynak numunesinin 1:5 su ekstraktı pH değeri. Kullanıcının ürün/karışım pH ölçümü değildir; stok aktarımı ayrıca değerlendirilir."
+        },
+        "cec": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cc": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "afp": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "tp": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "awc": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "density": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Kaynak numuneye ait yığın yoğunluğu; marka/parti değişebilir."
+        }
+      },
+      "legacy_max_share": 100,
+      "legacy_grade": "A",
+      "reference_profiles": [
+        {
+          "id": "M04_1_3",
+          "min_mm": 1,
+          "max_mm": 3,
+          "cc": 32.11,
+          "afp": 44.15,
+          "tp": 76.25,
+          "awc": 21.5,
+          "density": 0.48,
+          "source_ph": 7.73,
+          "reference_height_cm": 12,
+          "source": "SCH26",
+          "method": "Tablo 2, drenaj sonrası su/hava; AWC maksimum su kapasitesi eksi kalıcı solma noktası.",
+          "note": "Kaynak numunesi; stok grubuna eşleşme aktarılabilirlik göstergesidir, gerçek ürün ölçümü değildir."
+        },
+        {
+          "id": "M04_4_7",
+          "min_mm": 4,
+          "max_mm": 7,
+          "cc": 29.86,
+          "afp": 44.33,
+          "tp": 74.19,
+          "awc": 9.52,
+          "density": 0.53,
+          "source_ph": 7.73,
+          "reference_height_cm": 12,
+          "source": "SCH26",
+          "method": "Tablo 2, drenaj sonrası su/hava; AWC maksimum su kapasitesi eksi kalıcı solma noktası.",
+          "note": "Kaynak numunesi; stok grubuna eşleşme aktarılabilirlik göstergesidir, gerçek ürün ölçümü değildir."
+        },
+        {
+          "id": "M04_7_14",
+          "min_mm": 7,
+          "max_mm": 14,
+          "cc": 27.64,
+          "afp": 42.7,
+          "tp": 70.34,
+          "awc": 11.62,
+          "density": 0.56,
+          "source_ph": 7.73,
+          "reference_height_cm": 12,
+          "source": "SCH26",
+          "method": "Tablo 2, drenaj sonrası su/hava; AWC maksimum su kapasitesi eksi kalıcı solma noktası.",
+          "note": "Kaynak numunesi; stok grubuna eşleşme aktarılabilirlik göstergesidir, gerçek ürün ölçümü değildir."
+        }
+      ],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": true,
+        "awc_verified": true
+      },
+      "legacy_ph": 7,
+      "default_grain_group": "medium",
+      "grain_applicable": true,
+      "numeric_estimation": {
+        "reference_transferred_fields": [],
+        "imputed_fields": [],
+        "source": "EST23",
+        "relative_buffer": 0.3
+      }
+    },
+    {
+      "id": "M05",
+      "name": "Lav taşı",
+      "ph": 7.47,
+      "cec": 2,
+      "cc": 17.02,
+      "afp": 53.28,
+      "tp": 70.3,
+      "awc": 10.06,
+      "grade": "Alan bazlı",
+      "density": 0.63,
+      "kind": "Mineral granül",
+      "min_mm": 4,
+      "max_mm": 8,
+      "note": "Kırmızı pomza/scoria kimliği kontrol edilmeli",
+      "original_url": "https://doi.org/10.3390/horticulturae12040501",
+      "physical_verified": true,
+      "awc_verified": true,
+      "role": "Hava",
+      "provenance": {
+        "ph": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Kaynak numunesinin 1:5 su ekstraktı pH değeri. Kullanıcının ürün/karışım pH ölçümü değildir; stok aktarımı ayrıca değerlendirilir."
+        },
+        "cec": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cc": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "afp": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "tp": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "awc": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "density": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Kaynak numuneye ait yığın yoğunluğu; marka/parti değişebilir."
+        }
+      },
+      "legacy_max_share": 100,
+      "legacy_grade": "A",
+      "reference_profiles": [
+        {
+          "id": "M05_4_7",
+          "min_mm": 4,
+          "max_mm": 7,
+          "cc": 17.02,
+          "afp": 53.28,
+          "tp": 70.3,
+          "awc": 10.06,
+          "density": 0.63,
+          "source_ph": 7.47,
+          "reference_height_cm": 12,
+          "source": "SCH26",
+          "method": "Tablo 2, drenaj sonrası su/hava; AWC maksimum su kapasitesi eksi kalıcı solma noktası.",
+          "note": "Kaynak numunesi; stok grubuna eşleşme aktarılabilirlik göstergesidir, gerçek ürün ölçümü değildir."
+        }
+      ],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": true,
+        "awc_verified": true
+      },
+      "legacy_ph": 7.2,
+      "default_grain_group": "medium",
+      "grain_applicable": true,
+      "numeric_estimation": {
+        "reference_transferred_fields": [],
+        "imputed_fields": [],
+        "source": "EST23",
+        "relative_buffer": 0.3
+      }
+    },
+    {
+      "id": "M06",
+      "name": "Kiremit irmiği",
+      "ph": 8.57,
+      "cec": 1,
+      "cc": 16.51,
+      "afp": 44.22,
+      "tp": 60.73,
+      "awc": 12.73,
+      "grade": "Alan bazlı",
+      "density": 0.99,
+      "kind": "Mineral granül",
+      "min_mm": 2,
+      "max_mm": 7,
+      "note": "Tuğla kırığıyla tane farkına dikkat",
+      "original_url": "https://doi.org/10.3390/horticulturae12040501",
+      "physical_verified": true,
+      "awc_verified": true,
+      "role": "Hava",
+      "provenance": {
+        "ph": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Kaynak numunesinin 1:5 su ekstraktı pH değeri. Kullanıcının ürün/karışım pH ölçümü değildir; stok aktarımı ayrıca değerlendirilir."
+        },
+        "cec": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cc": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "afp": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "tp": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "awc": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "density": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Kaynak numuneye ait yığın yoğunluğu; marka/parti değişebilir."
+        }
+      },
+      "legacy_max_share": 100,
+      "legacy_grade": "A",
+      "reference_profiles": [
+        {
+          "id": "M06_4_7",
+          "min_mm": 4,
+          "max_mm": 7,
+          "cc": 16.51,
+          "afp": 44.22,
+          "tp": 60.73,
+          "awc": 12.73,
+          "density": 0.99,
+          "source_ph": 8.57,
+          "reference_height_cm": 12,
+          "source": "SCH26",
+          "method": "Tablo 2, drenaj sonrası su/hava; AWC maksimum su kapasitesi eksi kalıcı solma noktası.",
+          "note": "Kaynak numunesi; stok grubuna eşleşme aktarılabilirlik göstergesidir, gerçek ürün ölçümü değildir."
+        }
+      ],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": true,
+        "awc_verified": true
+      },
+      "legacy_ph": 7.2,
+      "default_grain_group": "medium",
+      "grain_applicable": true,
+      "numeric_estimation": {
+        "reference_transferred_fields": [],
+        "imputed_fields": [],
+        "source": "EST23",
+        "relative_buffer": 0.35
+      }
+    },
+    {
+      "id": "M07",
+      "name": "Saksı toprağı",
+      "ph": 6.5,
+      "cec": 20,
+      "cc": 64,
+      "afp": 16,
+      "tp": 80,
+      "awc": 35.2,
+      "grade": "Alan bazlı",
+      "density": 0.35,
+      "kind": "Organik/lifli",
+      "min_mm": null,
+      "max_mm": null,
+      "note": "Bileşim üründen ürüne değişir",
+      "original_url": null,
+      "physical_verified": false,
+      "awc_verified": false,
+      "role": "Organik",
+      "provenance": {
+        "ph": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cec": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "afp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "tp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "awc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "EST23"
+          ],
+          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+        },
+        "density": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "EST23"
+          ],
+          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+        }
+      },
+      "legacy_max_share": 15,
+      "legacy_grade": "C",
+      "reference_profiles": [],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": false,
+        "awc_verified": false
+      },
+      "default_grain_group": "fine",
+      "grain_applicable": false,
+      "numeric_estimation": {
+        "reference_transferred_fields": [],
+        "imputed_fields": [
+          "density",
+          "awc"
+        ],
+        "source": "EST23",
+        "relative_buffer": 3.0
+      }
+    },
+    {
+      "id": "M08",
+      "name": "Humus",
+      "ph": 6.2,
+      "cec": 250,
+      "cc": 74.375,
+      "afp": 10.625,
+      "tp": 85,
+      "awc": 37.1875,
+      "grade": "Alan bazlı",
+      "density": 0.45,
+      "kind": "Organik/lifli",
+      "min_mm": null,
+      "max_mm": null,
+      "note": "Humus türü bilinmiyor",
+      "original_url": null,
+      "physical_verified": false,
+      "awc_verified": false,
+      "role": "Organik",
+      "provenance": {
+        "ph": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cec": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "afp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "tp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "awc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "EST23"
+          ],
+          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+        },
+        "density": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "EST23"
+          ],
+          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+        }
+      },
+      "legacy_max_share": 10,
+      "legacy_grade": "C",
+      "reference_profiles": [],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": false,
+        "awc_verified": false
+      },
+      "default_grain_group": "fine",
+      "grain_applicable": false,
+      "numeric_estimation": {
+        "reference_transferred_fields": [],
+        "imputed_fields": [
+          "density",
+          "awc"
+        ],
+        "source": "EST23",
+        "relative_buffer": 6.0
+      }
+    },
+    {
+      "id": "M09",
+      "name": "Leonardit",
+      "ph": 4,
+      "cec": 350,
+      "cc": 75.5556,
+      "afp": 9.4444,
+      "tp": 85,
+      "awc": 30.22224,
+      "grade": "Alan bazlı",
+      "density": 0.65,
+      "kind": "Katkı",
+      "min_mm": null,
+      "max_mm": null,
+      "note": "Ana granüler bileşen olarak önerilmez",
+      "original_url": null,
+      "physical_verified": false,
+      "awc_verified": false,
+      "role": "Katkı",
+      "provenance": {
+        "ph": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cec": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "afp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "tp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "awc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "EST23"
+          ],
+          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+        },
+        "density": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "EST23"
+          ],
+          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+        }
+      },
+      "legacy_max_share": 0,
+      "legacy_grade": "C",
+      "reference_profiles": [],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": false,
+        "awc_verified": false
+      },
+      "default_grain_group": "fine",
+      "grain_applicable": false,
+      "numeric_estimation": {
+        "reference_transferred_fields": [],
+        "imputed_fields": [
+          "density",
+          "awc"
+        ],
+        "source": "EST23",
+        "relative_buffer": 8.0
+      }
+    },
+    {
+      "id": "M10",
+      "name": "Torf",
+      "ph": 4.5,
+      "cec": 200,
+      "cc": 60.6,
+      "afp": 16.5,
+      "tp": 77.1,
+      "awc": 47.51000000000001,
+      "grade": "Alan bazlı",
+      "density": 0.081,
+      "kind": "Organik/lifli",
+      "min_mm": null,
+      "max_mm": null,
+      "note": "Asidik torf/kireçli torf ayrılmalı",
+      "original_url": null,
+      "physical_verified": false,
+      "awc_verified": false,
+      "role": "Asit/Su",
+      "provenance": {
+        "ph": {
+          "class": "LITERATURE_SYNTHESIS",
+          "sources": [
+            "CAR15"
+          ],
+          "note": "İşlenmemiş asidik torf için yaklaşık referans; kireçli torfta geçerli değil."
+        },
+        "cec": {
+          "class": "LITERATURE_SYNTHESIS",
+          "sources": [
+            "CAR15"
+          ],
+          "note": "Derlemede bildirilen CEC aralığının yaklaşık temsilî merkezi."
+        },
+        "cc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "afp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "tp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "awc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "LONDRA18",
+            "V24_RULES"
+          ],
+          "note": "CC eksi yayındaki ölçülmüş kullanılamayan su; karışıma aktarım tahminidir."
+        },
+        "density": {
+          "class": "MEASURED_OR_MEAN",
+          "sources": [
+            "LONDRA18"
+          ],
+          "note": "Aynı yayın numunesinden malzeme ailesine aktarım; satın alınan stok ölçümü değildir."
+        }
+      },
+      "legacy_max_share": 35,
+      "legacy_grade": "B",
+      "reference_profiles": [],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": true,
+        "awc_verified": false
+      },
+      "default_grain_group": "fine",
+      "grain_applicable": false,
+      "numeric_estimation": {
+        "reference_transferred_fields": [
+          "density"
+        ],
+        "imputed_fields": [
+          "awc"
+        ],
+        "source": "EST23",
+        "relative_buffer": 4.0
+      }
+    },
+    {
+      "id": "M11",
+      "name": "Kum",
+      "ph": 7.5,
+      "cec": 1,
+      "cc": 10,
+      "afp": 20,
+      "tp": 30,
+      "awc": 2.5,
+      "grade": "Alan bazlı",
+      "density": 1.16,
+      "kind": "Mineral granül",
+      "min_mm": 0.5,
+      "max_mm": 2,
+      "note": "Kalkerli / kuvars ayrılmalı",
+      "original_url": "https://www.jstage.jst.go.jp/article/jjfs/98/6/98_265/_pdf/-char/ja",
+      "physical_verified": false,
+      "awc_verified": false,
+      "role": "Hava",
+      "provenance": {
+        "ph": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cec": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "afp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "tp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "awc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "EST23"
+          ],
+          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+        },
+        "density": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        }
+      },
+      "legacy_max_share": 100,
+      "legacy_grade": "C",
+      "reference_profiles": [],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": false,
+        "awc_verified": false
+      },
+      "default_grain_group": "fine",
+      "grain_applicable": true,
+      "numeric_estimation": {
+        "reference_transferred_fields": [],
+        "imputed_fields": [
+          "awc"
+        ],
+        "source": "EST23",
+        "relative_buffer": 0.15
+      }
+    },
+    {
+      "id": "M12",
+      "name": "Perlit",
+      "ph": 8.73,
+      "cec": 3,
+      "cc": 24.23,
+      "afp": 67.27,
+      "tp": 91.5,
+      "awc": 11.79,
+      "grade": "Alan bazlı",
+      "density": 0.1,
+      "kind": "Mineral granül",
+      "min_mm": 2,
+      "max_mm": 7,
+      "note": "Literatür granül referansı",
+      "original_url": "https://doi.org/10.3390/horticulturae12040501",
+      "physical_verified": true,
+      "awc_verified": true,
+      "role": "Hava",
+      "provenance": {
+        "ph": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Kaynak numunesinin 1:5 su ekstraktı pH değeri. Kullanıcının ürün/karışım pH ölçümü değildir; stok aktarımı ayrıca değerlendirilir."
+        },
+        "cec": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cc": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "afp": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "tp": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "awc": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "density": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Kaynak numuneye ait yığın yoğunluğu; marka/parti değişebilir."
+        }
+      },
+      "legacy_max_share": 100,
+      "legacy_grade": "A",
+      "reference_profiles": [
+        {
+          "id": "M12_4_7",
+          "min_mm": 4,
+          "max_mm": 7,
+          "cc": 24.23,
+          "afp": 67.27,
+          "tp": 91.5,
+          "awc": 11.79,
+          "density": 0.1,
+          "source_ph": 8.73,
+          "reference_height_cm": 12,
+          "source": "SCH26",
+          "method": "Tablo 2, drenaj sonrası su/hava; AWC maksimum su kapasitesi eksi kalıcı solma noktası.",
+          "note": "Kaynak numunesi; stok grubuna eşleşme aktarılabilirlik göstergesidir, gerçek ürün ölçümü değildir."
+        }
+      ],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": true,
+        "awc_verified": true
+      },
+      "legacy_ph": 7,
+      "default_grain_group": "medium",
+      "grain_applicable": true,
+      "numeric_estimation": {
+        "reference_transferred_fields": [],
+        "imputed_fields": [],
+        "source": "EST23",
+        "relative_buffer": 0.1
+      }
+    },
+    {
+      "id": "M13",
+      "name": "Vermikülit",
+      "ph": 6.1,
+      "cec": 130,
+      "cc": 46.6,
+      "afp": 48.52,
+      "tp": 95.12,
+      "awc": 21.43,
+      "grade": "Alan bazlı",
+      "density": 0.11,
+      "kind": "Mineral granül",
+      "min_mm": 2,
+      "max_mm": 8,
+      "note": "Granül/lamel davranışı değişken",
+      "original_url": "https://doi.org/10.3390/horticulturae12040501",
+      "physical_verified": true,
+      "awc_verified": true,
+      "role": "Su",
+      "provenance": {
+        "ph": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Kaynak numunesinin 1:5 su ekstraktı pH değeri. Kullanıcının ürün/karışım pH ölçümü değildir; stok aktarımı ayrıca değerlendirilir."
+        },
+        "cec": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cc": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "afp": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "tp": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "awc": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "density": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Kaynak numuneye ait yığın yoğunluğu; marka/parti değişebilir."
+        }
+      },
+      "legacy_max_share": 100,
+      "legacy_grade": "A",
+      "reference_profiles": [
+        {
+          "id": "M13_4_7",
+          "min_mm": 4,
+          "max_mm": 7,
+          "cc": 46.6,
+          "afp": 48.52,
+          "tp": 95.12,
+          "awc": 21.43,
+          "density": 0.11,
+          "source_ph": 6.1,
+          "reference_height_cm": 12,
+          "source": "SCH26",
+          "method": "Tablo 2, drenaj sonrası su/hava; AWC maksimum su kapasitesi eksi kalıcı solma noktası.",
+          "note": "Kaynak numunesi; stok grubuna eşleşme aktarılabilirlik göstergesidir, gerçek ürün ölçümü değildir."
+        }
+      ],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": true,
+        "awc_verified": true
+      },
+      "legacy_ph": 6.1,
+      "default_grain_group": "medium",
+      "grain_applicable": true,
+      "numeric_estimation": {
+        "reference_transferred_fields": [],
+        "imputed_fields": [],
+        "source": "EST23",
+        "relative_buffer": 3.0
+      }
+    },
+    {
+      "id": "M14",
+      "name": "Sfagnum moss",
+      "ph": 4,
+      "cec": 100,
+      "cc": 85,
+      "afp": 10,
+      "tp": 95,
+      "awc": 55.25,
+      "grade": "Alan bazlı",
+      "density": 0.05,
+      "kind": "Organik/lifli",
+      "min_mm": null,
+      "max_mm": null,
+      "note": "Uzun lifli sphagnum",
+      "original_url": null,
+      "physical_verified": false,
+      "awc_verified": false,
+      "role": "Asit/Su",
+      "provenance": {
+        "ph": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cec": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "afp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "tp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "awc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "EST23"
+          ],
+          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+        },
+        "density": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "EST23"
+          ],
+          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+        }
+      },
+      "legacy_max_share": 20,
+      "legacy_grade": "C",
+      "reference_profiles": [],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": false,
+        "awc_verified": false
+      },
+      "default_grain_group": "fine",
+      "grain_applicable": false,
+      "numeric_estimation": {
+        "reference_transferred_fields": [],
+        "imputed_fields": [
+          "density",
+          "awc"
+        ],
+        "source": "EST23",
+        "relative_buffer": 3.0
+      }
+    },
+    {
+      "id": "M15",
+      "name": "Kokopit",
+      "ph": 5.8,
+      "cec": 65,
+      "cc": 78.45,
+      "afp": 11.25,
+      "tp": 89.7,
+      "awc": 65.45,
+      "grade": "Alan bazlı",
+      "density": 0.089,
+      "kind": "Organik/lifli",
+      "min_mm": null,
+      "max_mm": null,
+      "note": "Yıkanmış/tamponlanmış ürün tercih edilmeli",
+      "original_url": null,
+      "physical_verified": false,
+      "awc_verified": false,
+      "role": "Su",
+      "provenance": {
+        "ph": {
+          "class": "LITERATURE_SYNTHESIS",
+          "sources": [
+            "CAR15"
+          ],
+          "note": "Ürün tipine ve yıkamaya bağlı pH tahmini; 5,8 ölçümü doğrudan derlemedeki tek örnek değildir."
+        },
+        "cec": {
+          "class": "LITERATURE_SYNTHESIS",
+          "sources": [
+            "CAR15"
+          ],
+          "note": "Derlemede bildirilen CEC aralığının yaklaşık temsilî merkezi."
+        },
+        "cc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "afp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "tp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "awc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "LONDRA18",
+            "V24_RULES"
+          ],
+          "note": "CC eksi yayındaki ölçülmüş kullanılamayan su; karışıma aktarım tahminidir."
+        },
+        "density": {
+          "class": "MEASURED_OR_MEAN",
+          "sources": [
+            "LONDRA18"
+          ],
+          "note": "Aynı yayın numunesinden malzeme ailesine aktarım; satın alınan stok ölçümü değildir."
+        }
+      },
+      "legacy_max_share": 25,
+      "legacy_grade": "B",
+      "reference_profiles": [],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": true,
+        "awc_verified": false
+      },
+      "default_grain_group": "fine",
+      "grain_applicable": false,
+      "numeric_estimation": {
+        "reference_transferred_fields": [
+          "density"
+        ],
+        "imputed_fields": [
+          "awc"
+        ],
+        "source": "EST23",
+        "relative_buffer": 2.0
+      }
+    },
+    {
+      "id": "M16",
+      "name": "Ağaç kabuğu",
+      "ph": 5.5,
+      "cec": 50,
+      "cc": 51.3,
+      "afp": 26.5,
+      "tp": 77.8,
+      "awc": 28.299999999999997,
+      "grade": "Alan bazlı",
+      "density": 0.16,
+      "kind": "Organik parçacık",
+      "min_mm": null,
+      "max_mm": null,
+      "note": "Parçalanmış çam kabuğu; dane grubu seçilir. Fiziksel değerler V13 varsayımıdır; üç boyut için ayrı ölçüm eğrisi yoktur.",
+      "original_url": null,
+      "physical_verified": false,
+      "awc_verified": false,
+      "role": "Denge",
+      "provenance": {
+        "ph": {
+          "class": "LITERATURE_SYNTHESIS",
+          "sources": [
+            "CAR15"
+          ],
+          "note": "Kompostlanmış kabukların pH aralığı; ağaç türüne bağlı."
+        },
+        "cec": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "afp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "tp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "awc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "GABRIEL09",
+            "V24_RULES"
+          ],
+          "note": "CC eksi yayındaki ölçülmüş kullanılamayan su; karışıma aktarım tahminidir."
+        },
+        "density": {
+          "class": "MEASURED_OR_MEAN",
+          "sources": [
+            "GABRIEL09"
+          ],
+          "note": "Aynı yayın numunesinden malzeme ailesine aktarım; satın alınan stok ölçümü değildir."
+        }
+      },
+      "legacy_max_share": 25,
+      "legacy_grade": "B",
+      "reference_profiles": [],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": true,
+        "awc_verified": false
+      },
+      "default_grain_group": "fine",
+      "grain_applicable": true,
+      "numeric_estimation": {
+        "reference_transferred_fields": [
+          "density"
+        ],
+        "imputed_fields": [
+          "awc"
+        ],
+        "source": "EST23",
+        "relative_buffer": 2.0
+      }
+    },
+    {
+      "id": "M17",
+      "name": "Volkanik Tüf",
+      "ph": 7,
+      "cec": 20,
+      "cc": 43.75,
+      "afp": 26.25,
+      "tp": 70,
+      "awc": 19.6875,
+      "grade": "Alan bazlı",
+      "density": 0.65,
+      "kind": "Mineral granül",
+      "min_mm": 2,
+      "max_mm": 8,
+      "note": "Tüf türü kimliği belirsiz",
+      "original_url": null,
+      "physical_verified": false,
+      "awc_verified": false,
+      "role": "Hava",
+      "provenance": {
+        "ph": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cec": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "afp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "tp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "awc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "EST23"
+          ],
+          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+        },
+        "density": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "EST23"
+          ],
+          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+        }
+      },
+      "legacy_max_share": 100,
+      "legacy_grade": "C",
+      "reference_profiles": [],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": false,
+        "awc_verified": false
+      },
+      "default_grain_group": "fine",
+      "grain_applicable": true,
+      "numeric_estimation": {
+        "reference_transferred_fields": [],
+        "imputed_fields": [
+          "density",
+          "awc"
+        ],
+        "source": "EST23",
+        "relative_buffer": 1.0
+      }
+    },
+    {
+      "id": "M18",
+      "name": "Diatomit",
+      "ph": 8.55,
+      "cec": 22.21,
+      "cc": 58.825,
+      "afp": 22.625,
+      "tp": 81.45,
+      "awc": 29.4125,
+      "grade": "Alan bazlı",
+      "density": 0.41,
+      "kind": "Mineral granül",
+      "min_mm": 2,
+      "max_mm": 8,
+      "note": "Toz/granül kesin ayrılmalı",
+      "original_url": null,
+      "physical_verified": false,
+      "awc_verified": false,
+      "role": "Su",
+      "provenance": {
+        "ph": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "DIAT11"
+          ],
+          "note": "Diatomit 2–4 ve 4–8 mm numune ölçümü; CC/AFP bu kaynaktan değil."
+        },
+        "cec": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "DIAT11"
+          ],
+          "note": "Diatomit 2–4 ve 4–8 mm numune ölçümü; CC/AFP bu kaynaktan değil."
+        },
+        "cc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "afp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "tp": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "DIAT11"
+          ],
+          "note": "Diatomit 2–4 ve 4–8 mm numune ölçümü; CC/AFP bu kaynaktan değil."
+        },
+        "awc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "EST23"
+          ],
+          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+        },
+        "density": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "DIAT11"
+          ],
+          "note": "2–4 ve 4–8 mm diatomit, 0,41 g/cm³."
+        }
+      },
+      "legacy_max_share": 100,
+      "legacy_grade": "C",
+      "reference_profiles": [],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": false,
+        "awc_verified": false
+      },
+      "default_grain_group": "fine",
+      "grain_applicable": true,
+      "numeric_estimation": {
+        "reference_transferred_fields": [],
+        "imputed_fields": [
+          "awc"
+        ],
+        "source": "EST23",
+        "relative_buffer": 1.0
+      }
+    },
+    {
+      "id": "M19",
+      "name": "Turface",
+      "ph": 6.5,
+      "cec": 30,
+      "cc": 46.25,
+      "afp": 27.75,
+      "tp": 74,
+      "awc": 25.437500000000004,
+      "grade": "Alan bazlı",
+      "density": 0.593,
+      "kind": "Mineral granül",
+      "min_mm": 2,
+      "max_mm": 5,
+      "note": "Turface MVP referans",
+      "original_url": null,
+      "physical_verified": false,
+      "awc_verified": false,
+      "role": "Denge",
+      "provenance": {
+        "ph": {
+          "class": "TECHNICAL_DATASHEET",
+          "sources": [
+            "TURF"
+          ],
+          "note": "Üreticinin ürün teknik föyü; CC/AFP sütunları üretici föyünden doğrudan alınmadı."
+        },
+        "cec": {
+          "class": "TECHNICAL_DATASHEET",
+          "sources": [
+            "TURF"
+          ],
+          "note": "Üreticinin ürün teknik föyü; CC/AFP sütunları üretici föyünden doğrudan alınmadı."
+        },
+        "cc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "afp": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "tp": {
+          "class": "TECHNICAL_DATASHEET",
+          "sources": [
+            "TURF"
+          ],
+          "note": "Üreticinin ürün teknik föyü; CC/AFP sütunları üretici föyünden doğrudan alınmadı."
+        },
+        "awc": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "EST23"
+          ],
+          "note": "V23 sayısal tamamlama; malzeme ailesi önkabulü. Ürün ölçümü değildir."
+        },
+        "density": {
+          "class": "TECHNICAL_DATASHEET",
+          "sources": [
+            "TURF"
+          ],
+          "note": "Üreticinin bildirdiği 593±32 kg/m³; g/cm³ değerine dönüştürüldü."
+        }
+      },
+      "legacy_max_share": 100,
+      "legacy_grade": "C",
+      "reference_profiles": [],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": false,
+        "awc_verified": false
+      },
+      "default_grain_group": "fine",
+      "grain_applicable": true,
+      "numeric_estimation": {
+        "reference_transferred_fields": [],
+        "imputed_fields": [
+          "awc"
+        ],
+        "source": "EST23",
+        "relative_buffer": 2.0
+      }
+    },
+    {
+      "id": "M20",
+      "name": "Zeolit (Klinoptilolit)",
+      "ph": 7.43,
+      "cec": 125,
+      "cc": 20.55,
+      "afp": 35.96,
+      "tp": 56.51,
+      "awc": 18.47,
+      "grade": "Alan bazlı",
+      "density": 1.02,
+      "kind": "Mineral granül",
+      "min_mm": 4,
+      "max_mm": 7,
+      "note": "Klinoptilolit; ince toz kullanılmamalı",
+      "original_url": "https://doi.org/10.3390/horticulturae12040501",
+      "physical_verified": true,
+      "awc_verified": true,
+      "role": "Denge",
+      "provenance": {
+        "ph": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Kaynak numunesinin 1:5 su ekstraktı pH değeri. Kullanıcının ürün/karışım pH ölçümü değildir; stok aktarımı ayrıca değerlendirilir."
+        },
+        "cec": {
+          "class": "ASSUMPTION",
+          "sources": [
+            "V13"
+          ],
+          "note": "V13 eski/karma tahmin; alan bazında bağımsız sayısal kanıt doğrulanmadı."
+        },
+        "cc": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "afp": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "tp": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "awc": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "Tek bir numunenin / tane fraksiyonunun değeri; piyasa ortalaması değildir."
+        },
+        "density": {
+          "class": "SAMPLE_MEASURED",
+          "sources": [
+            "SCH26"
+          ],
+          "note": "4–7 mm numunenin kuru yığın yoğunluğu."
+        }
+      },
+      "legacy_max_share": 100,
+      "legacy_grade": "A",
+      "reference_profiles": [
+        {
+          "id": "M20_4_7",
+          "min_mm": 4,
+          "max_mm": 7,
+          "cc": 20.55,
+          "afp": 35.96,
+          "tp": 56.51,
+          "awc": 18.47,
+          "density": 1.02,
+          "source_ph": 7.43,
+          "reference_height_cm": 12,
+          "source": "SCH26",
+          "method": "Tablo 2, drenaj sonrası su/hava; AWC maksimum su kapasitesi eksi kalıcı solma noktası.",
+          "note": "Kaynak numunesi; stok grubuna eşleşme aktarılabilirlik göstergesidir, gerçek ürün ölçümü değildir."
+        }
+      ],
+      "cec_density_compatible": true,
+      "legacy_flags": {
+        "physical_verified": true,
+        "awc_verified": true
+      },
+      "legacy_ph": 7.43,
+      "default_grain_group": "medium",
+      "grain_applicable": true,
+      "numeric_estimation": {
+        "reference_transferred_fields": [],
+        "imputed_fields": [],
+        "source": "EST23",
+        "relative_buffer": 4.0
+      }
+    }
+  ],
+  "indoor_dry_bands": {
+    "warm": [
+      0,
+      0.5
+    ],
+    "shoulder": [
+      -0.1,
+      0.45
+    ],
+    "cool": [
+      -0.25,
+      0.35
+    ]
+  },
+  "year_round_design": {
+    "source_class": "MODEL_ASSUMPTION",
+    "seasons": [
+      "warm",
+      "shoulder",
+      "cool"
+    ],
+    "cc_design": "Her mevsimin CC üst hedefinin en büyüğü: sıcak/kuru uçtaki su rezervi.",
+    "afp_design": "Her mevsimin AFP üst hedefinin en büyüğü: serin/nemli uçtaki hava payı.",
+    "coefficients": "Önceki V26 ortam katsayıları korundu; tür veya ürün deneyiyle kalibre edilmiş etki büyüklükleri değildir.",
+    "planting_date": "Saksı değiştirme tarihi reçete girdisi değildir.",
+    "source_ids": [
+      "YEAR27"
+    ]
+  }
+}
