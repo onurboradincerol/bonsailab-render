@@ -20,7 +20,7 @@ class ServerTests(unittest.TestCase):
 
     def test_page_uses_http_and_has_no_browser_python_runtime(self):
         html=self.client.get('/').text;js=self.client.get('/static/app.js').text
-        self.assertIn('Hesaplamalar sunucuda yapılır.',html)
+        self.assertIn('Karışım değerleri tahminidir',html)
         self.assertNotIn('engine-client.js',html);self.assertNotIn('BonsaiEngine',js)
         self.assertIn("fetch('/api/calculate'",js)
         self.assertEqual(self.client.get('/engine/core.py').status_code,404)

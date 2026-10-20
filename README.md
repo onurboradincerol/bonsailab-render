@@ -10,6 +10,8 @@ Render kurulumu açıkça `free` planını kullanır. Ücretsiz plan kullanılma
 
 ## Kaynak yönetimi ve yük sınırı
 
+Ana sonuç kartları karışım oranlarını, miktarları, tahmini su tutma, hava boşluğu, pH, CEC, kullanılabilir su, kuru yoğunluk değerlerini ve dane önerisini gösterir. Numune payı ve aktarım endeksi arayüzden kaldırılmıştır. Mevsim hedefleri, ayrıntılı hesap tabloları ve yöntem açıklamaları kapalı ayrıntı bölümlerindedir. Önemli yetiştirme uyarıları görünür tutulur; motor sonuçları ve tam JSON raporu korunur.
+
 Hesap yalnız “Karışımı hesapla” düğmesiyle başlar. Sayfa açılışı ve seçim değişiklikleri hesap isteği göndermez. Değişiklikler kaydedilir, eski sonuç ve rapor geçersiz olur. Hesap sürerken düğme tekrar istek göndermez. Sunucu meşgulse otomatik tekrar yapılmaz; kullanıcı düğmeyle yeniden dener.
 
 Bir anda bir hesap çalışır. Diğer istekler 429 ve Retry-After yanıtı alır. Aynı girdinin sonucu en fazla 15 dakika, en fazla 64 kayıt olacak şekilde bellek içinde tutulur; yeniden başlatmada silinir. Girdiler dosyaya kaydedilmez. JSON gövdesi 150 KB ile sınırlıdır; arama oranları ve aday sayısı V27 sınırlarını korur.

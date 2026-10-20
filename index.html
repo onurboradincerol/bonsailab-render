@@ -8,10 +8,10 @@
   <button class="nav active" data-tab="design"><span class="nav-icon">◈</span>Tasarım ekranı</button>
   <button class="nav" data-tab="sources"><span class="nav-icon">▤</span>Veriler & kaynaklar</button>
   <button class="nav" data-tab="method"><span class="nav-icon">◎</span>Hesaplama yöntemi</button>
-  <div class="rail-bottom"><div class="rail-pill"><span class="live-dot"></span>Web uygulaması · V27</div><p>Hesaplamalar sunucuda yapılır. Karışım önerisi, ölçülmüş yetiştirme sonucu değildir.</p></div>
+  <div class="rail-bottom"><div class="rail-pill"><span class="live-dot"></span>Web uygulaması · V27</div><p>Karışım değerleri tahminidir; gerçek koşullara göre değişebilir.</p></div>
 </aside>
 <main class="main">
-<div class="topline"><div><span class="eyebrow">BONSAI SUBSTRAT TASARIMI</span><h1>Substrat <em>tasarla.</em></h1><p class="lead">Türünü, genel iklimini ve elindeki malzemeleri seç. Koşulların değişkenliğini hesaba katan bir başlangıç reçetesi oluştur.</p></div><div class="top-actions"><button class="button ghost" id="resetBtn">↺ Sıfırla</button><button class="button ghost" id="exportBtn" disabled>↓ Rapor JSON</button><button class="button primary" id="calcBtn">Karışımı hesapla ↗</button></div></div>
+<div class="topline"><div><span class="eyebrow">BONSAI SUBSTRAT TASARIMI</span><h1>Substrat <em>tasarla.</em></h1><p class="lead">Türünü, genel iklimini ve elindeki malzemeleri seç. Koşulların değişkenliğini hesaba katan bir başlangıç reçetesi oluştur.</p></div><div class="top-actions"><button class="button ghost" id="resetBtn">↺ Sıfırla</button><button class="button ghost" id="exportBtn" disabled>↓ Rapor indir</button><button class="button primary" id="calcBtn">Karışımı hesapla ↗</button></div></div>
 <noscript><div class="alert">BonsaiLAB’i kullanmak için tarayıcınızda JavaScript açık olmalı.</div></noscript><section id="design" class="tab-view on">
   <div id="migrationNote" class="notice"></div><div id="storageNote" class="notice"></div>
   <div class="layout-top">
@@ -20,7 +20,7 @@
       <label class="field">Gelişim aşaması<select id="phase"><option value="pre">Pre-bonsai / gelişim</option><option value="nebari" selected>Nebari ve kök eğitimi</option><option value="refine">Rafinasyon</option></select></label>
       <label class="field">Saksı türü<select id="pot"><option value="air" selected>Air-pruning</option><option value="plastic">Plastik / standart</option><option value="glazed">Sırlı seramik</option><option value="terracotta">Terakota</option></select></label>
       <label class="field">Saksı iç yüksekliği <span class="unit">cm</span><input id="height" type="number" min="2" max="50" step="0.5" value="8"></label>
-      <label class="field">Girdi bileşen hacmi <span class="unit">ml</span><input id="volume" type="number" min="100" max="100000" step="100" value="2000"></label>
+      <label class="field">Hazırlanacak karışım <span class="unit">ml</span><input id="volume" type="number" min="100" max="100000" step="100" value="2000"></label>
     </div><div class="species-note" id="speciesNote"></div></div>
     <div class="panel"><div class="section-heading"><span class="step">02</span><div><h2>Genel iklim ve sulama</h2><p>Tek karışımda yılın sıcak/kuru ve serin/nemli koşulları</p></div></div><div class="fields">
       <label class="field full">Genel iklim<select id="climate"></select></label>
@@ -34,10 +34,10 @@
   <section class="panel inventory-panel"><div class="section-heading two-side"><div class="section-heading"><span class="step">03</span><div><h2>Eldeki malzemeler</h2><p>Var olanları işaretle; motor en fazla dört bileşen seçer.</p></div></div><div class="inventory-actions"><button class="tiny" id="clearInventory">Tümünü kapat</button><span id="inventoryCount" class="count-tag">0 seçili</span></div></div>
     <p class="inventory-hint">Üç dane grubu: 2–5 mm, 4–8 mm, 8–12 mm. Stok ürününün gerçek fraksiyonuna en yakın grubu seç. Mineral taneler ve ağaç kabuğunda dane grubu seçilir. Torf, kokopit ve sfagnum gibi lifli malzemelerde dane seçimi yoktur. Her reçetenin dane önerisi kendi kartında görünür.</p><div id="inventoryGrid" class="inventory-grid"></div>
   </section>
-  <section class="panel results-panel"><div class="section-heading two-side"><div class="section-heading"><span class="step">04</span><div><h2>Karışım alternatifleri</h2><p>Teknik tasarım ve kolay temin alternatifi.</p></div></div><span class="status" id="calcStatus" aria-live="polite">Hazır</span></div>
+  <section class="panel results-panel"><div class="section-heading two-side"><div class="section-heading"><span class="step">04</span><div><h2>Karışım alternatifleri</h2><p>Önerilen karışım ve kolay temin alternatifi.</p></div></div><span class="status" id="calcStatus" aria-live="polite">Hazır</span></div>
     <div id="errorMsg" role="alert" class="error hidden"></div><div id="resultBlock" class="hidden"><div class="dual-variants" id="variantCompare"></div><div class="model-notes" id="modelNotes"></div>
-      <div class="result-details"><div><h3>İklim bandı ve dane hedefi</h3><div id="targetRows"></div><p id="searchNote" class="footnote"></p></div><details><summary>Bu türe uygulanan üst oran sınırları</summary><div id="limitsPanel"></div></details></div>
-      <p class="footnote">Su/hava hesabı kaynak eğrileri, sınırlı oran interpolasyonu ve açık varsayımlarla yapılır. pH, CEC, kullanılabilir su ve yoğunluk sayısal tahmin olarak verilir; eksik veride malzeme ailesi önkabulleri kullanılır. Numune verisi korunan pay ve numune aktarım endeksi istatistiksel güven olasılığı değildir. “Model kısıtları sağlandı” ifadesi biyolojik güvenlik onayı vermez. Her reçetenin kendi kontrollerini ve ölçüm ayrıntılarını açabilirsin.</p>
+      <details class="physical-detail"><summary>Genel hesaplama ayrıntıları</summary><div class="result-details"><div><h3>İklim bandı ve dane hedefi</h3><div id="targetRows"></div><p id="searchNote" class="footnote"></p></div><details><summary>Bu türe uygulanan üst oran sınırları</summary><div id="limitsPanel"></div></details></div></details>
+      <p class="footnote">Değerler tahminidir. Gerçek malzeme, sulama suyu ve saksı koşullarına göre değişebilir. Karışımı uygulamadan önce karttaki önemli uyarıları kontrol et.</p>
     </div>
   </section>
 </section>
