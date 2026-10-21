@@ -1,5 +1,5 @@
 {
-  "version": 31,
+  "version": 32,
   "updated": "2026-10-21",
   "materials": [
     {
@@ -3296,6 +3296,13 @@
       "type": "Açık tasarım kabulü",
       "url": null,
       "note": "Başlangıç, gözenek dağılımı ve yerleşme stresleri ayrı karşılaştırılır. Organik hacim payıyla +12 yüzde puan CC; ayrı yerleşme senaryosunda +7 CC ve -8 TP aktarımı kullanılır. Tüm reçetelere ortak -3 TP yerleşme sınaması eklenir. Bunlar aynı üründe ölçülmüş yaşlanma katsayısı veya zaman tahmini değildir. Mineral parçalanmasının sıfır olduğu iddia edilmez. Sayısal büyüklükler ve pH ağırlığı tasarım kabulüdür; istatistiksel güven aralığı değildir. Bilimsel sıra eşitse sabit malzeme kimlikleri ve oranların SHA256 özeti yalnız tekrar üretilebilir gösterim için kullanılır. Bileşen sayısı veya alfabetik ad üstünlüğü yoktur; eşit aday sayısı raporlanır."
+    },
+    {
+      "id": "V32_RULES",
+      "title": "BonsaiLAB V32 — kullanıcı zorunlu malzeme seçimi",
+      "type": "Kullanıcı kısıtı",
+      "url": null,
+      "note": "Mutlaka olsun işaretli her malzeme reçetede pozitif pay alır. Oranı aynı hesap seçer; özel yüzde 1 hedefi yoktur. Mevcut yüzde 5 oran adımı korunur. Zorunlu seçimler bileşen sayısına dahildir; mevcut oran kuralları aşılmaz. Kolay temin kapsamıyla çakışan zorunlu seçim o alternatifte açıkça bildirilir; sessizce çıkarılmaz."
     }
   ],
   "climates": [
@@ -3603,6 +3610,11 @@
       "continuous_objective": "CC ve AFP için asimetrik karesel hedef uzaklığı, tolerans içinde de sürekli hesaplanır. Üç fiziksel senaryonun en büyük puanı + pH duyarlılık bandının tür bandını aşan kısmı + dane ve sınırlı CEC kıyası.",
       "tie_policy": "Bilimsel sıra eşitse sabit malzeme kimlikleri ve oranların SHA256 özeti yalnız tekrar üretilebilir gösterim için kullanılır. Bileşen sayısı veya alfabetik ad üstünlüğü yoktur; eşit aday sayısı raporlanır.",
       "validated_biological_optimum": false
+    },
+    "required_selection": {
+      "enabled": true,
+      "minimum_share_percent": 5,
+      "note": "Mutlaka olsun işaretli her malzeme reçetede pozitif pay alır. Oranı aynı hesap seçer; özel yüzde 1 hedefi yoktur. Mevcut yüzde 5 oran adımı korunur. Zorunlu seçimler bileşen sayısına dahildir; mevcut oran kuralları aşılmaz. Kolay temin kapsamıyla çakışan zorunlu seçim o alternatifte açıkça bildirilir; sessizce çıkarılmaz."
     }
   },
   "source_workbook": {
@@ -6998,5 +7010,5 @@
     ],
     "note": "140 referans sayısı tamdır; tahminler deney ölçümü olarak etiketlenmez. Fiziksel büyüklükler su/hava/katı kapanışına göre denetlenir."
   },
-  "rule_source": "V31_RULES"
+  "rule_source": "V32_RULES"
 }

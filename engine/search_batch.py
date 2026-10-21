@@ -4,7 +4,7 @@ import numpy as np
 
 def search(c,mats,sp,t,inv,modes):
  if any(mode not in ('technical','economical') for mode in modes):raise c.InputError('Geçersiz tasarım modu.')
- start=time.perf_counter();r=c.RULES;step=r['grid_step'];total=100//step
+ start=time.perf_counter();r=c.RULES;step=r['grid_step'];total=100//step;mandatory=c.required_names(inv)
  mats=sorted(mats,key=lambda m:m['name']);states=[];v=[]
  refs={mode:c.reference_mix(sp,inv,mode) for mode in modes}
  norms={mode:sum(x*x for x in ref.values()) for mode,ref in refs.items()}
@@ -37,9 +37,11 @@ def search(c,mats,sp,t,inv,modes):
     delta[units+(j,)]=pred[field]*sum(weights)/100-sum(w*state[field]/100 for w,state in zip(weights,model_states) if w)
   model_tables[key]=delta;return delta
  for k in range(1,min(t['max_components'],len(mats))+1):
+  if k<len(mandatory):continue
   grid=np.asarray(list(c.distributions(total,(total,)*k)),dtype=np.int16)
   for indexes in itertools.combinations(range(len(mats)),k):
    items=tuple(mats[i] for i in indexes);vs=vectors[list(indexes)];caps=np.asarray([c.cap_for(m,sp)//step for m in items])
+   if not mandatory.issubset(m['name'] for m in items):continue
    if caps.sum()<total or sum(cap*row[4] for cap,row in zip(caps,vs))<primary_min:continue
    if acid and sum(cap*row[7] for cap,row in zip(caps,vs))<r['acid_min']/step:continue
    # Ordered accumulation mirrors public evaluation; BLAS threads are unnecessary.

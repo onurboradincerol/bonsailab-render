@@ -9,9 +9,10 @@ function harness(){
  vm.runInContext(source,context);
  const defaults={max_components:'5',species:'T14',phase:'pre',pot:'air',height:'8',volume:'2000',climate:'mediterranean',location:'outdoor',light:'filtered',wind:'low',watering:'twice',gr_M01:'fine'};
  for(const [id,v] of Object.entries(defaults))node(id).value=v;
+ node('req_M01').checked=false;
  vm.runInContext("DB={materials:[{id:'M01',name:'Akadama',grain_applicable:true}]};render=(r)=>{$('variantCompare').innerHTML='result:'+r.request.species_id+':'+r.request.volume;};",context);
  let calls=0;
- const result={application:'BonsaiLAB V31',technical:{status:'ok'},species:{id:'T14',name:'Carmona / Fukien tea'},request:{species_id:'T14',volume:2000},request_sha256:'old'};
+ const result={application:'BonsaiLAB V32',technical:{status:'ok'},species:{id:'T14',name:'Carmona / Fukien tea'},request:{species_id:'T14',volume:2000,inventory:[{name:'Akadama',available:true,required:false,grain_group:'fine'}]},request_sha256:'old'};
  context.fetch=async()=>{calls++;return {status:200,ok:true,json:async()=>structuredClone(result)};};
  return {context,node,result,run:code=>vm.runInContext(code,context),calls:()=>calls};
 }
@@ -53,6 +54,24 @@ async function main(){
  {
   const h=harness();await h.run('runCalc()');h.context.fetch=async()=>{throw Error('Ağ hatası');};await h.run('runCalc()');assert.equal(h.run('last.request_sha256'),'old');assert.equal(h.node('resultBlock').classList.contains('hidden'),false);groups++;
  }
- console.log(`PASS ${groups} frontend state scenarios: retained results, explicit recalculation, stale export, errors and late responses.`);
+ {
+  const h=harness();await h.run('runCalc()');const html=h.node('variantCompare').innerHTML;
+  h.node('req_M01').checked=true;h.run('inputsChanged()');
+  assert.equal(h.calls(),1);assert.equal(h.node('variantCompare').innerHTML,html);assert.equal(h.run('resultIsStale()'),true);
+  assert.equal(h.run('payload().inventory[0].required'),true);
+  assert.equal(h.run('buildExport(last).request.inventory[0].required'),false);groups++;
+  h.node('req_M01').checked=false;h.run('inputsChanged()');assert.equal(h.run('resultIsStale()'),false);groups++;
+ }
+ {
+  const h=harness();h.node('req_M01').checked=true;h.node('c_M01').checked=false;
+  h.run('updateRow(DB.materials[0]);count()');
+  assert.equal(h.node('req_M01').checked,false);assert.equal(h.node('req_M01').disabled,true);assert.equal(h.node('inventoryCount').textContent,'0 seçili');
+  h.node('c_M01').checked=true;h.run('updateRow(DB.materials[0])');assert.equal(h.node('req_M01').disabled,false);assert.equal(h.node('req_M01').checked,false);groups++;
+ }
+ {
+  const h=harness();h.run("DB.rules={shares:{Akadama:0}}");h.node('req_M01').checked=true;h.run('updateRow(DB.materials[0])');
+  assert.equal(h.node('req_M01').checked,false);assert.equal(h.node('req_M01').disabled,true);groups++;
+ }
+ console.log(`PASS ${groups} frontend state scenarios: retained results, required selection, explicit recalculation, stale export, errors and late responses.`);
 }
 main().catch(error=>{console.error(error);process.exitCode=1;});

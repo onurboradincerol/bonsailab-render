@@ -1,4 +1,4 @@
-# BonsaiLAB V31 — Render
+# BonsaiLAB V32 — Render
 
 40 tür, 20 substrat ve üç dane grubu için yıl boyu tek reçete tasarımı. Hesaplar Python sunucusunda yapılır. V31, veri eksikliği ve kaynak/numune uyumunun seçim puanına etkisini kaldırır; 20 malzemenin 140 sayısal referans alanını açık yöntemlerle tamamlar. Kaynaklı numuneler, aktarım ve tahminler ayrı etiketlenir. Kaynak tahminleri gerçek ürün partisi veya biyolojik optimum ölçümü değildir.
 
@@ -47,3 +47,9 @@ Eşitlikte az bileşen veya alfabetik ad avantajı kaldırılmıştır. Model s�
 ## V31.1 arayüz
 
 Hesap motoru ve veri tabanı V31 olarak korunur. Seçimler değişince sonuç silinmez; tür/hacim etiketi, Seçimler değişti uyarısı ve Tekrar hesapla düğmesi görünür. Aynı seçimlere geri dönüldüğünde uyarı kalkar. Geç dönen veya iptal edilen hesap eski sonucu değiştiremez. İndirilen JSON her zaman gösterilen hesabın istek görüntüsüdür; export_context güncel seçimlerden farklı olup olmadığını belirtir. Ana ekrandaki tekrar eden açıklamalar sadeleştirilmiştir; yöntem, kaynaklar ve önemli uygunluk uyarıları korunur.
+
+## V32 zorunlu malzeme seçimi
+
+Her stok satırında Mutlaka olsun seçeneği bulunur. API inventory[].required boolean alanını doğrular; eksik alan eski istemciler için false kabul edilir. Zorunlu malzemeler bütün adaylarda pozitif payla bulunur. Özel yüzde 1 hedefi yoktur; mevcut yüzde 5 oran adımı ve malzeme tavanları korunur. Oranları motor seçer. Zorunlu sayı kullanıcı bileşen üst sınırını aşarsa açıklayıcı girdi hatası döner. Leonardit gibi otomatik hacim reçetesi dışında kalan malzemeler zorunlu seçilemez.
+
+Zorunlu seçim kolay temin filtresiyle çakışırsa ana öneri hesaplanır, kolay temin alternatifi açık gerekçeyle oluşturulmaz. Hiçbir zorunlu malzeme sessizce çıkarılmaz. Seçim kayda ve JSON raporuna dahil edilir. Girdi değişince önceki sonuç korunur; yeni zorunluluk yalnız Tekrar hesapla ile uygulanır. Rapor kimliği zorunlu alanları içerir (request_identity_version 3).

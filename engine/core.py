@@ -1,4 +1,4 @@
-"""BonsaiLAB V31: explicit climate bands and complete finite-grid search.
+"""BonsaiLAB V32: explicit climate bands and complete finite-grid search.
 
 NumPy batches the exhaustive search without sampling candidates. Design rules are not biological
 optima. Every layout-feasible 1–5 component recipe in the 5% grid is visited.
@@ -66,7 +66,7 @@ def cap_for(m,sp):
     return int(cap//step*step)
 
 def targets(sp,p):
-    if 'temp' in p or 'rh' in p:raise InputError('V31 genel iklimin yıl boyu bandını kullanır; sabit sıcaklık/nem alanlarını gönderme.')
+    if 'temp' in p or 'rh' in p:raise InputError('V32 genel iklimin yıl boyu bandını kullanır; sabit sıcaklık/nem alanlarını gönderme.')
     input_notes=[]
     if p.get('climate')=='indoor':
         p={**p,'climate':'mild',**({'location':'indoor'} if p.get('location') is None else {})};input_notes.append('Eski iç mekân iklim kaydı ılıman varsayımına taşındı; iç mekân yetiştirme yeri alanından seçilir.')
@@ -125,14 +125,17 @@ def inputs_with_inventory(p,sp):
         if name in seen:raise InputError(f'{name}: stok kaydı birden fazla gönderilmiş.')
         seen.add(name)
         if not isinstance(row.get('available'),bool):raise InputError(f'{name}: Var/Yok değeri boolean olmalı.')
-        m=BY_NAME[name];available=row['available']
+        m=BY_NAME[name];available=row['available'];required=row.get('required',False)
+        if not isinstance(required,bool):raise InputError(f'{name}: Mutlaka olsun değeri boolean olmalı.')
+        if required and not available:raise InputError(f'{name}: zorunlu malzeme önce eldeki stokta seçilmeli.')
+        if required and cap_for(m,sp)==0:raise InputError(f'{name}: otomatik hacim reçetesine alınmıyor; zorunlu seçilemez.')
         grain=row.get('grain_group',m['default_grain_group']) if m['grain_applicable'] else None
         legacy_bark=m['name']=='Ağaç kabuğu' and grain is None and row.get('min_mm') is None and row.get('max_mm') is None
         if legacy_bark:grain=m['default_grain_group']
         if m['grain_applicable']:
             if not isinstance(grain,str) or grain not in BY_GRAIN:raise InputError(f'{name}: üç dane grubundan birini seç.')
             if not legacy_bark and ('min_mm' in row or 'max_mm' in row) and (row.get('min_mm')!=BY_GRAIN[grain]['min_mm'] or row.get('max_mm')!=BY_GRAIN[grain]['max_mm']):raise InputError(f'{name}: dane boyutu seçilen hazır grupla eşleşmiyor.')
-        entry={'name':name,'available':available,'grain_group':grain,'min_mm':BY_GRAIN[grain]['min_mm'] if grain in BY_GRAIN else None,'max_mm':BY_GRAIN[grain]['max_mm'] if grain in BY_GRAIN else None}
+        entry={'name':name,'available':available,'required':required,'grain_group':grain,'min_mm':BY_GRAIN[grain]['min_mm'] if grain in BY_GRAIN else None,'max_mm':BY_GRAIN[grain]['max_mm'] if grain in BY_GRAIN else None}
         full.append(entry)
         if available:
             if cap_for(m,sp)==0:excluded.append(f'{name}: tasarım kapsamında otomatik hacim reçetesine alınmıyor.')
@@ -182,13 +185,16 @@ def base_material_preference(m,sp,t):
     # Compatibility hook: material identities carry no selection penalty.
     return 0.
 
+def required_names(inv):
+    return frozenset(name for name,row in inv.items() if row.get('required',False))
+
 
 def layout_valid(items,shares,sp,inv=None):
     g=sp['group'];primary=sum(w for m,w in zip(items,shares) if m['name'] in PRIMARY)
     organic=sum(w for m,w in zip(items,shares) if m['kind']!='Mineral granül')
     addon=sum(w for m,w in zip(items,shares) if m['name'] in ADDONS)
     acid=sum(w for m,w in zip(items,shares) if m['name'] in ACID)
-    return sum(shares)==100 and all(0<w<=cap_for(m,sp) for m,w in zip(items,shares)) and primary>=RULES['primary_min'].get(g,RULES['primary_min']['default']) and organic<=RULES['organic_max'].get(g,RULES['organic_max']['default']) and addon<=RULES['addon_max'] and (g!='Asidik' or acid>=RULES['acid_min'])
+    return sum(shares)==100 and all(0<w<=cap_for(m,sp) for m,w in zip(items,shares)) and primary>=RULES['primary_min'].get(g,RULES['primary_min']['default']) and organic<=RULES['organic_max'].get(g,RULES['organic_max']['default']) and addon<=RULES['addon_max'] and (g!='Asidik' or acid>=RULES['acid_min']) and (inv is None or required_names(inv).issubset(m['name'] for m in items))
 
 def component_state(m,height):
     state=physics.material_state(m,height)
@@ -309,7 +315,7 @@ def distributions(total,caps):
 def search_variants_scalar(mats,sp,t,inv,modes):
     """Complete search; evaluate the linear data in a tight loop, finalize winners."""
     if any(mode not in ('technical','economical') for mode in modes):raise InputError('Geçersiz tasarım modu.')
-    step=RULES['grid_step'];total_units=100//step;max_components=t['max_components']
+    step=RULES['grid_step'];total_units=100//step;max_components=t['max_components'];mandatory=required_names(inv)
     start=time.perf_counter();best={mode:None for mode in modes};count=0;ph_counts={mode:0 for mode in modes};physical_counts={mode:0 for mode in modes};equivalent={mode:0 for mode in modes}
     mats=sorted(mats,key=lambda m:m['name']);vectors=[];states=[];references={mode:reference_mix(sp,inv,mode) for mode in modes};ref_norms={mode:sum(v*v for v in ref.values()) for mode,ref in references.items()}
     for m in mats:
@@ -320,8 +326,10 @@ def search_variants_scalar(mats,sp,t,inv,modes):
     organic_max=RULES['organic_max'].get(sp['group'],RULES['organic_max']['default'])/step
     a=RULES['acceptance'];acid=sp['group']=='Asidik';cc_floor=max(a['min_cc_floor'],t['target_cc_max']-a['max_cc_deficit']);afp_floor=max(a['min_afp_floor'],t['target_afp_max']-a['max_afp_deficit'])
     for k in range(1,min(max_components,len(mats))+1):
+        if k<len(mandatory):continue
         for indexes in itertools.combinations(range(len(mats)),k):
             items=tuple(mats[i] for i in indexes);vs=tuple(vectors[i] for i in indexes);caps=tuple(cap_for(m,sp)//step for m in items)
+            if not mandatory.issubset(m['name'] for m in items):continue
             if sum(caps)<total_units:continue
             if sum(cap*v[6] for cap,v in zip(caps,vs))<primary_min:continue
             if acid and sum(cap*v[9] for cap,v in zip(caps,vs))<RULES['acid_min']/step:continue
@@ -405,11 +413,17 @@ def recipe_grain_recommendation(items,shares,sp,t,inv,mode):
             'candidate_groups':t['acceptable_grain_groups'],'scenario_values':{'cc':hypothetical['cc'],'afp':hypothetical['afp'],'ph_index':hypothetical['ph_index'],'mixture_ph':hypothetical['chemistry']['mixture_ph'],'species_band':hypothetical['chemistry']['species_band']}}
 
 def variant(result,sp,t,inv,mode):
-    if result is None:return {'status':'unavailable','mode':mode,'selected':[],'estimate':None,'warnings':['Akadama, Kanuma, Kiryu ve Turface dışındaki seçili stokta, bu arama alanının düzen şartlarını sağlayan aday yok.' if mode=='economical' else f'Seçili stokta, en fazla {t["max_components"]} bileşen ve %5 adım altında düzen kısıtlarını sağlayan aday yok.'],'reasons':[],'difficult_share':0,'grain_recommendation':None,'acceptance_label':'Bu arama alanında aday yok'}
+    if result is None:
+        blocked=sorted(required_names(inv)&HARD_TO_SOURCE) if mode=='economical' else []
+        message=('Mutlaka olsun seçimi ('+', '.join(blocked)+') kolay temin kapsamıyla çakışıyor; bu alternatif oluşturulamadı.' if blocked else
+                 'Zorunlu malzemeleri, bileşen üst sınırını ve oran kurallarını birlikte sağlayan karışım bulunamadı.' if required_names(inv) else
+                 'Akadama, Kanuma, Kiryu ve Turface dışındaki seçili stokta, bu arama alanının düzen şartlarını sağlayan aday yok.' if mode=='economical' else
+                 f'Seçili stokta, en fazla {t["max_components"]} bileşen ve %5 adım altında düzen kısıtlarını sağlayan aday yok.')
+        return {'status':'unavailable','mode':mode,'selected':[],'estimate':None,'warnings':[message],'reasons':[],'difficult_share':0,'grain_recommendation':None,'acceptance_label':'Bu arama alanında aday yok'}
     rank,score,items,shares,e,reasons=result;warnings=list(reasons)+t['environment_warnings'];rows=[]
     for m,w in zip(items,shares):
         stock=inv[m['name']];x=prepare_material(m,stock);fit=grain_fit(m,stock,t)
-        rows.append({'name':m['name'],'share':w,'amount_ml':round(w*t['volume']/100,4),'role':m['role'],'grade':'Alan bazlı','grain_group':stock['grain_group'],'size_min':stock['min_mm'],'size_max':stock['max_mm'],'size_compat':round(fit*100,1) if fit is not None else None,'source_size_compat':round(x['source_size_fit']*100,1) if x['source_size_fit'] is not None else None,'reference_profile':x['reference_used'],'difficult_to_source':hard_to_source(m),'numeric_properties':{key:x[key] for key in ('ph','cec','density','awc','cc','afp','tp')},'numeric_estimation':x['numeric_estimation'],'property_provenance':x['provenance'],'sources':sorted({s for p in x['provenance'].values() for s in p['sources']})})
+        rows.append({'name':m['name'],'share':w,'required':stock.get('required',False),'amount_ml':round(w*t['volume']/100,4),'role':m['role'],'grade':'Alan bazlı','grain_group':stock['grain_group'],'size_min':stock['min_mm'],'size_max':stock['max_mm'],'size_compat':round(fit*100,1) if fit is not None else None,'source_size_compat':round(x['source_size_fit']*100,1) if x['source_size_fit'] is not None else None,'reference_profile':x['reference_used'],'difficult_to_source':hard_to_source(m),'numeric_properties':{key:x[key] for key in ('ph','cec','density','awc','cc','afp','tp')},'numeric_estimation':x['numeric_estimation'],'property_provenance':x['provenance'],'sources':sorted({s for p in x['provenance'].values() for s in p['sources']})})
         if x['source_size_fit'] is None:warnings.append(f'{m["name"]}: fiziksel kaynak numunesiyle ürün/fraksiyon eşleşmesi bilinmiyor.')
         elif x['source_size_fit']<.75:warnings.append(f'{m["name"]}: stok grubu ile kullanılan kaynak numunesi farklı; aktarılabilirlik sınırlı.')
     if e['size_coverage'] is not None and e['size_coverage']<.45:warnings.append('Dane grubu hedef tasarım bandıyla az örtüşüyor; bu reçete koşul kontrolü gerektirir.')
@@ -435,8 +449,11 @@ def calculate(payload:dict[str,Any]):
     sid=payload.get('species_id')
     if not isinstance(sid,str) or sid not in BY_SPECIES:raise InputError('Listeden geçerli bir tür seç.')
     sp=BY_SPECIES[sid];t=targets(sp,payload);inv,full,excluded=inputs_with_inventory(payload,sp)
+    mandatory=sorted(required_names(inv));t['required_materials']=mandatory
+    if len(mandatory)>t['max_components']:raise InputError(f'{len(mandatory)} zorunlu malzeme seçtin; en fazla bileşen sınırı {t["max_components"]}. Sınırı artır veya zorunlu seçimleri azalt.')
     modes=['technical','economical']
     solutions,search=search_variants([BY_NAME[n] for n in inv],sp,t,inv,modes)
+    search['required_materials']=mandatory
     tech=variant(solutions['technical'],sp,t,inv,'technical');econ=variant(solutions['economical'],sp,t,inv,'economical')
     for mode,v in (('technical',tech),('economical',econ)):
         v['ph_selection']=search['ph_selection'][mode]
@@ -457,4 +474,4 @@ def calculate(payload:dict[str,Any]):
     normalized={k:t[k] for k in ('climate','season','phase','pot','light','wind','watering','location','height','volume','max_components')}
     normalized.update({'species_id':sid,'inventory':full})
     fingerprint=hashlib.sha256(json.dumps(identity_values(normalized),sort_keys=True,ensure_ascii=False).encode()).hexdigest()
-    return {'application':'BonsaiLAB V31','species':sp,'inputs':t,'request':normalized,'request_sha256':fingerprint,'request_identity_version':2,'database_sha256':DB_HASH,'technical':tech,'economical':econ,'notes':notes,'limits':{n:cap_for(BY_NAME[n],sp) for n in inv},'rule_source':'V31_RULES','search':search,'provenance_note':'Model kısıtları biyolojik güvenlik onayı değildir. Tüm fiziksel ve kimyasal sonuçlara sayısal tahmin verilir; eksikler açık önkabullerle tamamlanır. Aralıklar tasarım duyarlılığıdır, güven aralığı değildir.', 'science_version':physics.SCIENCE['version']}
+    return {'application':'BonsaiLAB V32','species':sp,'inputs':t,'request':normalized,'request_sha256':fingerprint,'request_identity_version':3,'database_sha256':DB_HASH,'technical':tech,'economical':econ,'notes':notes,'limits':{n:cap_for(BY_NAME[n],sp) for n in inv},'rule_source':'V32_RULES','search':search,'provenance_note':'Model kısıtları biyolojik güvenlik onayı değildir. Tüm fiziksel ve kimyasal sonuçlara sayısal tahmin verilir; eksikler açık önkabullerle tamamlanır. Aralıklar tasarım duyarlılığıdır, güven aralığı değildir.', 'science_version':physics.SCIENCE['version']}

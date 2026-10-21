@@ -9,7 +9,7 @@ const metrics={ph:['Referans pH',''],cec:['CEC','cmol(+)/kg'],cc:['Su / CC','%']
 const inputIds=['max_components','species','phase','pot','height','volume','climate','location','light','wind','watering'];
 function sourceLink(url,label){if(!url)return h(label);try{const u=new URL(url);if(!['http:','https:'].includes(u.protocol))return h(label);}catch{return h(label);}return `<a href="${h(url)}" target="_blank" rel="noopener noreferrer">${h(label)} ↗</a>`;}
 function refs(p){return [...new Set((p?.sources||[]).flatMap(id=>String(id).split('+')).filter(Boolean))].map(id=>{const s=DB.sources.find(x=>x.id===id);return s?sourceLink(s.url,id):h(id);}).join(' · ')||'—';}
-function readInv(){return DB.materials.map(m=>({name:m.name,available:$('c_'+m.id).checked,grain_group:m.grain_applicable?$('gr_'+m.id).value:null}));}
+function readInv(){return DB.materials.map(m=>({name:m.name,available:$('c_'+m.id).checked,required:$('req_'+m.id).checked,grain_group:m.grain_applicable?$('gr_'+m.id).value:null}));}
 function payload(){return {max_components:$('max_components').value,species_id:$('species').value,phase:$('phase').value,pot:$('pot').value,height:$('height').value,volume:$('volume').value,climate:$('climate').value,season:'year_round',location:$('location').value,light:$('light').value,wind:$('wind').value,watering:$('watering').value,inventory:readInv()};}
 function save(){try{localStorage.setItem('bonsailab_v26_1',JSON.stringify(payload()));}catch{$('storageNote').textContent='Tercihler kaydedilemiyor; hesaplama kullanılabilir.';}}
 function inputKey(value=payload()){
@@ -28,14 +28,26 @@ function invalidate(){
 }
 
 function inputsChanged(){invalidate();save();}
-function updateRow(m){const enabled=$('c_'+m.id).checked;$('r_'+m.id).classList.toggle('enabled',enabled);$('r_'+m.id).querySelectorAll('select').forEach(e=>e.disabled=!enabled);}
-function count(){$('inventoryCount').textContent=DB.materials.filter(m=>$('c_'+m.id).checked).length+' seçili';}
+function updateRow(m){
+ const enabled=$('c_'+m.id).checked,required=$('req_'+m.id),supported=DB.rules?.shares?.[m.name]!==0;
+ if(!enabled||!supported)required.checked=false;
+ required.disabled=!enabled||!supported;
+ $('r_'+m.id).classList.toggle('enabled',enabled);$('r_'+m.id).classList.toggle('required',required.checked);
+ $('r_'+m.id).querySelectorAll('select').forEach(e=>e.disabled=!enabled);
+}
+function count(){const selected=DB.materials.filter(m=>$('c_'+m.id).checked).length,required=DB.materials.filter(m=>$('req_'+m.id).checked).length;$('inventoryCount').textContent=selected+' seçili'+(required?' · '+required+' zorunlu':'');}
+
 function updateSpecies(){const sp=DB.species.find(s=>s.id===$('species').value);if(sp)$('speciesNote').innerHTML=`<b>${h(sp.latin)}</b> · ${h(sp.group)} · ${h(sp.care_note)}`;}
 function climateNote(){}
 function makeInventory(){
- $('inventoryGrid').innerHTML=DB.materials.map(m=>`<div class="inv-row" id="r_${m.id}"><label class="inv-ident"><input type="checkbox" id="c_${m.id}"><span class="inv-name">${h(m.name)}${m.name==='Leonardit'?'<small>Otomatik karışıma eklenmez</small>':''}</span></label>${m.grain_applicable?`<select id="gr_${m.id}" aria-label="${h(m.name)} dane grubu">${DB.grain_groups.map(g=>`<option value="${g.id}">${h(g.name)}</option>`).join('')}</select>`:'<span class="nonnumeric">Lifli / organik</span>'}</div>`).join('');
- for(const m of DB.materials){$('c_'+m.id).addEventListener('change',()=>{updateRow(m);count();inputsChanged();});$('gr_'+m.id)?.addEventListener('change',inputsChanged);}
+ $('inventoryGrid').innerHTML=DB.materials.map(m=>`<div class="inv-row" id="r_${m.id}"><div class="inv-material"><label class="inv-ident"><input type="checkbox" id="c_${m.id}"><span class="inv-name">${h(m.name)}${DB.rules?.shares?.[m.name]===0?'<small>Otomatik karışıma eklenmez</small>':''}</span></label><label class="required-toggle"><input type="checkbox" id="req_${m.id}" aria-label="${h(m.name)} mutlaka olsun"><span>Mutlaka olsun</span></label></div>${m.grain_applicable?`<select id="gr_${m.id}" aria-label="${h(m.name)} dane grubu">${DB.grain_groups.map(g=>`<option value="${g.id}">${h(g.name)}</option>`).join('')}</select>`:'<span class="nonnumeric">Lifli / organik</span>'}</div>`).join('');
+ for(const m of DB.materials){
+  $('c_'+m.id).addEventListener('change',()=>{updateRow(m);count();inputsChanged();});
+  $('req_'+m.id).addEventListener('change',()=>{updateRow(m);count();inputsChanged();});
+  $('gr_'+m.id)?.addEventListener('change',inputsChanged);
+ }
 }
+
 function restore(){
  restoreNotes=[];
  let old=null,legacy=false;try{const current=localStorage.getItem('bonsailab_v26_1');old=JSON.parse(current||localStorage.getItem('bonsailab_v26')||localStorage.getItem('bonsailab_v25')||localStorage.getItem('bonsailab_v24')||localStorage.getItem('bonsailab_v23')||localStorage.getItem('bonsailab_v22')||localStorage.getItem('bonsailab_v21')||localStorage.getItem('bonsailab_v20')||localStorage.getItem('bonsailab_v19')||localStorage.getItem('bonsailab_v18')||localStorage.getItem('bonsailab_v17')||localStorage.getItem('bonsailab_v16')||localStorage.getItem('bonsailab_v15')||localStorage.getItem('bonsailab_v14')||'null');legacy=!current&&!!old&&('temp' in old||'rh' in old||!old.season);}catch{restoreNotes.push('Eski kayıt okunamadı; varsayılan seçimler açıldı.');}
@@ -46,7 +58,7 @@ function restore(){
  if(mapped.climate==='indoor'){mapped.climate='mild';if(old?.location==null)mapped.location='indoor';restoreNotes.push('İç mekân artık yetiştirme yeri alanındadır. Eski iklim Ilıman / dengeli olarak açıldı; genel iklimini kontrol et.');}
  for(const id of inputIds){const e=$(id);if(mapped[id]==null)continue;const value=String(mapped[id]);if(e.tagName==='SELECT'){if([...e.options].some(o=>o.value===value))e.value=value;}else if(Number.isFinite(Number(value)))e.value=value;}
  const records=Array.isArray(old?.inventory)?old.inventory.filter(x=>x&&typeof x==='object'):[],lookup=new Map(records.map(x=>[x.name,x]));
- for(const m of DB.materials){const record=lookup.get(m.name);$('c_'+m.id).checked=record?record.available===true:Array.isArray(old?.inventory)?false:['Akadama','Kanuma','Kiryu','Pomza','Lav taşı'].includes(m.name);let grain=record?.grain_group||m.default_grain_group;
+ for(const m of DB.materials){const record=lookup.get(m.name);$('c_'+m.id).checked=record?record.available===true:Array.isArray(old?.inventory)?false:['Akadama','Kanuma','Kiryu','Pomza','Lav taşı'].includes(m.name);$('req_'+m.id).checked=record?.required===true;let grain=record?.grain_group||m.default_grain_group;
   if(legacy&&record&&m.grain_applicable&&record.available===true&&(m.name!=='Ağaç kabuğu'||record.min_mm!=null&&record.max_mm!=null)){const a=Number(record.min_mm),b=Number(record.max_mm),matches=DB.grain_groups.map(g=>({g,fit:Math.max(0,Math.min(b,g.max_mm)-Math.max(a,g.min_mm))/(Math.max(b,g.max_mm)-Math.min(a,g.min_mm))})).sort((x,y)=>y.fit-x.fit);
    if(!Number.isFinite(a)||!Number.isFinite(b)||matches[0].fit<=0){$('c_'+m.id).checked=false;restoreNotes.push(m.name+': eski aralık üç grubun dışında; stok seçimi kapatıldı.');}
    else{grain=matches[0].g.id;if(a!==matches[0].g.min_mm||b!==matches[0].g.max_mm)restoreNotes.push(m.name+': '+a+'–'+b+' mm en yakın gruba taşındı; gerçek stok aralığını doğrula.');}}
@@ -86,7 +98,7 @@ function renderVariant(v,title,caption){
  const important=practicalWarnings[0];
  const otherWarnings=practicalWarnings.slice(1);
  const statusLabel={ok:'Başlangıç önerisi',conditional:'Uygulama öncesi kontrol',inadequate:'Koşullar tam sağlanmıyor'}[v.status]||v.acceptance_label;
- const e=v.estimate,items=v.selected.map((r,i)=>`<div class="variant-item"><span class="colorbox" style="background:${palette[i%palette.length]}"></span><span class="variant-name">${h(r.name)}</span><span class="variant-ratio">%${num(r.share,0)}</span><span class="variant-ml">${num(r.amount_ml,1)} ml</span><button class="source-open" data-sourcename="${h(r.name)}" title="Kaynakları gör">↗</button></div>`).join('');
+ const e=v.estimate,items=v.selected.map((r,i)=>`<div class="variant-item"><span class="colorbox" style="background:${palette[i%palette.length]}"></span><span class="variant-name">${h(r.name)}${r.required?'<small class="required-chip">zorunlu</small>':''}</span><span class="variant-ratio">%${num(r.share,0)}</span><span class="variant-ml">${num(r.amount_ml,1)} ml</span><button class="source-open" data-sourcename="${h(r.name)}" title="Kaynakları gör">↗</button></div>`).join('');
  const speciesBand=e.chemistry.species_band;
  const phValue=num(e.chemistry.mixture_ph,1)+(speciesBand?' · tür '+num(speciesBand[0],1)+'–'+num(speciesBand[1],1):'');
  const values=[['Tahmini su tutma',num(e.cc)+'%'],['Tahmini hava boşluğu',num(e.afp)+'%'],['Tahmini pH',phValue],['CEC ≈',num(e.cec,1)+' cmol(+)/kg'],['Kullanılabilir su ≈',num(e.awc,1)+'%'],['Kuru yoğunluk ≈',num(e.density,2)+' g/ml']];
@@ -138,8 +150,8 @@ function renderSourceDetail(){
  $('speciesDetail').innerHTML=`<p><b>${h(sp.name)}</b><br><i>${h(sp.latin)}</i><br>${h(sp.care_note)}</p><table class="source-table"><tbody><tr><td>CC başlangıç hedefi</td><td>%${num(sp.target_cc)}</td></tr><tr><td>AFP başlangıç hedefi</td><td>%${num(sp.target_afp)}</td></tr><tr><td>pH tercih bandı (V13 tasarımı)</td><td>${num(sp.ph_min)}–${num(sp.ph_max)}</td></tr></tbody></table><div class="alert">CC/AFP yüzdeleri ve pH tercih bandı V13 başlangıç tasarım hedefleridir; tür için deneysel optimum değildir.</div><p>${refs({sources:sp.source_ids})}</p>`;
 }
 function renderLibrary(){$('sourceLibrary').innerHTML=DB.sources.map(s=>`<article class="source-entry"><small>${h(s.id)} · ${h(s.type)}</small><h4>${h(s.title)}</h4><p>${h(s.note)}</p>${sourceLink(s.url,'Kaynağı aç')}</article>`).join('');$('workbookNote').textContent='V13 Excel: '+DB.source_workbook.filename+' · veri temelidir; eski seçim formülleri yeni motor değildir. Dosya kimliği: '+DB.source_workbook.sha256;}
-function buildExport(result){return {schema_version:8,application:'BonsaiLAB V31.1',export_context:{interface_version:'31.1',displayed_result_is_outdated:resultIsStale(),calculated_request_preserved:true},date:new Date().toISOString(),request:result.request,request_sha256:result.request_sha256,request_identity_version:result.request_identity_version,database_sha256:result.database_sha256,result,database_snapshot:DB,indoor_dry_bands:DB.indoor_dry_bands,source_registry:DB.sources,all_material_data:DB.material_estimates,all_species_targets:DB.species,rules:DB.rules,grain_groups:DB.grain_groups,climates:DB.climates,seasons:DB.seasons,source_workbook:DB.source_workbook,mixture_science:DB.mixture_science,numeric_estimation:DB.numeric_estimation,material_estimates:DB.material_estimates};}
-function exportReport(){if(!last)return;const blob=new Blob([JSON.stringify(buildExport(last),null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='BonsaiLAB_V31_1_Rapor.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);}
+function buildExport(result){return {schema_version:8,application:'BonsaiLAB V32',export_context:{interface_version:'32',displayed_result_is_outdated:resultIsStale(),calculated_request_preserved:true},date:new Date().toISOString(),request:result.request,request_sha256:result.request_sha256,request_identity_version:result.request_identity_version,database_sha256:result.database_sha256,result,database_snapshot:DB,indoor_dry_bands:DB.indoor_dry_bands,source_registry:DB.sources,all_material_data:DB.material_estimates,all_species_targets:DB.species,rules:DB.rules,grain_groups:DB.grain_groups,climates:DB.climates,seasons:DB.seasons,source_workbook:DB.source_workbook,mixture_science:DB.mixture_science,numeric_estimation:DB.numeric_estimation,material_estimates:DB.material_estimates};}
+function exportReport(){if(!last)return;const blob=new Blob([JSON.stringify(buildExport(last),null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='BonsaiLAB_V32_Rapor.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);}
 async function init(){
  try{const response=await fetch('/api/config');if(!response.ok)throw Error('Veriler açılamadı');DB=await response.json();
  $('species').innerHTML=DB.species.map(s=>`<option value="${s.id}">${h(s.name)}</option>`).join('');$('climate').innerHTML=DB.climates.map(c=>`<option value="${c.id}">${h(c.name)}</option>`).join('');$('sourceMaterial').innerHTML=DB.materials.map(m=>`<option value="${m.id}">${h(m.name)}</option>`).join('');$('sourceSpecies').innerHTML=DB.species.map(s=>`<option value="${s.id}">${h(s.name)}</option>`).join('');makeInventory();restore();renderSourceDetail();renderLibrary();
