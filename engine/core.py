@@ -1,4 +1,4 @@
-"""BonsaiLAB V29: explicit climate bands and complete finite-grid search.
+"""BonsaiLAB V30: explicit climate bands and complete finite-grid search.
 
 NumPy batches the exhaustive search without sampling candidates. Design rules are not biological
 optima. Every layout-feasible 1–5 component recipe in the 5% grid is visited.
@@ -65,7 +65,7 @@ def cap_for(m,sp):
     return int(cap//step*step)
 
 def targets(sp,p):
-    if 'temp' in p or 'rh' in p:raise InputError('V29 genel iklimin yıl boyu bandını kullanır; sabit sıcaklık/nem alanlarını gönderme.')
+    if 'temp' in p or 'rh' in p:raise InputError('V30 genel iklimin yıl boyu bandını kullanır; sabit sıcaklık/nem alanlarını gönderme.')
     input_notes=[]
     if p.get('climate')=='indoor':
         p={**p,'climate':'mild',**({'location':'indoor'} if p.get('location') is None else {})};input_notes.append('Eski iç mekân iklim kaydı ılıman varsayımına taşındı; iç mekân yetiştirme yeri alanından seçilir.')
@@ -134,7 +134,7 @@ def inputs_with_inventory(p,sp):
         entry={'name':name,'available':available,'grain_group':grain,'min_mm':BY_GRAIN[grain]['min_mm'] if grain in BY_GRAIN else None,'max_mm':BY_GRAIN[grain]['max_mm'] if grain in BY_GRAIN else None}
         full.append(entry)
         if available:
-            if cap_for(m,sp)==0:excluded.append(f'{name}: V26 tasarım kuralında otomatik reçeteye alınmıyor.')
+            if cap_for(m,sp)==0:excluded.append(f'{name}: tasarım kapsamında otomatik hacim reçetesine alınmıyor.')
             else:inventory[name]=entry
     if not inventory:raise InputError('En az bir seçime uygun malzemeyi Var olarak işaretle.')
     return inventory,full,excluded
@@ -178,17 +178,9 @@ def hard_to_source(m):return m['name'] in HARD_TO_SOURCE
 def easy_stock(m,inv):return m['name'] not in HARD_TO_SOURCE
 
 def base_material_preference(m,sp,t):
-    n=m['name'];g=sp['group']
-    pref={'Pomza':0,'Lav taşı':.24,'Akadama':.17,'Kanuma':1.6,'Kiryu':.33,'Perlit':.25,'Kiremit irmiği':.8,'Turface':.5,'Volkanik Tüf':.92,'Kum':1.15,'Torf':.5,'Kokopit':.48,'Ağaç kabuğu':.52,'Sfagnum moss':.65,'Vermikülit':1.6,'Humus':2,'Diatomit':2.5,'Zeolit (Klinoptilolit)':2.5,'Saksı toprağı':1.35}.get(n,2)
-    if g=='Asidik':pref+= {'Kanuma':-2.5,'Torf':-.95,'Sfagnum moss':-.85,'Lav taşı':.5,'Kiremit irmiği':.6}.get(n,0)
-    elif n=='Kanuma':pref+=.9
-    if g=='Kozalaklı':pref+= {'Kiryu':-.5,'Lav taşı':-.2,'Kokopit':.5}.get(n,0)
-    if g=='Sukulent':pref+= {'Lav taşı':-.4,'Pomza':-.15,'Torf':1,'Kokopit':1,'Vermikülit':1.2}.get(n,0)
-    if g=='Tropik':pref+= {'Kokopit':-.32,'Akadama':-.1}.get(n,0)
-    if g=='Akdeniz':pref+= {'Lav taşı':-.18,'Ağaç kabuğu':.15}.get(n,0)
-    if t['dry_pressure']>.5:pref+= {'Kokopit':-.35,'Torf':-.18,'Lav taşı':.18}.get(n,0)
-    if t['dry_pressure']<-.2:pref+= {'Lav taşı':-.1,'Kokopit':.25}.get(n,0)
-    return pref
+    # Compatibility hook: material identities carry no selection penalty.
+    return 0.
+
 
 def layout_valid(items,shares,sp,inv=None):
     g=sp['group'];primary=sum(w for m,w in zip(items,shares) if m['name'] in PRIMARY)
@@ -242,7 +234,7 @@ def physical_estimate(items,shares,sp,t,inv):
                  'scope':physics.SCIENCE['scope_note'],'blocks':details['blocks'],'ensemble_basis':details['basis']}
     return {**extra,'cc':cc,'afp':tp-cc,'tp':tp,'cc_reference':cc_ref,'height_delta':cc-cc_ref,
             'height_model':'Su tutma eğrisinin 0–H cm boyunca ortalaması; sabit kesit ve serbest drenaj kabulü. Kaynak eğrisi yoksa CC/AWC ile üstel şekil tahmin edilir; referans kap bilinmiyorsa 12 cm önkabulüdür.',
-            'ph_index':sum(m['ph']*w/100 for m,w in zip(prepared,shares)),
+            'ph_index':chemistry['mixture_ph'],
             'chemistry':chemistry,'cec':extra['cec'],'cec_basis':extra['cec_basis'],'physical_coverage':sourced,'size_coverage':fit,'source_size_known_share':source_size_known,
             'evidence_index':max(0,evidence),'model_confidence':'Kaynak eğrilerinden ölçülmemiş stok karışımına aktarım',
             'awc_coverage':awc_cov,'awc_partial':sum(m['awc']*w/100 for m,w in zip(prepared,shares) if m['awc'] is not None and measure_quality(m,'awc')>=.7),
@@ -263,6 +255,10 @@ def _soft_risk(sp,t,cc,afp,fit,evidence,coverage,ph):
     a=RULES['acceptance']
     return bool(sp['group']=='Asidik' or t['environment_warnings'] or fit is None or fit<a['conditional_grain_overlap']-1e-9  or cc<t['target_cc_max']-a['conditional_target_deficit']-1e-9 or afp<t['target_afp_max']-a['conditional_target_deficit']-1e-9)
 
+def nutrient_score(cec):
+    s=RULES['score'];floor=s['cec_floor']
+    return s['cec_deficit_weight']*(max(0,floor-cec)/floor)**2
+
 def environment_score(sp,t,cc,afp,ph):
     s=RULES['score']
     score=2*(max(0,t['target_cc_max']-cc-2)/9)**2+s['cc_excess_weight']*(max(0,cc-t['target_cc_max']-s['cc_excess_tolerance'])/9)**2
@@ -281,7 +277,7 @@ def evaluate(items,shares,sp,t,inv,mode='technical'):
         prepared=prepare_material(m,inv[m['name']]);fit=grain_fit(m,inv[m['name']],t)
         source_fit=prepared['source_size_fit'] or 0
         score+=w/100*(.65*base_material_preference(m,sp,t)+(1.1*(1-fit) if fit is not None else 0))
-    score+=(.85 if any(m['name'] in ADDONS-{'Vermikülit'} for m in items) else 0)
+    score+=nutrient_score(e['cec'])
     ref=reference_mix(sp,inv,mode)
     if ref:score+=RULES['score']['reference_weight']*(sum((w/100)**2 for w in shares)+sum(v*v for v in ref.values())-2*sum(w/100*ref.get(m['name'],0) for m,w in zip(items,shares)))
     return score,e
@@ -325,7 +321,7 @@ def search_variants_scalar(mats,sp,t,inv,modes):
             if sum(caps)<total_units:continue
             if sum(cap*v[6] for cap,v in zip(caps,vs))<primary_min:continue
             if acid and sum(cap*v[9] for cap,v in zip(caps,vs))<RULES['acid_min']/step:continue
-            difficult_present=any(not easy_stock(m,inv) for m in items);extra=(.85 if any(m['name'] in ADDONS-{'Vermikülit'} for m in items) else 0)
+            difficult_present=any(not easy_stock(m,inv) for m in items);extra=0.
             tables=physics.compile_corrections(items,inv,[states[i] for i in indexes],t['height'],total_units,step,caps)
             for units in distributions(total_units,caps):
                 primary=sum(u*v[6] for u,v in zip(units,vs));organic=sum(u*v[7] for u,v in zip(units,vs));addon=sum(u*v[8] for u,v in zip(units,vs))
@@ -344,6 +340,9 @@ def search_variants_scalar(mats,sp,t,inv,modes):
                 score=environment_score(sp,t,cc,afp,ph)
                 score+=sum(u*v[11] for u,v in zip(units,vs))/total_units+extra
                 difficult=sum(u*v[10] for u,v in zip(units,vs))/total_units
+                masses=[u*state['density'] for u,state in zip(units,[states[i] for i in indexes])]
+                cec=sum(m['cec']*mass for m,mass in zip(items,masses))/sum(masses)
+                score+=nutrient_score(cec)
                 for mode in modes:
                     if mode=='economical' and difficult_present:continue
                     sc=score
@@ -397,7 +396,7 @@ def recipe_grain_recommendation(items,shares,sp,t,inv,mode):
             'candidate_groups':t['acceptable_grain_groups'],'scenario_values':{'cc':hypothetical['cc'],'afp':hypothetical['afp'],'ph_index':hypothetical['ph_index'],'mixture_ph':hypothetical['chemistry']['mixture_ph'],'species_band':hypothetical['chemistry']['species_band']}}
 
 def variant(result,sp,t,inv,mode):
-    if result is None:return {'status':'unavailable','mode':mode,'selected':[],'estimate':None,'warnings':['Akadama, Kanuma, Kiryu ve Turface dışındaki seçili stokta, bu arama alanının düzen şartlarını sağlayan aday yok.' if mode=='economical' else 'Seçili stokta, 1–4 bileşen ve %5 adım altında düzen kısıtlarını sağlayan aday yok.'],'reasons':[],'difficult_share':0,'grain_recommendation':None,'acceptance_label':'Bu arama alanında aday yok'}
+    if result is None:return {'status':'unavailable','mode':mode,'selected':[],'estimate':None,'warnings':['Akadama, Kanuma, Kiryu ve Turface dışındaki seçili stokta, bu arama alanının düzen şartlarını sağlayan aday yok.' if mode=='economical' else f'Seçili stokta, en fazla {t["max_components"]} bileşen ve %5 adım altında düzen kısıtlarını sağlayan aday yok.'],'reasons':[],'difficult_share':0,'grain_recommendation':None,'acceptance_label':'Bu arama alanında aday yok'}
     rank,score,items,shares,e,reasons=result;warnings=list(reasons)+t['environment_warnings'];rows=[]
     for m,w in zip(items,shares):
         stock=inv[m['name']];x=prepare_material(m,stock);fit=grain_fit(m,stock,t)
@@ -418,7 +417,7 @@ def variant(result,sp,t,inv,mode):
     status='conditional' if physical_status=='ok' and not e['chemistry']['point_in_species_band'] else physical_status
     if not e['chemistry']['point_in_species_band']:warnings.insert(0,f"Tahmini pH {e['chemistry']['mixture_ph']:.1f}, türün {sp['ph_min']}–{sp['ph_max']} tercih bandının dışında; kimyasal uyum kontrolü gerekli.")
     if not e['chemistry']['range_overlaps_species_band']:warnings.insert(0,'pH duyarlılık aralığı da türün tercih bandıyla kesişmiyor; kimyasal uyumsuzluk riski yüksek.')
-    return {'status':status,'physical_status':physical_status,'mode':mode,'score':score,'estimate':e,'selected':sorted(rows,key=lambda x:(-x['share'],x['name'])),'warnings':list(dict.fromkeys(warnings)),'reasons':reasons,'difficult_share':sum(w for m,w in zip(items,shares) if hard_to_source(m)),'grain_recommendation':recipe_grain_recommendation(items,shares,sp,t,inv,mode),'acceptance_label':{'ok':'Model kısıtları sağlandı','conditional':'Koşullu tasarım / kontrol gerekli','inadequate':'Tasarım eşikleri sağlanmadı'}[status]}
+    return {'selection_explanation':{'water_air_score':environment_score(sp,t,e['cc'],e['afp'],e['chemistry']['mixture_ph']),'grain_score':sum(w/100*1.1*(1-grain_fit(m,inv[m['name']],t)) for m,w in zip(items,shares) if m['grain_applicable']),'cec_deficit_score':nutrient_score(e['cec']),'material_name_penalty':0,'reference_recipe_penalty':0,'component_count_penalty':0,'cec_comparison':RULES['nutrient_comparison'],'guardrail_basis':RULES['guardrail_basis']},'status':status,'physical_status':physical_status,'mode':mode,'score':score,'estimate':e,'selected':sorted(rows,key=lambda x:(-x['share'],x['name'])),'warnings':list(dict.fromkeys(warnings)),'reasons':reasons,'difficult_share':sum(w for m,w in zip(items,shares) if hard_to_source(m)),'grain_recommendation':recipe_grain_recommendation(items,shares,sp,t,inv,mode),'acceptance_label':{'ok':'Model kısıtları sağlandı','conditional':'Koşullu tasarım / kontrol gerekli','inadequate':'Tasarım eşikleri sağlanmadı'}[status]}
 
 def calculate(payload:dict[str,Any]):
     if not isinstance(payload,dict):raise InputError('İstek bir nesne olmalı.')
@@ -446,4 +445,4 @@ def calculate(payload:dict[str,Any]):
     normalized={k:t[k] for k in ('climate','season','phase','pot','light','wind','watering','location','height','volume','max_components')}
     normalized.update({'species_id':sid,'inventory':full})
     fingerprint=hashlib.sha256(json.dumps(identity_values(normalized),sort_keys=True,ensure_ascii=False).encode()).hexdigest()
-    return {'application':'BonsaiLAB V29','species':sp,'inputs':t,'request':normalized,'request_sha256':fingerprint,'request_identity_version':2,'database_sha256':DB_HASH,'technical':tech,'economical':econ,'notes':notes,'limits':{n:cap_for(BY_NAME[n],sp) for n in inv},'rule_source':'V29_RULES','search':search,'provenance_note':'Model kısıtları biyolojik güvenlik onayı değildir. Tüm fiziksel ve kimyasal sonuçlara sayısal tahmin verilir; eksikler açık önkabullerle tamamlanır. Aralıklar tasarım duyarlılığıdır, güven aralığı değildir.', 'science_version':physics.SCIENCE['version']}
+    return {'application':'BonsaiLAB V30','species':sp,'inputs':t,'request':normalized,'request_sha256':fingerprint,'request_identity_version':2,'database_sha256':DB_HASH,'technical':tech,'economical':econ,'notes':notes,'limits':{n:cap_for(BY_NAME[n],sp) for n in inv},'rule_source':'V30_RULES','search':search,'provenance_note':'Model kısıtları biyolojik güvenlik onayı değildir. Tüm fiziksel ve kimyasal sonuçlara sayısal tahmin verilir; eksikler açık önkabullerle tamamlanır. Aralıklar tasarım duyarlılığıdır, güven aralığı değildir.', 'science_version':physics.SCIENCE['version']}

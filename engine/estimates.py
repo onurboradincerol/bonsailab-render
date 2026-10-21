@@ -29,7 +29,7 @@ def complete_material(material,policy):
 
 def ratio_range(values_low,values_high,weights_low,weights_high):
     # At positive weights, extrema of a linear-fractional weighted average occur
-    # at the corners. Components <=4 in recipes; all 20 remain cheap separately.
+    # at the corners. Components <=5 in recipes; all 20 remain cheap separately.
     lo=math.inf;hi=-math.inf
     for bits in itertools.product((0,1),repeat=len(weights_low)):
         weights=[weights_high[i] if bit else weights_low[i] for i,bit in enumerate(bits)]
@@ -61,7 +61,7 @@ def additional_estimates(materials,shares,states,cc,policy,volume,details=None):
     lo,hi=ratio_range([m['cec']*cmin for m in materials],[m['cec']*cmax for m in materials],[w*dmin for w in mass_weights],[w*dmax for w in mass_weights])
     pwp=sum(state['pwp']*w/100 for state,w in zip(states,shares))+details['pwp_delta']
     pwp=bounded(pwp,0,cc);awc=cc-pwp;fraction=awc/max(1e-12,cc);half=policy['awc_fraction_half_width']
-    return {'cec':cec,'cec_range_min':lo,'cec_range_max':hi,'density':density,'density_range_min':density*dmin,'density_range_max':density*dmax,
+    return {'cec_per_litre_cmol':cec*density,'exchange_capacity_cmol':cec*dry_mass/1000,'cec':cec,'cec_range_min':lo,'cec_range_max':hi,'density':density,'density_range_min':density*dmin,'density_range_max':density*dmax,
             'dry_mass_g':dry_mass,'input_volume_ml':volume,'premix_density':premix_density,'estimated_final_volume_ml':final_volume,
             'awc':awc,'unavailable_water':pwp,'awc_range_min':cc*max(0,fraction-half),'awc_range_max':cc*min(1,fraction+half),
             'available_water_ml':awc*final_volume/100,'retained_water_ml':cc*final_volume/100,'estimated':True,

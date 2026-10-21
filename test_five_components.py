@@ -65,8 +65,9 @@ class FiveComponentTests(unittest.TestCase):
   import json
   case=json.loads((Path(__file__).parent/'tests/cases.json').read_text(encoding='utf8'))[4]['request']
   four=core.calculate({**case,'max_components':4});five=core.calculate({**case,'max_components':5})
-  self.assertEqual(len(five['technical']['selected']),5)
-  self.assertLess(five['technical']['score'],four['technical']['score'])
+  # A larger search space cannot make the winner worse; no fixture forces
+  # a five-material recipe after the deliberate V30 objective revision.
+  self.assertLessEqual(five['technical']['score'],four['technical']['score']+1e-9)
   self.assertEqual(five['technical']['status'],four['technical']['status'])
  def test_mixed_grains_and_height_match_scalar(self):
   p=request(('Pomza','Torf','Perlit','Kokopit','Ağaç kabuğu'),'T01')

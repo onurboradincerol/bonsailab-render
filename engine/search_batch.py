@@ -11,7 +11,7 @@ def search(c,mats,sp,t,inv,modes):
  for m in mats:
   prepared=c.prepare_material(m,inv[m['name']]);state=c.component_state(prepared,t['height']);states.append(state)
   fit=c.grain_fit(m,inv[m['name']],t)
-  v.append([state['cc'],state['tp'],prepared['ph'],fit or 0,int(m['name'] in c.PRIMARY),int(m['kind']!='Mineral granül'),int(m['name'] in c.ADDONS),int(m['name'] in c.ACID),.65*c.base_material_preference(m,sp,t)+(1.1*(1-fit) if fit is not None else 0),int(m['grain_applicable']),prepared['numeric_estimation']['relative_buffer']])
+  v.append([state['cc'],state['tp'],prepared['ph'],fit or 0,int(m['name'] in c.PRIMARY),int(m['kind']!='Mineral granül'),int(m['name'] in c.ADDONS),int(m['name'] in c.ACID),.65*c.base_material_preference(m,sp,t)+(1.1*(1-fit) if fit is not None else 0),int(m['grain_applicable']),prepared['numeric_estimation']['relative_buffer'],state['density'],prepared['cec']*state['density']])
  vectors=np.asarray(v,dtype=float);best={mode:None for mode in modes};count=0
  physical_counts={mode:0 for mode in modes};ph_counts={mode:0 for mode in modes}
  a=r['acceptance'];acid=sp['group']=='Asidik';cc_floor=max(a['min_cc_floor'],t['target_cc_max']-a['max_cc_deficit']);afp_floor=max(a['min_afp_floor'],t['target_afp_max']-a['max_afp_deficit'])
@@ -74,7 +74,8 @@ def search(c,mats,sp,t,inv,modes):
    s=r['score'];score=2*(np.maximum(0,t['target_cc_max']-cc-2)/9)**2+s['cc_excess_weight']*(np.maximum(0,cc-t['target_cc_max']-s['cc_excess_tolerance'])/9)**2
    score+=2.6*(np.maximum(0,t['target_afp_max']-afp-2)/9)**2+s['afp_excess_weight']*(np.maximum(0,afp-t['target_afp_max']-s['afp_excess_tolerance'])/9)**2
    score+=weighted(units,8)/total
-   if any(m['name'] in c.ADDONS-{'Vermikülit'} for m in items):score+=.85
+   cec=weighted(units,12)/weighted(units,11)
+   score+=s['cec_deficit_weight']*(np.maximum(0,s['cec_floor']-cec)/s['cec_floor'])**2
    distance=np.maximum(0,np.maximum(sp['ph_min']-ph,ph-sp['ph_max']));distance[distance<=1e-9]=0
    distance=np.round(distance,9);in_band=(ph>=sp['ph_min']-1e-9)&(ph<=sp['ph_max']+1e-9)
    for mode in modes:

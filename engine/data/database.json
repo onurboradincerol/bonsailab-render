@@ -1,5 +1,5 @@
 {
-  "version": 29,
+  "version": 30,
   "updated": "2026-10-21",
   "materials": [
     {
@@ -149,7 +149,7 @@
           "sources": [
             "JPN82"
           ],
-          "note": "Japon araştırmasında belirli granül sınıfı; pH 5,0 ayrıca ürün-tabanlı tasarım kararı. V17: CEC/yoğunluk fraksiyon uyumsuzluğu nedeniyle karışım CEC hesabına alınmaz."
+          "note": "CEC ile yoğunluk farklı fraksiyonlardandır. Aktif hesap korunmuş kuru kütlelerle tahmini aktarım kullanır; aynı stok numunesinde doğrulanmış ölçüm değildir."
         },
         "cc": {
           "class": "ASSUMPTION",
@@ -206,7 +206,7 @@
           3,
           6
         ],
-        "note": "CEC ile yoğunluk fraksiyonları eşleşmiyor; kütlesel CEC hesabında kullanılmaz. Nominal değerler tarihsel referans olarak korunur."
+        "note": "CEC ile yoğunluk farklı fraksiyonlardandır. Aktif hesap korunmuş kuru kütlelerle tahmini aktarım kullanır; aynı stok numunesinde doğrulanmış ölçüm değildir."
       },
       "default_grain_group": "medium",
       "grain_applicable": true,
@@ -270,7 +270,7 @@
           "sources": [
             "JPN82"
           ],
-          "note": "Japon araştırmasının belirli fraksiyonlarından; temsilî değer/ortalama. V17: CEC/yoğunluk fraksiyon uyumsuzluğu nedeniyle karışım CEC hesabına alınmaz."
+          "note": "CEC ile yoğunluk farklı fraksiyonlardandır. Aktif hesap korunmuş kuru kütlelerle tahmini aktarım kullanır; aynı stok numunesinde doğrulanmış ölçüm değildir."
         },
         "cc": {
           "class": "ASSUMPTION",
@@ -327,7 +327,7 @@
           3,
           6
         ],
-        "note": "CEC ile yoğunluk fraksiyonları eşleşmiyor; kütlesel CEC hesabında kullanılmaz. Nominal değerler tarihsel referans olarak korunur."
+        "note": "CEC ile yoğunluk farklı fraksiyonlardandır. Aktif hesap korunmuş kuru kütlelerle tahmini aktarım kullanır; aynı stok numunesinde doğrulanmış ölçüm değildir."
       },
       "default_grain_group": "medium",
       "grain_applicable": true,
@@ -3268,6 +3268,20 @@
       "title": "V29: beş bileşene kadar arama; bileşen sayısı puanı etkilemez",
       "url": "",
       "note": "İç tasarım kuralı; biyolojik optimum kanıtı değildir."
+    },
+    {
+      "id": "V30_RULES",
+      "title": "V30: özellik temelli seçim ve açık tasarım sınırları",
+      "type": "İç tasarım kuralı",
+      "url": "",
+      "note": "Leonardit dozlanan katkıdır; hacim reçetesi dışında. Perlit/vermikülit/zeolit/diatomit bireysel ve katkı tavanları; organik toplam ve ana iskelet şartları uzun süreli bonsai karışımı kapsamı için korunur. Bu sayısal tavanlar evrensel tür güvenlik sınırı değildir. Stabil ana mineral granüllerde ad bazlı yüzde 100 altı tavan kaldırılmıştır. Asidik malzeme adı minimumu kaldırılmış, pH bandı korunmuştur."
+    },
+    {
+      "id": "UF_CEC",
+      "title": "UF/IFAS: Compost-formulated Media for Foliage Plant Production, Table 4",
+      "type": "Araştırmaya dayalı yayım rehberi",
+      "url": "https://ask.ifas.ufl.edu/publication/EP129",
+      "note": "Süs yapraklı kap bitkileri için CEC 5–50 meq/100g; bonsaiye aktarım karşılaştırma önkabulüdür, doğrulanmış tür hedefi değildir."
     }
   ],
   "climates": [
@@ -3402,7 +3416,7 @@
     }
   ],
   "rules": {
-    "source": "V29_RULES",
+    "source": "V30_RULES",
     "grid_step": 5,
     "max_components": 5,
     "primary_min": {
@@ -3418,17 +3432,11 @@
       "default": 45
     },
     "addon_max": 15,
-    "acid_min": 25,
+    "acid_min": 0,
     "shares": {
-      "Akadama": 85,
-      "Kanuma": {
-        "Asidik": 100,
-        "default": 15
-      },
-      "Kiryu": {
-        "Kozalaklı": 60,
-        "default": 40
-      },
+      "Akadama": 100,
+      "Kanuma": 100,
+      "Kiryu": 100,
       "Pomza": 100,
       "Lav taşı": 100,
       "Perlit": {
@@ -3436,10 +3444,10 @@
         "Sukulent": 20,
         "default": 30
       },
-      "Kiremit irmiği": 35,
-      "Turface": 70,
-      "Volkanik Tüf": 55,
-      "Kum": 25,
+      "Kiremit irmiği": 100,
+      "Turface": 100,
+      "Volkanik Tüf": 100,
+      "Kum": 100,
       "Torf": {
         "Asidik": 70,
         "default": 40
@@ -3451,8 +3459,6 @@
       },
       "Ağaç kabuğu": 40,
       "Sfagnum moss": {
-        "Kozalaklı": 0,
-        "Sukulent": 0,
         "Asidik": 20,
         "default": 10
       },
@@ -3463,7 +3469,7 @@
       "Diatomit": 10,
       "Saksı toprağı": 20
     },
-    "note": "Uzun süreli bonsai saksısı için iç tasarım kuralları. Perlit havalandırma katkısıdır; ana granüler iskelet sayılmaz. Çam/kozalaklılarda sfagnum standart reçeteye otomatik eklenmez. Sayısal sınırlar deneysel optimum değildir.",
+    "note": "Leonardit dozlanan katkıdır; hacim reçetesi dışında. Perlit/vermikülit/zeolit/diatomit bireysel ve katkı tavanları; organik toplam ve ana iskelet şartları uzun süreli bonsai karışımı kapsamı için korunur. Bu sayısal tavanlar evrensel tür güvenlik sınırı değildir. Stabil ana mineral granüllerde ad bazlı yüzde 100 altı tavan kaldırılmıştır. Asidik malzeme adı minimumu kaldırılmış, pH bandı korunmuştur.",
     "acceptance": {
       "min_cc_floor": 12,
       "max_cc_deficit": 16,
@@ -3504,9 +3510,13 @@
       "afp_excess_tolerance": 4,
       "cc_excess_weight": 1,
       "afp_excess_weight": 1.3,
-      "note": "Fiziksel asgari koşullardan sonra tahmini pH bandı uygunluğu önceliklidir; bandın dışında en yakın değer seçilir. Sonra fiziksel koşulluluk ve hedef puanı karşılaştırılır. Bileşen sayısı puan avantajı veya cezası oluşturmaz.",
-      "reference_weight": 3,
-      "component_count_penalty": 0
+      "note": "Önce fiziksel asgari ve tahmini pH bandı; sonra su/hava ve gerçek stok dane grubu hedefleri. Malzeme adı, referans reçete, kaynak güveni, bileşen sayısı veya temin güçlüğü ana puanı değiştirmez. CEC 5 cmol(+)/kg altındaysa sınırlı eksiklik puanı vardır; üstündeki artış ödüllendirilmez. Bu kıyas eşiği tür optimumu değildir.",
+      "reference_weight": 0,
+      "component_count_penalty": 0,
+      "material_name_weight": 0,
+      "fixed_addon_penalty": 0,
+      "cec_floor": 5,
+      "cec_deficit_weight": 0.5
     },
     "reference_mix": {
       "Kozalaklı": {
@@ -3520,7 +3530,7 @@
         "Lav taşı": 1
       }
     },
-    "reference_note": "BONSAI_SOIL yetiştiricilik rehberindeki başlangıç karışımıyla yumuşak karşılaştırma. Mevcut referans bileşenleri arasında normalize edilir; reçete veya bileşen sayısı zorlanmaz. İç puan ağırlığı deneysel optimum değildir.",
+    "reference_note": "Yetiştiricilik rehberinin tarihsel örnek reçeteleri yalnız referans kayıtlarıdır. V30 seçim puanına etkisi sıfırdır.",
     "grain_recommendation": {
       "candidate_groups": "acceptable_grain_groups",
       "note": "Seçilmiş reçetenin oranları sabit tutulur; saksı/aşamaya uygun gruplarda ayrı senaryo karşılaştırılır. Mevcut stok hesabı değiştirilmez. Karışım paketlenmesini ölçen optimum değildir.",
@@ -3536,14 +3546,30 @@
       "note": "Bu dört malzemeyi dışlar; diğerleri yalnız kullanıcı stokta Var işaretlediyse kullanılır. Ülke kökeni veya anlık piyasa stok araştırması değildir."
     },
     "chemistry_policy": "Sayısal pH tahmini tercih bandına göre reçete seçiminde kullanılır. Uygun aday yoksa en yakın tahmin verilir; bu deneysel kimyasal doğrulama değildir.",
-    "source_note": "V26: V25 pH önceliği korunur; fiziksel aday kümesi boşsa ihlal önceliği açıkça belirtilir. Su/kütle/hacim bazı ayrıştırılır.",
+    "source_note": "V30 fiziksel ve pH önceliğini korur; ad bazlı tercih ve sabit katkı cezalarını kaldırır. CEC alt kıyasını açık önkabulle sınırlar. Sayısal tasarım sınırları evrensel biyolojik optimum değildir.",
     "selection_policy": {
       "missing_data_penalty": 0,
       "source_class_penalty": 0,
       "sample_grain_overlap_penalty": 0,
       "technical_availability_penalty": 0,
       "source_confidence_changes_rank": false,
-      "note": "Veri düzeyi yalnız açıklama ve belirsizlik içindir. Seçim fiziksel eşikler, tür pH bandı, gerçek dane uygunluğu ve yetiştirme hedefleriyle yapılır. Kolay temin yalnız alternatif stok filtresidir."
+      "note": "Veri düzeyi yalnız açıklama ve belirsizlik içindir. Seçim fiziksel eşikler, tür pH bandı, gerçek dane uygunluğu ve yetiştirme hedefleriyle yapılır. Kolay temin yalnız alternatif stok filtresidir.",
+      "material_name_penalty": 0,
+      "fixed_addon_penalty": 0,
+      "reference_recipe_weight": 0
+    },
+    "guardrail_basis": {
+      "class": "CONSERVATIVE_DESIGN_SCOPE_NOT_BIOLOGICAL_LIMIT",
+      "source": "V30_RULES",
+      "note": "Leonardit dozlanan katkıdır; hacim reçetesi dışında. Perlit/vermikülit/zeolit/diatomit bireysel ve katkı tavanları; organik toplam ve ana iskelet şartları uzun süreli bonsai karışımı kapsamı için korunur. Bu sayısal tavanlar evrensel tür güvenlik sınırı değildir. Stabil ana mineral granüllerde ad bazlı yüzde 100 altı tavan kaldırılmıştır. Asidik malzeme adı minimumu kaldırılmış, pH bandı korunmuştur."
+    },
+    "nutrient_comparison": {
+      "source": "UF_CEC",
+      "class": "TRANSFERRED_DESIGN_COMPARISON",
+      "cec_floor_cmol_kg": 5,
+      "weight": 0.5,
+      "species_optimum_validated": false,
+      "note": "UF/IFAS süs yapraklı kap bitkileri için 5–50 meq/100g aralığı verir. 1 meq/100g = 1 cmol(+)/kg. Yalnız alt uç sınırlı kıyas için aktarılır; bonsai tür optimumu değildir. CEC artışı 5 üzerinde puan avantajı sağlamaz."
     }
   },
   "source_workbook": {
