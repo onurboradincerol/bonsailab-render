@@ -1,12 +1,14 @@
-"""BonsaiLAB V28: explicit climate bands and complete finite-grid search.
+"""BonsaiLAB V29: explicit climate bands and complete finite-grid search.
 
-Only the Python standard library is required. Design rules are not biological
-optima. Every layout-feasible 1–4 component recipe in the 5% grid is visited.
+NumPy batches the exhaustive search without sampling candidates. Design rules are not biological
+optima. Every layout-feasible 1–5 component recipe in the 5% grid is visited.
 """
 from __future__ import annotations
 import copy
 import hashlib
 import itertools
+import sys
+import search_batch
 import json
 import math
 import time
@@ -63,7 +65,7 @@ def cap_for(m,sp):
     return int(cap//step*step)
 
 def targets(sp,p):
-    if 'temp' in p or 'rh' in p:raise InputError('V28 genel iklimin yıl boyu bandını kullanır; sabit sıcaklık/nem alanlarını gönderme.')
+    if 'temp' in p or 'rh' in p:raise InputError('V29 genel iklimin yıl boyu bandını kullanır; sabit sıcaklık/nem alanlarını gönderme.')
     input_notes=[]
     if p.get('climate')=='indoor':
         p={**p,'climate':'mild',**({'location':'indoor'} if p.get('location') is None else {})};input_notes.append('Eski iç mekân iklim kaydı ılıman varsayımına taşındı; iç mekân yetiştirme yeri alanından seçilir.')
@@ -79,6 +81,9 @@ def targets(sp,p):
     location=choice(p,'location',{'outdoor','sheltered','indoor'},'outdoor')
     height=number(p.get('height',8),'Saksı yüksekliği',2,50)
     volume=number(p.get('volume',2000),'Hacim',100,100000)
+    component_limit=number(p.get('max_components',RULES['max_components']),'En fazla bileşen',1,RULES['max_components'])
+    if not component_limit.is_integer():raise InputError('En fazla bileşen: tam sayı seç.')
+    component_limit=int(component_limit)
     bands=DB['indoor_dry_bands'] if location=='indoor' else BY_CLIMATE[climate]['dry_bands']
     offsets={'light':{'shade':-.22,'filtered':0,'full':.3,'led':-.1}[light],
              'wind':{'none':-.1,'low':0,'moderate':.13,'strong':.3}[wind],
@@ -106,7 +111,7 @@ def targets(sp,p):
         environmental.append('Yılın serin döneminde don ve soğuk riski: türün korunacağı ortam ayrıca doğrulanmalı.')
     if climate=='continental' and location!='indoor':
         environmental.append('Karasal kışta saksıdaki köklerin donma riski ayrıca yönetilmeli.')
-    return {'climate':climate,'climate_name':BY_CLIMATE[climate]['name'],'season':season,'season_scenarios':scenarios,'environment_offsets':offsets,'phase':phase,'pot':pot,'light':light,'wind':wind,'watering':watering,'location':location,'height':height,'volume':volume,'dry_min':dmin,'dry_max':dmax,'dry_pressure':(dmin+dmax)/2,'target_cc_min':cc_min,'target_cc_max':cc_max,'target_cc':(cc_min+cc_max)/2,'target_afp_min':afp_min,'target_afp_max':afp_max,'target_afp':(afp_min+afp_max)/2,'recommended_grain':grain,'grain_profile':grain_profile,'acceptable_grain_groups':[g for g,v in RULES['grain_suitability'][grain_profile].items() if v==1],'part_min':BY_GRAIN[grain]['min_mm'],'part_max':BY_GRAIN[grain]['max_mm'],'input_notes':input_notes,'environment_warnings':environmental,'climate_basis':'Yıl boyu tasarım: sıcak/kuru ucun su rezervi ve serin/nemli ucun havalanması birlikte gözetilir. Mevsim bantları ve ortam katsayıları iç model kabulleridir; ölçülmüş VPD, sulama günü veya saksı değiştirme takvimi değildir.'}
+    return {'max_components':component_limit,'climate':climate,'climate_name':BY_CLIMATE[climate]['name'],'season':season,'season_scenarios':scenarios,'environment_offsets':offsets,'phase':phase,'pot':pot,'light':light,'wind':wind,'watering':watering,'location':location,'height':height,'volume':volume,'dry_min':dmin,'dry_max':dmax,'dry_pressure':(dmin+dmax)/2,'target_cc_min':cc_min,'target_cc_max':cc_max,'target_cc':(cc_min+cc_max)/2,'target_afp_min':afp_min,'target_afp_max':afp_max,'target_afp':(afp_min+afp_max)/2,'recommended_grain':grain,'grain_profile':grain_profile,'acceptable_grain_groups':[g for g,v in RULES['grain_suitability'][grain_profile].items() if v==1],'part_min':BY_GRAIN[grain]['min_mm'],'part_max':BY_GRAIN[grain]['max_mm'],'input_notes':input_notes,'environment_warnings':environmental,'climate_basis':'Yıl boyu tasarım: sıcak/kuru ucun su rezervi ve serin/nemli ucun havalanması birlikte gözetilir. Mevsim bantları ve ortam katsayıları iç model kabulleridir; ölçülmüş VPD, sulama günü veya saksı değiştirme takvimi değildir.'}
 
 def inputs_with_inventory(p,sp):
     raw=p.get('inventory')
@@ -276,7 +281,7 @@ def evaluate(items,shares,sp,t,inv,mode='technical'):
         prepared=prepare_material(m,inv[m['name']]);fit=grain_fit(m,inv[m['name']],t)
         source_fit=prepared['source_size_fit'] or 0
         score+=w/100*(.65*base_material_preference(m,sp,t)+(1.1*(1-fit) if fit is not None else 0))
-    score+=.09*max(0,len(items)-2)+(.85 if any(m['name'] in ADDONS-{'Vermikülit'} for m in items) else 0)
+    score+=(.85 if any(m['name'] in ADDONS-{'Vermikülit'} for m in items) else 0)
     ref=reference_mix(sp,inv,mode)
     if ref:score+=RULES['score']['reference_weight']*(sum((w/100)**2 for w in shares)+sum(v*v for v in ref.values())-2*sum(w/100*ref.get(m['name'],0) for m,w in zip(items,shares)))
     return score,e
@@ -301,10 +306,10 @@ def distributions(total,caps):
     for value in range(max(1,total-sum(caps[1:])),min(caps[0],total-len(caps)+1)+1):
         for tail in distributions(total-value,caps[1:]):yield (value,)+tail
 
-def search_variants(mats,sp,t,inv,modes):
+def search_variants_scalar(mats,sp,t,inv,modes):
     """Complete search; evaluate the linear data in a tight loop, finalize winners."""
     if any(mode not in ('technical','economical') for mode in modes):raise InputError('Geçersiz tasarım modu.')
-    step=RULES['grid_step'];total_units=100//step;max_components=RULES['max_components']
+    step=RULES['grid_step'];total_units=100//step;max_components=t['max_components']
     start=time.perf_counter();best={mode:None for mode in modes};count=0;ph_counts={mode:0 for mode in modes};physical_counts={mode:0 for mode in modes}
     mats=sorted(mats,key=lambda m:m['name']);vectors=[];states=[];references={mode:reference_mix(sp,inv,mode) for mode in modes};ref_norms={mode:sum(v*v for v in ref.values()) for mode,ref in references.items()}
     for m in mats:
@@ -320,7 +325,7 @@ def search_variants(mats,sp,t,inv,modes):
             if sum(caps)<total_units:continue
             if sum(cap*v[6] for cap,v in zip(caps,vs))<primary_min:continue
             if acid and sum(cap*v[9] for cap,v in zip(caps,vs))<RULES['acid_min']/step:continue
-            difficult_present=any(not easy_stock(m,inv) for m in items);extra=.09*max(0,k-2)+(.85 if any(m['name'] in ADDONS-{'Vermikülit'} for m in items) else 0)
+            difficult_present=any(not easy_stock(m,inv) for m in items);extra=(.85 if any(m['name'] in ADDONS-{'Vermikülit'} for m in items) else 0)
             tables=physics.compile_corrections(items,inv,[states[i] for i in indexes],t['height'],total_units,step,caps)
             for units in distributions(total_units,caps):
                 primary=sum(u*v[6] for u,v in zip(units,vs));organic=sum(u*v[7] for u,v in zip(units,vs));addon=sum(u*v[8] for u,v in zip(units,vs))
@@ -357,6 +362,9 @@ def search_variants(mats,sp,t,inv,modes):
         assert rank==candidate_rank(items,shares,sp,t,inv,score,est,mode)
         results[mode]=(rank,score,items,shares,est,viability(items,shares,sp,t,inv,est))
     return results,{'complete':True,'ph_selection':{mode:{'physical_feasible_candidates':physical_counts[mode],'ph_feasible_candidates':ph_counts[mode],'ph_band':[sp['ph_min'],sp['ph_max']],'basis':'Fiziksel asgari koşulları sağlayan adaylar arasında önce tahmini pH bandı; yoksa banda en yakın tahmin.'} for mode in modes},'candidate_count':count,'max_components':max_components,'step_percent':step,'material_count':len(mats),'seconds':round(time.perf_counter()-start,4),'scope':f'Yalnız seçili stok, 1–{max_components} bileşen ve %{step} adım; bu sonlu alanda tam tarama.'}
+
+def search_variants(mats,sp,t,inv,modes):
+    return search_batch.search(sys.modules[__name__],mats,sp,t,inv,modes)
 
 def optimize(mats,sp,t,inv,mode):return search_variants(mats,sp,t,inv,[mode])[0][mode]
 
@@ -434,8 +442,8 @@ def calculate(payload:dict[str,Any]):
     notes=excluded+t['input_notes']+['Tek reçete üç mevsim bandıyla değerlendirilir; karışım yalnız saksı değişiminin yapıldığı mevsime göre seçilmez. Güncel sulama ve koruma mevsim boyunca yönetilir.','Kolay temin alternatifi Akadama, Kanuma, Kiryu ve Turface dışındaki Var işaretli malzemelerle aranır.']
     if any(n in inv for n in ('Torf','Kokopit','Ağaç kabuğu')):notes.append('Organik malzemelerde pH referans varsayımıdır; fiziksel eğriler literatürden malzeme ailesine aktarılır; ürünler arasında değişebilir. Kabuk dane seçimi uygunluk önerisine katılır. Boyuta özgü saf malzeme eğrisi yoktur; iri grupta deney karışımı aktarımı kapalıdır.')
     if all(v['status']=='unavailable' for v in (tech,econ)):
-        notes.append('Sınırlar ve katkı/iskelet şartları mevcut stokta birlikte sağlanamıyor. Limit tablosunu incele; arama alanı %5 adım ve en fazla dört bileşenle sınırlı.')
-    normalized={k:t[k] for k in ('climate','season','phase','pot','light','wind','watering','location','height','volume')}
+        notes.append(f'Sınırlar ve katkı/iskelet şartları mevcut stokta birlikte sağlanamıyor. Limit tablosunu incele; arama alanı %5 adım ve en fazla {t["max_components"]} bileşenle sınırlı.')
+    normalized={k:t[k] for k in ('climate','season','phase','pot','light','wind','watering','location','height','volume','max_components')}
     normalized.update({'species_id':sid,'inventory':full})
     fingerprint=hashlib.sha256(json.dumps(identity_values(normalized),sort_keys=True,ensure_ascii=False).encode()).hexdigest()
-    return {'application':'BonsaiLAB V28','species':sp,'inputs':t,'request':normalized,'request_sha256':fingerprint,'request_identity_version':2,'database_sha256':DB_HASH,'technical':tech,'economical':econ,'notes':notes,'limits':{n:cap_for(BY_NAME[n],sp) for n in inv},'rule_source':'V28_RULES','search':search,'provenance_note':'Model kısıtları biyolojik güvenlik onayı değildir. Tüm fiziksel ve kimyasal sonuçlara sayısal tahmin verilir; eksikler açık önkabullerle tamamlanır. Aralıklar tasarım duyarlılığıdır, güven aralığı değildir.', 'science_version':physics.SCIENCE['version']}
+    return {'application':'BonsaiLAB V29','species':sp,'inputs':t,'request':normalized,'request_sha256':fingerprint,'request_identity_version':2,'database_sha256':DB_HASH,'technical':tech,'economical':econ,'notes':notes,'limits':{n:cap_for(BY_NAME[n],sp) for n in inv},'rule_source':'V29_RULES','search':search,'provenance_note':'Model kısıtları biyolojik güvenlik onayı değildir. Tüm fiziksel ve kimyasal sonuçlara sayısal tahmin verilir; eksikler açık önkabullerle tamamlanır. Aralıklar tasarım duyarlılığıdır, güven aralığı değildir.', 'science_version':physics.SCIENCE['version']}

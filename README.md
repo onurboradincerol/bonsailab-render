@@ -1,6 +1,6 @@
-# BonsaiLAB V28 — Render
+# BonsaiLAB V29 — Render
 
-40 tür, 20 substrat ve üç dane grubu için yıl boyu tek reçete tasarımı. Hesaplar Python sunucusunda yapılır. V28, veri eksikliği ve kaynak/numune uyumunun seçim puanına etkisini kaldırır; 20 malzemenin 140 sayısal referans alanını açık yöntemlerle tamamlar. Kaynaklı numuneler, aktarım ve tahminler ayrı etiketlenir. Kaynak tahminleri gerçek ürün partisi veya biyolojik optimum ölçümü değildir.
+40 tür, 20 substrat ve üç dane grubu için yıl boyu tek reçete tasarımı. Hesaplar Python sunucusunda yapılır. V29, veri eksikliği ve kaynak/numune uyumunun seçim puanına etkisini kaldırır; 20 malzemenin 140 sayısal referans alanını açık yöntemlerle tamamlar. Kaynaklı numuneler, aktarım ve tahminler ayrı etiketlenir. Kaynak tahminleri gerçek ürün partisi veya biyolojik optimum ölçümü değildir.
 
 ## Çalıştırma
 
@@ -8,7 +8,7 @@ Python 3.14.2, `pip install -r requirements.txt`. Üretim başlangıcı render.y
 
 Render kurulumu açıkça `free` planını kullanır. Ücretsiz plan kullanılmadığında uykuya geçebilir; ilk ziyaret yeniden başlatmayı bekler. Kalıcı disk veya veri tabanı gerekmez. Seçimler tarayıcıda tutulur; hesap girdisi yalnız sonuç üretmek için sunucuya gönderilir.
 
-## V28 seçim ve sayısal tamamlama
+## V29 seçim ve sayısal tamamlama
 
 Kaynak sınıfı, numune örtüşmesi veya eksik ölçüm seçim puanını ve koşulluluk sırasını değiştirmez. Temin güçlüğü ana öneride ceza değildir; yalnız kolay temin alternatifinde stok filtresidir. Gerçek stok dane uygunluğu, malzeme oran sınırları, su/hava eşikleri ve türün pH tercih bandı korunur.
 
@@ -23,3 +23,7 @@ Hesap yalnız “Karışımı hesapla” düğmesiyle başlar. Sayfa açılış�
 Bir anda bir hesap çalışır. Diğer istekler 429 ve Retry-After yanıtı alır. Aynı girdinin sonucu en fazla 15 dakika, en fazla 64 kayıt olacak şekilde bellek içinde tutulur; yeniden başlatmada silinir. Girdiler dosyaya kaydedilmez. JSON gövdesi 150 KB ile sınırlıdır; arama oranları ve aday sayısı V27 sınırlarını korur.
 
 Tarayıcı için Python/WebAssembly paketi gerekmez. Aynı kökenli JSON istekleri kabul edilir. Güncelleme sonrasında yapılandırma/rapor kimliği değişmeyen hesap motoruyla karşılaştırılır.
+
+V29: %5 oran adımıyla 1–5 bileşenli tüm uygun reçeteler NumPy gruplarıyla taranır. Bileşen sayısı puana eklenmez; küçük reçete puan avantajı almaz. Fiziksel model ve pH seçimi korunur.
+
+Kullanıcı En fazla bileşen seçeneğiyle 1–5 üst sınırı belirler; varsayılan 5. API max_components alanını doğrular, rapor ve istek kimliğine ekler. Alanı göndermeyen eski istemciler 5 kullanır.

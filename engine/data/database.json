@@ -1,6 +1,6 @@
 {
-  "version": "28",
-  "updated": "2026-10-20",
+  "version": 29,
+  "updated": "2026-10-21",
   "materials": [
     {
       "id": "M01",
@@ -3262,6 +3262,12 @@
       "url": null,
       "type": "MODEL",
       "note": "Veri düzeyi yalnız açıklama ve belirsizlik içindir. Seçim fiziksel eşikler, tür pH bandı, gerçek dane uygunluğu ve yetiştirme hedefleriyle yapılır. Kolay temin yalnız alternatif stok filtresidir."
+    },
+    {
+      "id": "V29_RULES",
+      "title": "V29: beş bileşene kadar arama; bileşen sayısı puanı etkilemez",
+      "url": "",
+      "note": "İç tasarım kuralı; biyolojik optimum kanıtı değildir."
     }
   ],
   "climates": [
@@ -3396,9 +3402,9 @@
     }
   ],
   "rules": {
-    "source": "V26_RULES",
+    "source": "V29_RULES",
     "grid_step": 5,
-    "max_components": 4,
+    "max_components": 5,
     "primary_min": {
       "Asidik": 25,
       "default": 55,
@@ -3498,8 +3504,9 @@
       "afp_excess_tolerance": 4,
       "cc_excess_weight": 1,
       "afp_excess_weight": 1.3,
-      "note": "Fiziksel asgari koşullardan sonra tahmini pH bandı uygunluğu önceliklidir; bandın dışında en yakın değer seçilir. Sonra fiziksel koşulluluk ve hedef puanı karşılaştırılır.",
-      "reference_weight": 3
+      "note": "Fiziksel asgari koşullardan sonra tahmini pH bandı uygunluğu önceliklidir; bandın dışında en yakın değer seçilir. Sonra fiziksel koşulluluk ve hedef puanı karşılaştırılır. Bileşen sayısı puan avantajı veya cezası oluşturmaz.",
+      "reference_weight": 3,
+      "component_count_penalty": 0
     },
     "reference_mix": {
       "Kozalaklı": {
