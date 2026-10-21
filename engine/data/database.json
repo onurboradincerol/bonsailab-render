@@ -1,5 +1,5 @@
 {
-  "version": 30,
+  "version": 31,
   "updated": "2026-10-21",
   "materials": [
     {
@@ -3282,6 +3282,20 @@
       "type": "Araştırmaya dayalı yayım rehberi",
       "url": "https://ask.ifas.ufl.edu/publication/EP129",
       "note": "Süs yapraklı kap bitkileri için CEC 5–50 meq/100g; bonsaiye aktarım karşılaştırma önkabulüdür, doğrulanmış tür hedefi değildir."
+    },
+    {
+      "id": "STRUCTURE05",
+      "title": "Bilderback et al. 2005 — Healthy Substrates Need Physicals Too!",
+      "type": "Araştırma / yöntem",
+      "url": "https://www.ars.usda.gov/ARSUserFiles/11847/bilderback_etal_2005_Hort%20Tech%2015%284%29%20pp%20747-751.pdf",
+      "note": "Bilderback 2005 Tablo 2: saf taze/yaşlı kabuk CC 49.0/61.1; 8:1 kabuk:kumda 56→336 gün taze CC 49.1→55.2, TP 85.4→80.1, AFP 36.3→24.9; yaşlı TP 82.8→74.9. Yuvarlatılmış stres uçları malzeme ailelerine aktarılır. Ortak -3 TP ölçüm değil mekanik yerleşme tasarım sınamasıdır."
+    },
+    {
+      "id": "V31_RULES",
+      "title": "BonsaiLAB V31 — sürekli hedef, pH ve yapısal duyarlılık seçimi",
+      "type": "Açık tasarım kabulü",
+      "url": null,
+      "note": "Başlangıç, gözenek dağılımı ve yerleşme stresleri ayrı karşılaştırılır. Organik hacim payıyla +12 yüzde puan CC; ayrı yerleşme senaryosunda +7 CC ve -8 TP aktarımı kullanılır. Tüm reçetelere ortak -3 TP yerleşme sınaması eklenir. Bunlar aynı üründe ölçülmüş yaşlanma katsayısı veya zaman tahmini değildir. Mineral parçalanmasının sıfır olduğu iddia edilmez. Sayısal büyüklükler ve pH ağırlığı tasarım kabulüdür; istatistiksel güven aralığı değildir. Bilimsel sıra eşitse sabit malzeme kimlikleri ve oranların SHA256 özeti yalnız tekrar üretilebilir gösterim için kullanılır. Bileşen sayısı veya alfabetik ad üstünlüğü yoktur; eşit aday sayısı raporlanır."
     }
   ],
   "climates": [
@@ -3510,7 +3524,7 @@
       "afp_excess_tolerance": 4,
       "cc_excess_weight": 1,
       "afp_excess_weight": 1.3,
-      "note": "Önce fiziksel asgari ve tahmini pH bandı; sonra su/hava ve gerçek stok dane grubu hedefleri. Malzeme adı, referans reçete, kaynak güveni, bileşen sayısı veya temin güçlüğü ana puanı değiştirmez. CEC 5 cmol(+)/kg altındaysa sınırlı eksiklik puanı vardır; üstündeki artış ödüllendirilmez. Bu kıyas eşiği tür optimumu değildir.",
+      "note": "Fiziksel asgari ve nokta pH uygunluğundan sonra sürekli su/hava uzaklığı, yapısal stres ve pH duyarlılığı birlikte karşılaştırılır. Malzeme adı, kaynak eksikliği, referans reçete ve bileşen sayısı üstünlük sağlamaz.",
       "reference_weight": 0,
       "component_count_penalty": 0,
       "material_name_weight": 0,
@@ -3570,6 +3584,25 @@
       "weight": 0.5,
       "species_optimum_validated": false,
       "note": "UF/IFAS süs yapraklı kap bitkileri için 5–50 meq/100g aralığı verir. 1 meq/100g = 1 cmol(+)/kg. Yalnız alt uç sınırlı kıyas için aktarılır; bonsai tür optimumu değildir. CEC artışı 5 üzerinde puan avantajı sağlamaz."
+    },
+    "robust_selection": {
+      "source_ids": [
+        "STRUCTURE05",
+        "BARK_PSD",
+        "V31_RULES"
+      ],
+      "organic_cc_shift_pp": 12.0,
+      "organic_tp_loss_pp": 8.0,
+      "organic_settlement_cc_shift_pp": 7.0,
+      "common_tp_loss_pp": 3.0,
+      "ph_weight": 1.0,
+      "min_ph_band_width": 0.5,
+      "basis": "LITERATURE_INFORMED_DESIGN_STRESS_NOT_LIFETIME_FORECAST",
+      "note": "Başlangıç, gözenek dağılımı ve yerleşme stresleri ayrı karşılaştırılır. Organik hacim payıyla +12 yüzde puan CC; ayrı yerleşme senaryosunda +7 CC ve -8 TP aktarımı kullanılır. Tüm reçetelere ortak -3 TP yerleşme sınaması eklenir. Bunlar aynı üründe ölçülmüş yaşlanma katsayısı veya zaman tahmini değildir. Mineral parçalanmasının sıfır olduğu iddia edilmez. Sayısal büyüklükler ve pH ağırlığı tasarım kabulüdür; istatistiksel güven aralığı değildir.",
+      "transfer_detail": "Bilderback 2005 Tablo 2: saf taze/yaşlı kabuk CC 49.0/61.1; 8:1 kabuk:kumda 56→336 gün taze CC 49.1→55.2, TP 85.4→80.1, AFP 36.3→24.9; yaşlı TP 82.8→74.9. Yuvarlatılmış stres uçları malzeme ailelerine aktarılır. Ortak -3 TP ölçüm değil mekanik yerleşme tasarım sınamasıdır.",
+      "continuous_objective": "CC ve AFP için asimetrik karesel hedef uzaklığı, tolerans içinde de sürekli hesaplanır. Üç fiziksel senaryonun en büyük puanı + pH duyarlılık bandının tür bandını aşan kısmı + dane ve sınırlı CEC kıyası.",
+      "tie_policy": "Bilimsel sıra eşitse sabit malzeme kimlikleri ve oranların SHA256 özeti yalnız tekrar üretilebilir gösterim için kullanılır. Bileşen sayısı veya alfabetik ad üstünlüğü yoktur; eşit aday sayısı raporlanır.",
+      "validated_biological_optimum": false
     }
   },
   "source_workbook": {
@@ -6964,5 +6997,6 @@
       }
     ],
     "note": "140 referans sayısı tamdır; tahminler deney ölçümü olarak etiketlenmez. Fiziksel büyüklükler su/hava/katı kapanışına göre denetlenir."
-  }
+  },
+  "rule_source": "V31_RULES"
 }

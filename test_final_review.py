@@ -44,7 +44,7 @@ class FinalReviewTests(unittest.TestCase):
   for names in [('Pomza','Torf','Diatomit'),('Pomza','Lav taşı','Zeolit (Klinoptilolit)'),('Pomza','Vermikülit','Akadama')]:
    r=core.calculate(request(names,'T04'))
    v=r['technical'];x=v['selection_explanation']
-   self.assertAlmostEqual(v['score'],x['water_air_score']+x['grain_score']+x['cec_deficit_score'])
+   self.assertAlmostEqual(v['score'],sum(x[k] for k in ('water_air_score','grain_score','cec_deficit_score','structural_stress_score','ph_sensitivity_score')))
    self.assertEqual(x['material_name_penalty'],0)
    self.assertEqual(x['component_count_penalty'],0)
  def test_cec_mass_volume_and_water_units_reconcile(self):

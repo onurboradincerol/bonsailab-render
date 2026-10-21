@@ -1,4 +1,4 @@
-"""BonsaiLAB V30: explicit climate bands and complete finite-grid search.
+"""BonsaiLAB V31: explicit climate bands and complete finite-grid search.
 
 NumPy batches the exhaustive search without sampling candidates. Design rules are not biological
 optima. Every layout-feasible 1–5 component recipe in the 5% grid is visited.
@@ -13,6 +13,7 @@ import json
 import math
 import time
 import physics
+import robustness
 import estimates
 from pathlib import Path
 from typing import Any
@@ -65,7 +66,7 @@ def cap_for(m,sp):
     return int(cap//step*step)
 
 def targets(sp,p):
-    if 'temp' in p or 'rh' in p:raise InputError('V30 genel iklimin yıl boyu bandını kullanır; sabit sıcaklık/nem alanlarını gönderme.')
+    if 'temp' in p or 'rh' in p:raise InputError('V31 genel iklimin yıl boyu bandını kullanır; sabit sıcaklık/nem alanlarını gönderme.')
     input_notes=[]
     if p.get('climate')=='indoor':
         p={**p,'climate':'mild',**({'location':'indoor'} if p.get('location') is None else {})};input_notes.append('Eski iç mekân iklim kaydı ılıman varsayımına taşındı; iç mekân yetiştirme yeri alanından seçilir.')
@@ -260,10 +261,8 @@ def nutrient_score(cec):
     return s['cec_deficit_weight']*(max(0,floor-cec)/floor)**2
 
 def environment_score(sp,t,cc,afp,ph):
-    s=RULES['score']
-    score=2*(max(0,t['target_cc_max']-cc-2)/9)**2+s['cc_excess_weight']*(max(0,cc-t['target_cc_max']-s['cc_excess_tolerance'])/9)**2
-    score+=2.6*(max(0,t['target_afp_max']-afp-2)/9)**2+s['afp_excess_weight']*(max(0,afp-t['target_afp_max']-s['afp_excess_tolerance'])/9)**2
-    return score  # Buffered-solid mixture pH is not inferred from component averages.
+    return float(robustness.environment(cc,afp,t['target_cc_max'],t['target_afp_max'],RULES['score']))
+
 
 def reference_mix(sp,inv,mode='technical'):
     raw={n:w for n,w in RULES['reference_mix'].get(sp['group'],{}).items() if n in inv and (mode!='economical' or easy_stock(BY_NAME[n],inv))}
@@ -272,7 +271,9 @@ def reference_mix(sp,inv,mode='technical'):
 
 def evaluate(items,shares,sp,t,inv,mode='technical'):
     e=physical_estimate(items,shares,sp,t,inv)
-    score=environment_score(sp,t,e['cc'],e['afp'],e['ph_index'])
+    sensitivity=robustness.report(items,shares,e['cc'],e['tp'],e['chemistry'],sp,t,RULES)
+    e['robustness']=sensitivity
+    score=sensitivity['combined_score']
     for m,w in zip(items,shares):
         prepared=prepare_material(m,inv[m['name']]);fit=grain_fit(m,inv[m['name']],t)
         source_fit=prepared['source_size_fit'] or 0
@@ -289,10 +290,13 @@ def candidate_rank(items,shares,sp,t,inv,score,est,mode):
 
 def selection_rank(tier,failures,ph,sp,score,items,shares):
     # Physical hard floors first, then estimated pH feasibility/nearest distance;
-    # Source confidence is diagnostic only; physical preferences break feasible ties.
+    # Source confidence is diagnostic only. The final hash is neutral display order.
+    # Neither component count nor alphabetical material names resolves ties.
     distance=max(0.,sp['ph_min']-ph,ph-sp['ph_max'])
     if distance<=1e-9:distance=0.
-    return (int(failures>0),failures,int(distance>0),round(distance,9),tier,round(score,9),len(items),tuple((m['name'],w) for m,w in zip(items,shares)))
+    identity=sorted((m['id'],w) for m,w in zip(items,shares))
+    tie=hashlib.sha256(json.dumps(identity,separators=(',',':')).encode()).hexdigest()
+    return (int(failures>0),failures,int(distance>0),round(distance,9),tier,round(score,9),tie)
 
 
 def distributions(total,caps):
@@ -306,12 +310,12 @@ def search_variants_scalar(mats,sp,t,inv,modes):
     """Complete search; evaluate the linear data in a tight loop, finalize winners."""
     if any(mode not in ('technical','economical') for mode in modes):raise InputError('Geçersiz tasarım modu.')
     step=RULES['grid_step'];total_units=100//step;max_components=t['max_components']
-    start=time.perf_counter();best={mode:None for mode in modes};count=0;ph_counts={mode:0 for mode in modes};physical_counts={mode:0 for mode in modes}
+    start=time.perf_counter();best={mode:None for mode in modes};count=0;ph_counts={mode:0 for mode in modes};physical_counts={mode:0 for mode in modes};equivalent={mode:0 for mode in modes}
     mats=sorted(mats,key=lambda m:m['name']);vectors=[];states=[];references={mode:reference_mix(sp,inv,mode) for mode in modes};ref_norms={mode:sum(v*v for v in ref.values()) for mode,ref in references.items()}
     for m in mats:
         x=prepare_material(m,inv[m['name']]);fit=grain_fit(m,inv[m['name']],t);source_fit=x['source_size_fit'] or 0;quality=min(measure_quality(m,k) for k in ('cc','afp','tp'))
         state=component_state(x,t['height']);states.append(state)
-        vectors.append((state['cc'],state['tp'],x['ph'],(fit or 0) if fit is not None else 0,quality*source_fit,1 if quality>=.7 else 0,1 if m['name'] in PRIMARY else 0,1 if m['kind']!='Mineral granül' else 0,1 if m['name'] in ADDONS else 0,1 if m['name'] in ACID else 0,1 if hard_to_source(m) else 0,.65*base_material_preference(m,sp,t)+(1.1*(1-fit) if fit is not None else 0),{mode:ref.get(m['name'],0) for mode,ref in references.items()},1 if m['grain_applicable'] else 0,x['numeric_estimation']['relative_buffer']))
+        vectors.append((state['cc'],state['tp'],x['ph'],(fit or 0) if fit is not None else 0,quality*source_fit,1 if quality>=.7 else 0,1 if m['name'] in PRIMARY else 0,1 if m['kind']!='Mineral granül' else 0,1 if m['name'] in ADDONS else 0,1 if m['name'] in ACID else 0,1 if hard_to_source(m) else 0,.65*base_material_preference(m,sp,t)+(1.1*(1-fit) if fit is not None else 0),{mode:ref.get(m['name'],0) for mode,ref in references.items()},1 if m['grain_applicable'] else 0,x['numeric_estimation']['relative_buffer'],x['cec']))
     primary_min=RULES['primary_min'].get(sp['group'],RULES['primary_min']['default'])/step
     organic_max=RULES['organic_max'].get(sp['group'],RULES['organic_max']['default'])/step
     a=RULES['acceptance'];acid=sp['group']=='Asidik';cc_floor=max(a['min_cc_floor'],t['target_cc_max']-a['max_cc_deficit']);afp_floor=max(a['min_afp_floor'],t['target_afp_max']-a['max_afp_deficit'])
@@ -337,11 +341,13 @@ def search_variants_scalar(mats,sp,t,inv,modes):
                 if coupling:evidence-=coupling[6];coverage-=coupling[5]
                 failures=int(cc<cc_floor-1e-9)+int(afp<afp_floor-1e-9)+int(fit is not None and fit<a['min_grain_overlap']-1e-9)
                 tier=2 if failures else 1 if _soft_risk(sp,t,cc,afp,fit,evidence,coverage,ph) else 0
-                score=environment_score(sp,t,cc,afp,ph)
+                chemistry=estimates.chemical_estimate([{'ph':v[2],'name':m['name'],'numeric_estimation':{'relative_buffer':v[14]}} for m,v in zip(items,vs)],tuple(u*step for u in units),DB['numeric_estimation'])
+                sensitivity=robustness.report(items,tuple(u*step for u in units),cc,tp,chemistry,sp,t,RULES)
+                score=sensitivity['combined_score']
                 score+=sum(u*v[11] for u,v in zip(units,vs))/total_units+extra
                 difficult=sum(u*v[10] for u,v in zip(units,vs))/total_units
                 masses=[u*state['density'] for u,state in zip(units,[states[i] for i in indexes])]
-                cec=sum(m['cec']*mass for m,mass in zip(items,masses))/sum(masses)
+                cec=sum(v[15]*mass for v,mass in zip(vs,masses))/sum(masses)
                 score+=nutrient_score(cec)
                 for mode in modes:
                     if mode=='economical' and difficult_present:continue
@@ -351,7 +357,10 @@ def search_variants_scalar(mats,sp,t,inv,modes):
                         physical_counts[mode]+=1
                         if sp['ph_min']-1e-9<=ph<=sp['ph_max']+1e-9:ph_counts[mode]+=1
                     rank=selection_rank(tier,failures,ph,sp,sc,items,tuple(u*step for u in units))
-                    if best[mode] is None or rank<best[mode][0]:best[mode]=(rank,items,tuple(u*step for u in units))
+                    previous=best[mode]
+                    if previous is None or rank[:-1]<previous[0][:-1]:equivalent[mode]=1
+                    elif rank[:-1]==previous[0][:-1]:equivalent[mode]+=1
+                    if previous is None or rank<previous[0]:best[mode]=(rank,items,tuple(u*step for u in units))
     results={}
     for mode,winner in best.items():
         if winner is None:results[mode]=None;continue
@@ -360,7 +369,7 @@ def search_variants_scalar(mats,sp,t,inv,modes):
         assert abs(rank[5]-score)<1e-7,(rank[5],score)
         assert rank==candidate_rank(items,shares,sp,t,inv,score,est,mode)
         results[mode]=(rank,score,items,shares,est,viability(items,shares,sp,t,inv,est))
-    return results,{'complete':True,'ph_selection':{mode:{'physical_feasible_candidates':physical_counts[mode],'ph_feasible_candidates':ph_counts[mode],'ph_band':[sp['ph_min'],sp['ph_max']],'basis':'Fiziksel asgari koşulları sağlayan adaylar arasında önce tahmini pH bandı; yoksa banda en yakın tahmin.'} for mode in modes},'candidate_count':count,'max_components':max_components,'step_percent':step,'material_count':len(mats),'seconds':round(time.perf_counter()-start,4),'scope':f'Yalnız seçili stok, 1–{max_components} bileşen ve %{step} adım; bu sonlu alanda tam tarama.'}
+    return results,{'complete':True,'selection_equivalence':{mode:{'count':equivalent[mode],'precision_decimals':9,'note':RULES['robust_selection']['tie_policy']} for mode in modes},'ph_selection':{mode:{'physical_feasible_candidates':physical_counts[mode],'ph_feasible_candidates':ph_counts[mode],'ph_band':[sp['ph_min'],sp['ph_max']],'basis':'Fiziksel asgari koşulları sağlayan adaylar arasında önce nokta pH bandı; sonra sürekli hedef farkı, pH duyarlılığı ve yapısal stres.'} for mode in modes},'candidate_count':count,'max_components':max_components,'step_percent':step,'material_count':len(mats),'seconds':round(time.perf_counter()-start,4),'scope':f'Yalnız seçili stok, 1–{max_components} bileşen ve %{step} adım; bu sonlu alanda tam tarama.'}
 
 def search_variants(mats,sp,t,inv,modes):
     return search_batch.search(sys.modules[__name__],mats,sp,t,inv,modes)
@@ -414,10 +423,12 @@ def variant(result,sp,t,inv,mode):
     if e['interaction']['applied']:warnings.append('Kaynak aralığında interpolasyon, dışında etiketli uç nokta köprüsü kullanıldı; malzeme ailesine aktarım gerçek stok doğrulaması değildir.')
     if t['dry_max']>.8:warnings.append('Sıcak/kuru dönem uçlarında sulama erişimi, saksı hacmi ve gölgeleme ayrıca yönetilmeli.')
     tier=2 if reasons else 1 if _soft_risk(sp,t,e['cc'],e['afp'],e['size_coverage'],e['evidence_index'],e['physical_coverage'],e['ph_index']) else 0;physical_status='inadequate' if tier==2 else 'conditional' if tier==1 else 'ok'
-    status='conditional' if physical_status=='ok' and not e['chemistry']['point_in_species_band'] else physical_status
+    status='conditional' if physical_status=='ok' and (not e['chemistry']['point_in_species_band'] or not e['robustness']['ph_range_in_species_band'] or not e['robustness']['all_physical_floors_met']) else physical_status
+    if not e['robustness']['ph_range_in_species_band']:warnings.append('pH duyarlılık aralığı tür bandının dışına taşıyor; nokta tahmini tek başına kimyasal uygunluk kanıtı değil.')
+    if not e['robustness']['all_physical_floors_met']:warnings.append('Yerleşme/parçalanma stresinde fiziksel asgari koşulların bir bölümü sağlanmıyor; sonuç ürün ömrü tahmini değildir.')
     if not e['chemistry']['point_in_species_band']:warnings.insert(0,f"Tahmini pH {e['chemistry']['mixture_ph']:.1f}, türün {sp['ph_min']}–{sp['ph_max']} tercih bandının dışında; kimyasal uyum kontrolü gerekli.")
     if not e['chemistry']['range_overlaps_species_band']:warnings.insert(0,'pH duyarlılık aralığı da türün tercih bandıyla kesişmiyor; kimyasal uyumsuzluk riski yüksek.')
-    return {'selection_explanation':{'water_air_score':environment_score(sp,t,e['cc'],e['afp'],e['chemistry']['mixture_ph']),'grain_score':sum(w/100*1.1*(1-grain_fit(m,inv[m['name']],t)) for m,w in zip(items,shares) if m['grain_applicable']),'cec_deficit_score':nutrient_score(e['cec']),'material_name_penalty':0,'reference_recipe_penalty':0,'component_count_penalty':0,'cec_comparison':RULES['nutrient_comparison'],'guardrail_basis':RULES['guardrail_basis']},'status':status,'physical_status':physical_status,'mode':mode,'score':score,'estimate':e,'selected':sorted(rows,key=lambda x:(-x['share'],x['name'])),'warnings':list(dict.fromkeys(warnings)),'reasons':reasons,'difficult_share':sum(w for m,w in zip(items,shares) if hard_to_source(m)),'grain_recommendation':recipe_grain_recommendation(items,shares,sp,t,inv,mode),'acceptance_label':{'ok':'Model kısıtları sağlandı','conditional':'Koşullu tasarım / kontrol gerekli','inadequate':'Tasarım eşikleri sağlanmadı'}[status]}
+    return {'selection_explanation':{'water_air_score':environment_score(sp,t,e['cc'],e['afp'],e['chemistry']['mixture_ph']),'grain_score':sum(w/100*1.1*(1-grain_fit(m,inv[m['name']],t)) for m,w in zip(items,shares) if m['grain_applicable']),'cec_deficit_score':nutrient_score(e['cec']),'structural_stress_score':e['robustness']['structural_stress_score'],'ph_sensitivity_score':e['robustness']['ph_sensitivity_score'],'material_name_penalty':0,'reference_recipe_penalty':0,'component_count_penalty':0,'cec_comparison':RULES['nutrient_comparison'],'guardrail_basis':RULES['guardrail_basis']},'status':status,'physical_status':physical_status,'mode':mode,'score':score,'estimate':e,'selected':sorted(rows,key=lambda x:(-x['share'],x['name'])),'warnings':list(dict.fromkeys(warnings)),'reasons':reasons,'difficult_share':sum(w for m,w in zip(items,shares) if hard_to_source(m)),'grain_recommendation':recipe_grain_recommendation(items,shares,sp,t,inv,mode),'acceptance_label':{'ok':'Model kısıtları sağlandı','conditional':'Koşullu tasarım / kontrol gerekli','inadequate':'Tasarım eşikleri sağlanmadı'}[status]}
 
 def calculate(payload:dict[str,Any]):
     if not isinstance(payload,dict):raise InputError('İstek bir nesne olmalı.')
@@ -429,6 +440,7 @@ def calculate(payload:dict[str,Any]):
     tech=variant(solutions['technical'],sp,t,inv,'technical');econ=variant(solutions['economical'],sp,t,inv,'economical')
     for mode,v in (('technical',tech),('economical',econ)):
         v['ph_selection']=search['ph_selection'][mode]
+        v['selection_equivalence']=search.get('selection_equivalence',{}).get(mode,{'count':1,'note':'Bilimsel üstünlük değil; model adayı.'})
         if v['estimate']:
             e=v['estimate'];tolerance=RULES['acceptance']['conditional_target_deficit']
             v['season_checks']=[{**x,'cc_scenario':e['cc'],'afp_scenario':e['afp'],'cc_target_met':e['cc']>=x['target_cc_max']-tolerance-1e-9,'afp_target_met':e['afp']>=x['target_afp_max']-tolerance-1e-9,'target_tolerance':tolerance} for x in t['season_scenarios']]
@@ -445,4 +457,4 @@ def calculate(payload:dict[str,Any]):
     normalized={k:t[k] for k in ('climate','season','phase','pot','light','wind','watering','location','height','volume','max_components')}
     normalized.update({'species_id':sid,'inventory':full})
     fingerprint=hashlib.sha256(json.dumps(identity_values(normalized),sort_keys=True,ensure_ascii=False).encode()).hexdigest()
-    return {'application':'BonsaiLAB V30','species':sp,'inputs':t,'request':normalized,'request_sha256':fingerprint,'request_identity_version':2,'database_sha256':DB_HASH,'technical':tech,'economical':econ,'notes':notes,'limits':{n:cap_for(BY_NAME[n],sp) for n in inv},'rule_source':'V30_RULES','search':search,'provenance_note':'Model kısıtları biyolojik güvenlik onayı değildir. Tüm fiziksel ve kimyasal sonuçlara sayısal tahmin verilir; eksikler açık önkabullerle tamamlanır. Aralıklar tasarım duyarlılığıdır, güven aralığı değildir.', 'science_version':physics.SCIENCE['version']}
+    return {'application':'BonsaiLAB V31','species':sp,'inputs':t,'request':normalized,'request_sha256':fingerprint,'request_identity_version':2,'database_sha256':DB_HASH,'technical':tech,'economical':econ,'notes':notes,'limits':{n:cap_for(BY_NAME[n],sp) for n in inv},'rule_source':'V31_RULES','search':search,'provenance_note':'Model kısıtları biyolojik güvenlik onayı değildir. Tüm fiziksel ve kimyasal sonuçlara sayısal tahmin verilir; eksikler açık önkabullerle tamamlanır. Aralıklar tasarım duyarlılığıdır, güven aralığı değildir.', 'science_version':physics.SCIENCE['version']}

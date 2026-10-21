@@ -1,4 +1,4 @@
-"""BonsaiLAB V30: same-origin WSGI service, with bounded CPU work and cache."""
+"""BonsaiLAB V31: same-origin WSGI service, with bounded CPU work and cache."""
 from __future__ import annotations
 import hashlib,json,logging,os,sys,threading,time
 from collections import OrderedDict
@@ -40,7 +40,7 @@ def icon():return send_from_directory(ROOT,'icon.svg')
 def manifest():return send_from_directory(ROOT,'manifest.webmanifest')
 
 @app.get('/healthz')
-def health():return json_response({'status':'ok','application':'BonsaiLAB V30','execution':'server','database_sha256':DB_HASH})
+def health():return json_response({'status':'ok','application':'BonsaiLAB V31','execution':'server','database_sha256':DB_HASH})
 
 @app.get('/api/config')
 def config():return json_response(DB)

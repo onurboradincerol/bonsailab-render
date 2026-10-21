@@ -13,6 +13,7 @@ def search(c,mats,sp,t,inv,modes):
   fit=c.grain_fit(m,inv[m['name']],t)
   v.append([state['cc'],state['tp'],prepared['ph'],fit or 0,int(m['name'] in c.PRIMARY),int(m['kind']!='Mineral granül'),int(m['name'] in c.ADDONS),int(m['name'] in c.ACID),.65*c.base_material_preference(m,sp,t)+(1.1*(1-fit) if fit is not None else 0),int(m['grain_applicable']),prepared['numeric_estimation']['relative_buffer'],state['density'],prepared['cec']*state['density']])
  vectors=np.asarray(v,dtype=float);best={mode:None for mode in modes};count=0
+ equivalent={mode:0 for mode in modes}
  physical_counts={mode:0 for mode in modes};ph_counts={mode:0 for mode in modes}
  a=r['acceptance'];acid=sp['group']=='Asidik';cc_floor=max(a['min_cc_floor'],t['target_cc_max']-a['max_cc_deficit']);afp_floor=max(a['min_afp_floor'],t['target_afp_max']-a['max_afp_deficit'])
  primary_min=r['primary_min'].get(sp['group'],r['primary_min']['default'])/step
@@ -71,8 +72,9 @@ def search(c,mats,sp,t,inv,modes):
    failures=(cc<cc_floor-1e-9).astype(int)+(afp<afp_floor-1e-9)+(np.isfinite(fit)&(fit<a['min_grain_overlap']-1e-9))
    conditional=(acid or bool(t['environment_warnings'])) | ~np.isfinite(fit) | (fit<a['conditional_grain_overlap']-1e-9) | (cc<t['target_cc_max']-a['conditional_target_deficit']-1e-9) | (afp<t['target_afp_max']-a['conditional_target_deficit']-1e-9)
    tier=np.where(failures,2,np.where(conditional,1,0))
-   s=r['score'];score=2*(np.maximum(0,t['target_cc_max']-cc-2)/9)**2+s['cc_excess_weight']*(np.maximum(0,cc-t['target_cc_max']-s['cc_excess_tolerance'])/9)**2
-   score+=2.6*(np.maximum(0,t['target_afp_max']-afp-2)/9)**2+s['afp_excess_weight']*(np.maximum(0,afp-t['target_afp_max']-s['afp_excess_tolerance'])/9)**2
+   low,high=c.robustness.ph_bounds(vs[:,2],vs[:,10],units,c.DB['numeric_estimation'])
+   sensitivity=c.robustness.assess(cc,tp,weighted(units,5)/total,low,high,sp,t,r)
+   s=r['score'];score=sensitivity['score']
    score+=weighted(units,8)/total
    cec=weighted(units,12)/weighted(units,11)
    score+=s['cec_deficit_weight']*(np.maximum(0,s['cec_floor']-cec)/s['cec_floor'])**2
@@ -87,15 +89,22 @@ def search(c,mats,sp,t,inv,modes):
      sc+=s['reference_weight']*(np.sum(units.astype(float)**2,axis=1)/(total**2)+norms[mode]-2*refdot/total)
     physical_counts[mode]+=int(np.count_nonzero(failures==0));ph_counts[mode]+=int(np.count_nonzero((failures==0)&in_band))
     rounded=np.round(sc,9)
-    # Lexicographic filtering keeps the same rank keys, and the original grid's
-    # ascending share order resolves exact ties within a fixed material tuple.
+    # Scientific keys first. A stable digest resolves only genuine model ties;
+    # component count and alphabetical names never enter the scientific rank.
     candidates=np.arange(len(units))
     for key in ((failures>0).astype(int),failures,(distance>0).astype(int),distance,tier,rounded):
      values=key[candidates];candidates=candidates[values==values.min()]
      if len(candidates)==1:break
-    i=int(candidates[0]);shares=tuple(int(u)*step for u in units[i])
-    rank=c.selection_rank(int(tier[i]),int(failures[i]),float(ph[i]),sp,float(sc[i]),items,shares)
-    if best[mode] is None or rank<best[mode][0]:best[mode]=(rank,items,shares)
+    ranks=[]
+    for candidate in candidates:
+     i=int(candidate);shares=tuple(int(u)*step for u in units[i])
+     rank=c.selection_rank(int(tier[i]),int(failures[i]),float(ph[i]),sp,float(sc[i]),items,shares)
+     ranks.append((rank,shares))
+    rank,shares=min(ranks,key=lambda x:x[0])
+    previous=best[mode]
+    if previous is None or rank[:-1]<previous[0][:-1]:equivalent[mode]=len(ranks)
+    elif rank[:-1]==previous[0][:-1]:equivalent[mode]+=len(ranks)
+    if previous is None or rank<previous[0]:best[mode]=(rank,items,shares)
  results={}
  for mode,winner in best.items():
   if winner is None:results[mode]=None;continue
@@ -103,4 +112,4 @@ def search(c,mats,sp,t,inv,modes):
   public_rank=c.candidate_rank(items,shares,sp,t,inv,score,est,mode)
   assert rank==public_rank,(rank,public_rank)
   results[mode]=(public_rank,score,items,shares,est,c.viability(items,shares,sp,t,inv,est))
- return results,{'complete':True,'ph_selection':{mode:{'physical_feasible_candidates':physical_counts[mode],'ph_feasible_candidates':ph_counts[mode],'ph_band':[sp['ph_min'],sp['ph_max']],'basis':'Fiziksel asgari koşulları sağlayan adaylar arasında önce tahmini pH bandı; yoksa banda en yakın tahmin.'} for mode in modes},'candidate_count':count,'max_components':t['max_components'],'step_percent':step,'material_count':len(mats),'seconds':round(time.perf_counter()-start,4),'scope':f'Yalnız seçili stok, 1–{t["max_components"]} bileşen ve %{step} adım; bu sonlu alanda tam tarama.','method':'BATCHED_EXHAUSTIVE_GRID'}
+ return results,{'complete':True,'selection_equivalence':{mode:{'count':equivalent[mode],'precision_decimals':9,'note':r['robust_selection']['tie_policy']} for mode in modes},'ph_selection':{mode:{'physical_feasible_candidates':physical_counts[mode],'ph_feasible_candidates':ph_counts[mode],'ph_band':[sp['ph_min'],sp['ph_max']],'basis':'Fiziksel asgari koşulları sağlayan adaylar arasında önce nokta pH bandı; sonra sürekli hedef farkı, pH duyarlılığı ve yapısal stres.'} for mode in modes},'candidate_count':count,'max_components':t['max_components'],'step_percent':step,'material_count':len(mats),'seconds':round(time.perf_counter()-start,4),'scope':f'Yalnız seçili stok, 1–{t["max_components"]} bileşen ve %{step} adım; bu sonlu alanda tam tarama.','method':'BATCHED_EXHAUSTIVE_GRID'}
