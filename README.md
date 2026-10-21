@@ -18,7 +18,7 @@ Kaynak eğrisi olmayan malzemelerde CC ve AWC ile üstel tutma eğrisi tahmin ed
 
 Ana sonuç kartları karışım oranlarını, miktarları, tahmini su tutma, hava boşluğu, pH, CEC, kullanılabilir su, kuru yoğunluk değerlerini ve dane önerisini gösterir. Numune payı ve aktarım endeksi arayüzden kaldırılmıştır. Mevsim hedefleri, ayrıntılı hesap tabloları ve yöntem açıklamaları kapalı ayrıntı bölümlerindedir. Önemli yetiştirme uyarıları görünür tutulur; motor sonuçları ve tam JSON raporu korunur.
 
-Hesap yalnız “Karışımı hesapla” düğmesiyle başlar. Sayfa açılışı ve seçim değişiklikleri hesap isteği göndermez. Değişiklikler kaydedilir, eski sonuç ve rapor geçersiz olur. Hesap sürerken düğme tekrar istek göndermez. Sunucu meşgulse otomatik tekrar yapılmaz; kullanıcı düğmeyle yeniden dener.
+Hesap yalnız “Karışımı hesapla” düğmesiyle başlar. Sayfa açılışı ve seçim değişiklikleri hesap isteği göndermez. Değişiklikler kaydedilir; önceki sonuç ve ona ait rapor ekranda kalır. Küçük eski sonuç uyarısı gösterilir. Hesap beklerken veya hata döndüğünde önceki sonuç korunur. Hesap sürerken düğme tekrar istek göndermez. Sunucu meşgulse otomatik tekrar yapılmaz; kullanıcı düğmeyle yeniden dener.
 
 Bir anda bir hesap çalışır. Diğer istekler 429 ve Retry-After yanıtı alır. Aynı girdinin sonucu en fazla 15 dakika, en fazla 64 kayıt olacak şekilde bellek içinde tutulur; yeniden başlatmada silinir. Girdiler dosyaya kaydedilmez. JSON gövdesi 150 KB ile sınırlıdır; %5 oran adımı ve kullanıcının 1–5 bileşen üst sınırı uygulanır.
 
@@ -43,3 +43,7 @@ Su/hava hedef uzaklığı tolerans içinde de sürekli kareseldir. Başlangıç,
 Stres katsayıları rules.robust_selection içinde görünür: +12 CC organik gözenek sınaması; ayrı yerleşmede organik pay × (+7 CC, -8 TP), bütün reçetelerde ortak -3 TP. Bunlar literatürden aktarılan kaba büyüklükler ve açık tasarım kabulleridir; ürünün yıllık parçalanma oranı değildir. Mineral parçalanması ölçüldü veya sıfırdır denmez. Üç senaryoda su + hava = TP korunur.
 
 Eşitlikte az bileşen veya alfabetik ad avantajı kaldırılmıştır. Model sırası 9 basamakta eşitse sabit malzeme kimliği/oran SHA256 özeti yalnız tekrarlanabilir gösterim için kullanılır; eşit aday sayısı raporlanır. Daha çok bileşen de zorunlu tutulmaz. Ana kart pH aralığını ve yapısal stres su/hava aralığını gösterir. Ayrıntılarda puan bileşenleri ve üç senaryo ayrı izlenebilir.
+
+## V31.1 arayüz
+
+Hesap motoru ve veri tabanı V31 olarak korunur. Seçimler değişince sonuç silinmez; tür/hacim etiketi, Seçimler değişti uyarısı ve Tekrar hesapla düğmesi görünür. Aynı seçimlere geri dönüldüğünde uyarı kalkar. Geç dönen veya iptal edilen hesap eski sonucu değiştiremez. İndirilen JSON her zaman gösterilen hesabın istek görüntüsüdür; export_context güncel seçimlerden farklı olup olmadığını belirtir. Ana ekrandaki tekrar eden açıklamalar sadeleştirilmiştir; yöntem, kaynaklar ve önemli uygunluk uyarıları korunur.
